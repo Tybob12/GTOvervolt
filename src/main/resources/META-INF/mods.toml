@@ -67,6 +67,6 @@ issueTrackerURL="https://github.com/argent-matter/gcyr/issues"
    [[dependencies.gtovervolt]]
       modId="gtceu"
       mandatory=true
-      versionRange="[1.0.14.a,)"
+      versionRange="[1.1.1.a,)"
       ordering="BEFORE"
       side="BOTH"
