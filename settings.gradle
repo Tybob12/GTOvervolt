@@ -19,6 +19,7 @@ dependencyResolutionManagement {
         // Mod Dependencies Versions
         // Common
         def reiVersion = "12.0.684"
+        def jeiVersion = "15.2.0.27"
         def kjsVersion = "2001.6.4-build.120"
 
         // Forge
@@ -54,6 +55,11 @@ dependencyResolutionManagement {
             library("rei-plugin", "me.shedaniel", "RoughlyEnoughItems-default-plugin-forge").versionRef(rei)
             library("rei-api", "me.shedaniel", "RoughlyEnoughItems-api-forge").versionRef(rei)
             library("rei-forge", "me.shedaniel", "RoughlyEnoughItems-forge").versionRef(rei)
+
+            def jei = version("jei", jeiVersion)
+            library("jei-common-api", "mezz.jei", "jei-${minecraftVersion}-common-api").versionRef(jei)
+            library("jei-forge-api", "mezz.jei", "jei-${minecraftVersion}-forge-api").versionRef(jei)
+            library("jei-forge-impl", "mezz.jei", "jei-${minecraftVersion}-forge").versionRef(jei)
 
             def theoneprobe = version("theoneprobe", topForgeVersion)
             library("theoneprobe", "mcjty.theoneprobe", "theoneprobe").versionRef(theoneprobe)

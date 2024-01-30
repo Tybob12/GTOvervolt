@@ -153,6 +153,11 @@ dependencies {
     modCompileOnly forge.rei.api
     modImplementation forge.rei.forge
 
+    // JEI
+    modCompileOnly(forge.jei.common.api) { transitive = false }
+    modCompileOnly(forge.jei.forge.api) { transitive = false }
+    modCompileOnly(forge.jei.forge.impl) { transitive = false }
+
     // TOP
     modCompileOnly(forge.theoneprobe) { transitive = false }
 

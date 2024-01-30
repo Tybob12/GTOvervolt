@@ -5,7 +5,11 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
+import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
+import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
+import com.tybob14.gtovervolt.common.data.materials.ChemistryMaterials;
 import com.tybob14.gtovervolt.common.data.materials.PrimaryMaterials;
+import com.tybob14.gtovervolt.common.data.materials.SuperconductorMaterials;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +25,7 @@ public class GTOvervolt {
     public static MaterialRegistry MATERIAL_REGISTRY;
 
     public GTOvervolt(){
+        GTOvervolt.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
     }
@@ -30,7 +35,9 @@ public class GTOvervolt {
 
 
     public static void init() {
+        GTOvervoltCreativeModeTabs.init();
 
+        GTOvervoltRegistries.REGISTRATE.registerRegistrate();
     }
 
     @SubscribeEvent
@@ -41,6 +48,8 @@ public class GTOvervolt {
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         PrimaryMaterials.init();
+        SuperconductorMaterials.init();
+        ChemistryMaterials.init();
     }
 
     @SubscribeEvent
