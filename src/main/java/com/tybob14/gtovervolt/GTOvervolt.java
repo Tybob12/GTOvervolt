@@ -7,6 +7,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
 import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
+import com.tybob14.gtovervolt.common.data.materials.OriginalMaterials;
+import com.tybob14.gtovervolt.data.GTOvervoltDatagen;
 import com.tybob14.gtovervolt.common.data.materials.ChemistryMaterials;
 import com.tybob14.gtovervolt.common.data.materials.PrimaryMaterials;
 import com.tybob14.gtovervolt.common.data.materials.SuperconductorMaterials;
@@ -29,15 +31,18 @@ public class GTOvervolt {
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
     }
-    public static ResourceLocation id(String path) {
-        return new ResourceLocation(MOD_ID, path);
-    }
 
 
     public static void init() {
         GTOvervoltCreativeModeTabs.init();
 
+        GTOvervoltDatagen.init();
+
         GTOvervoltRegistries.REGISTRATE.registerRegistrate();
+    }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 
     @SubscribeEvent
@@ -50,11 +55,14 @@ public class GTOvervolt {
         PrimaryMaterials.init();
         SuperconductorMaterials.init();
         ChemistryMaterials.init();
+
+
     }
 
     @SubscribeEvent
     public void modifyMaterials(PostMaterialEvent event) {
         PrimaryMaterials.modifyMaterials();
+        OriginalMaterials.modifyMaterials();
     }
 
 }
