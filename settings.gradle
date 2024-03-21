@@ -19,13 +19,13 @@ dependencyResolutionManagement {
         // Mod Dependencies Versions
         // Common
         def reiVersion = "12.0.684"
-        def jeiVersion = "15.2.0.27"
         def kjsVersion = "2001.6.4-build.120"
 
         // Forge
-        def forgeVersion = "47.2.0"
+        def forgeVersion = "47.1.3"
         def registrateForgeVersion = "MC1.20-1.3.3"
         def topForgeVersion = "1.20.1-10.0.1-3"
+        def radiumVersion = "0.12.2+git.5f80f74"
 
         // Libs
         def quiltMappingsVersion = "5"  // https://lambdaurora.dev/tools/import_quilt.html
@@ -36,9 +36,10 @@ dependencyResolutionManagement {
         def vineFlowerVersion = "1.+"
         def macheteVersion = "1.+"
         def configurationVersion = "2.2.0"
-        def gtCeuVersion = "1.1.1.a"
-        def ldLibVersion = "1.0.22.b"
+        def gtCeuVersion = "1.1.3.b"
+        def ldLibVersion = "1.0.23.a"
         def mixinExtrasVersion = "0.2.0"
+        def mixinVersion = "0.8.6-SNAPSHOT"
 
         forge {
             version("forgeShortVersion", forgeVersion)
@@ -56,11 +57,6 @@ dependencyResolutionManagement {
             library("rei-api", "me.shedaniel", "RoughlyEnoughItems-api-forge").versionRef(rei)
             library("rei-forge", "me.shedaniel", "RoughlyEnoughItems-forge").versionRef(rei)
 
-            def jei = version("jei", jeiVersion)
-            library("jei-common-api", "mezz.jei", "jei-${minecraftVersion}-common-api").versionRef(jei)
-            library("jei-forge-api", "mezz.jei", "jei-${minecraftVersion}-forge-api").versionRef(jei)
-            library("jei-forge-impl", "mezz.jei", "jei-${minecraftVersion}-forge").versionRef(jei)
-
             def theoneprobe = version("theoneprobe", topForgeVersion)
             library("theoneprobe", "mcjty.theoneprobe", "theoneprobe").versionRef(theoneprobe)
 
@@ -76,6 +72,9 @@ dependencyResolutionManagement {
             def mixinExtras = version("mixinExtras", mixinExtrasVersion)
             library("mixinExtras-common", "io.github.llamalad7", "mixinextras-common").versionRef(mixinExtras)
             library("mixinExtras-forge", "io.github.llamalad7", "mixinextras-forge").versionRef(mixinExtras)
+
+            def radium = version("radium", radiumVersion)
+            library("radium", "me.jellysquid.mods", "radium").versionRef(radium)
         }
 
         libs {
@@ -84,6 +83,9 @@ dependencyResolutionManagement {
 
             def minecraft = version("minecraft", minecraftVersion)
             library("minecraft", "com.mojang", "minecraft").versionRef(minecraft)
+
+            def mixin = version("mixin", mixinVersion)
+            library("mixin", "org.spongepowered", "mixin").versionRef(mixin)
 
             def shadow = version("shadow", shadowVersion)
             plugin("shadow", "com.github.johnrengelman.shadow").versionRef(shadow)
@@ -103,4 +105,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "${mod_name}"
+rootProject.name = "${mod_id}"

@@ -1,20 +1,11 @@
 package com.tybob14.gtovervolt.common.data.materials;
 
-import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.tybob14.gtovervolt.GTOvervolt;
-import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
-
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 @SuppressWarnings("unused")
 public class SuperconductorMaterials {
-
-
     public static void init(){
 
     }
