@@ -151,6 +151,10 @@ repositories {
         name = "mixin"
         url = "https://repo.spongepowered.org/repository/maven-public/"
     }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 dependencies {
@@ -171,16 +175,9 @@ dependencies {
     // Registrate
     modImplementation("com.tterrag.registrate:Registrate:${forge.versions.registrate.get()}")
 
-    // REI
-    modCompileOnly forge.rei.plugin
-    modCompileOnly forge.rei.api
-    modImplementation forge.rei.forge
 
-    // TOP
-    modCompileOnly(forge.theoneprobe) { transitive = false }
-
-    // KJS
-    modImplementation forge.kubejs.forge
+    //EMI
+    modImplementation "dev.emi:emi-forge:${emi_version}"
 
     // Configuration
     modImplementation(forge.configuration)
@@ -195,8 +192,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    // testing mods
-    modCompileOnly forge.radium
+    // AE2
+    modImplementation(forge.ae2) { transitive = false }
 }
 
 processResources {

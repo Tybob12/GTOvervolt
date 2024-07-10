@@ -25,7 +25,7 @@ public class ChemistryMaterials {
             .components(CarbonDioxide, 21, Helium, 9, Methane, 3,Deuterium, 1)
             .buildAndRegister();
 
-    public static final Material ChromiumDioxide = new Material.Builder(GTOvervolt.id("chromium_dioxide"))
+    /*public static final Material ChromiumDioxide = new Material.Builder(GTOvervolt.id("chromium_dioxide"))
             .color(0xE6C8C8)
             .iconSet(DULL)
             .ingot()
@@ -54,12 +54,12 @@ public class ChemistryMaterials {
             .fluid()
             .buildAndRegister();
 
-    public static final Material EnrichedNaquadria = new Material.Builder(GTOvervolt.id("enriched_naquadria"))
+    /*public static final Material EnrichedNaquadria = new Material.Builder(GTOvervolt.id("enriched_naquadria"))
             .color(0x343434)
             .iconSet(FLUID)
             .fluid()
             .components(Naquadah, 2)
-            .buildAndRegister();
+            .buildAndRegister();*/
 
     public static final Material BioMediumRaw = new Material.Builder(GTOvervolt.id("bio_medium_raw"))
             .color(0x61932E)
@@ -90,7 +90,7 @@ public class ChemistryMaterials {
             .components(Phosphorus, 4, Oxygen, 10)
             .buildAndRegister();
 
-    public static final Material TengamPurified = new Material.Builder(GTOvervolt.id("tengam_purified"))
+    /*public static final Material TengamPurified = new Material.Builder(GTOvervolt.id("tengam_purified"))
             .color(0xBADF70)
             .iconSet(METALLIC)
             .ingot()
@@ -120,6 +120,7 @@ public class ChemistryMaterials {
             .fluid()
             .buildAndRegister();
 
+     */
     public static final Material AdvancedGlue = new Material.Builder(GTOvervolt.id("advanced_glue"))
             .color(0xFFFFB9)
             .iconSet(FLUID)
@@ -168,7 +169,7 @@ public class ChemistryMaterials {
             .components(Carbon, 6, Hydrogen, 14, Oxygen, 1)
             .buildAndRegister();
 
-    public static final Material SiliconSG = new Material.Builder(GTOvervolt.id("silicon_sg"))
+    /*public static final Material SiliconSG = new Material.Builder(GTOvervolt.id("silicon_sg"))
             .color(0x505064)
             .iconSet(METALLIC)
             .ore()
@@ -264,5 +265,7 @@ public class ChemistryMaterials {
             .iconSet(QUARTZ)
             .dust()
             .components(Aluminium, 1, Hydrogen, 1, Oxygen, 3)
-            .buildAndRegister();
+            .buildAndRegister();*/
+
+
 }

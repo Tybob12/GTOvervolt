@@ -49,7 +49,7 @@ public class PrimaryMaterials {
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, FORCE_GENERATE_BLOCK, MORTAR_GRINDABLE, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND )
             .buildAndRegister();*/
 
-    public static final Material Adamantium = new Material.Builder(GTOvervolt.id("adamantium"))
+    /*public static final Material Adamantium = new Material.Builder(GTOvervolt.id("adamantium"))
             .color(0xFFFFFF)
             .iconSet(SHINY)
             .ingot()
@@ -173,7 +173,7 @@ public class PrimaryMaterials {
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND )
             .cableProperties(524288, 4, 8)
             .toolStats(ToolProperty.Builder.of(32F, 24F, 40960, 10).attackSpeed(0.3F).enchantability(33).build())
-            .buildAndRegister();*/
+            .buildAndRegister();
 
     public static final Material ElectrumFlux = new Material.Builder(GTOvervolt.id("electrumflux"))
             .color(0xFFFF78)
@@ -513,5 +513,7 @@ public class PrimaryMaterials {
             .gem()
             .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_LONG_ROD, GENERATE_LENS, FORCE_GENERATE_BLOCK)
             .buildAndRegister();
+
+     */
 
 }
