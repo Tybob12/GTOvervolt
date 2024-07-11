@@ -11,11 +11,11 @@ import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
 import com.tybob14.gtovervolt.common.data.GTOVMachines;
 import com.tybob14.gtovervolt.common.data.GTOVRecipeTypes;
 import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
+import com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials;
 import com.tybob14.gtovervolt.common.data.materials.OriginalMaterials;
 import com.tybob14.gtovervolt.data.GTOvervoltDatagen;
 import com.tybob14.gtovervolt.common.data.materials.ChemistryMaterials;
 import com.tybob14.gtovervolt.common.data.materials.PrimaryMaterials;
-import com.tybob14.gtovervolt.common.data.materials.SuperconductorMaterials;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -56,6 +56,8 @@ public class GTOvervolt {
     @SubscribeEvent
     public void registerMaterialRegistry(MaterialRegistryEvent event) {
         MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTOvervolt.MOD_ID);
+
+
     }
 
     @SubscribeEvent
@@ -71,10 +73,8 @@ public class GTOvervolt {
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         PrimaryMaterials.init();
-        SuperconductorMaterials.init();
         ChemistryMaterials.init();
-
-
+        IntegratedMaterials.init();
     }
 
     @SubscribeEvent

@@ -14,6 +14,7 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
         }
 
         provider.add("gtovervolt.circuit_assembly_line", "Circuit Assembly Line");
+        provider.add("gtovervolt.pcb_factory", "PCB Factory");
     }
 
 

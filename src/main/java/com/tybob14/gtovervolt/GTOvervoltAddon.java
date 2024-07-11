@@ -25,6 +25,11 @@ public class GTOvervoltAddon implements IGTAddon {
     }
 
     @Override
+    public boolean requiresHighTier() {
+        return true;
+    }
+
+    @Override
     public void registerOreVeins() {
         OTGOres.init();
     }
@@ -47,5 +52,10 @@ public class GTOvervoltAddon implements IGTAddon {
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
         GTOVRecipes.newInit(provider);
+    }
+
+    @Override
+    public void registerVeinGenerators() {
+        IGTAddon.super.registerVeinGenerators();
     }
 }

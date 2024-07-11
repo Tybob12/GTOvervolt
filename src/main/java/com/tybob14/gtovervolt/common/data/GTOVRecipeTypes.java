@@ -48,6 +48,13 @@ public class GTOVRecipeTypes  {
                             GTMaterials.Tin.getFluid(Math.max(1, GTValues.L * recipeBuilder.getSolderMultiplier())));
                 }
             });
+
+    public final static GTRecipeType PCB_FACTORY_RECIPES = register("pcb_factory", MULTIBLOCK)
+            .setMaxIOSize(6, 1, 4, 0).setEUIO(IO.IN)
+            .setSlotOverlay(false, false, GuiTextures.MOLECULAR_OVERLAY_1)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.CHEMICAL)
+            .setMaxTooltips(4);
     public static void init() {
 
     }
