@@ -12,5 +12,9 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
         for (Material material : GTOvervolt.MATERIAL_REGISTRY.getAllMaterials()) {
             provider.add(material.getName(), toEnglishName(material.getName()));
         }
+
+        provider.add("gtovervolt.circuit_assembly_line", "Circuit Assembly Line");
     }
+
+
 }

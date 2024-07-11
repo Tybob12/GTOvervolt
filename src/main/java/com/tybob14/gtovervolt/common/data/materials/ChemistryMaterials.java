@@ -25,7 +25,7 @@ public class ChemistryMaterials {
             .components(CarbonDioxide, 21, Helium, 9, Methane, 3,Deuterium, 1)
             .buildAndRegister();
 
-    /*public static final Material ChromiumDioxide = new Material.Builder(GTOvervolt.id("chromium_dioxide"))
+    public static final Material ChromiumDioxide = new Material.Builder(GTOvervolt.id("chromium_dioxide"))
             .color(0xE6C8C8)
             .iconSet(DULL)
             .ingot()
@@ -33,33 +33,6 @@ public class ChemistryMaterials {
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_FOIL,GENERATE_FINE_WIRE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL)
             .components(Chromium, 1, Oxygen, 2)
             .buildAndRegister();
-
-    public static final Material NitroCarbon = new Material.Builder(GTOvervolt.id("nitro_carbon"))
-            .color(0x004B64)
-            .iconSet(FLUID)
-            .fluid()
-            .components(Nitrogen, 1, Carbon, 1)
-            .buildAndRegister();
-
-    public static final Material Plastic = new Material.Builder(GTOvervolt.id("plastic"))
-            .color(0xC8C8C8)
-            .iconSet(DULL)
-            .components(Polyethylene, 1)
-            .fluidPipeProperties(350,7200, true)
-            .buildAndRegister();
-
-    public static final Material NaquadahFuel = new Material.Builder(GTOvervolt.id("naquadah_fuel"))
-            .color(0x3E3E3E)
-            .iconSet(FLUID)
-            .fluid()
-            .buildAndRegister();
-
-    /*public static final Material EnrichedNaquadria = new Material.Builder(GTOvervolt.id("enriched_naquadria"))
-            .color(0x343434)
-            .iconSet(FLUID)
-            .fluid()
-            .components(Naquadah, 2)
-            .buildAndRegister();*/
 
     public static final Material BioMediumRaw = new Material.Builder(GTOvervolt.id("bio_medium_raw"))
             .color(0x61932E)
@@ -113,25 +86,19 @@ public class ChemistryMaterials {
             .ore()
             .dust()
             .buildAndRegister();
-
+    */
     public static final Material SuperCoolant = new Material.Builder(GTOvervolt.id("super_coolant"))
             .color(0x025B6F)
             .iconSet(DULL)
             .fluid()
             .buildAndRegister();
 
-     */
+
     public static final Material AdvancedGlue = new Material.Builder(GTOvervolt.id("advanced_glue"))
             .color(0xFFFFB9)
             .iconSet(FLUID)
             .fluid()
             .components(Acetone, 1, PolyvinylAcetate, 2)
-            .buildAndRegister();
-
-    public static final Material BioFuel = new Material.Builder(GTOvervolt.id("bio_fuel"))
-            .color(0xFF8000)
-            .iconSet(FLUID)
-            .fluid()
             .buildAndRegister();
 
     public static final Material WoodGas = new Material.Builder(GTOvervolt.id("wood_gas"))
@@ -147,14 +114,6 @@ public class ChemistryMaterials {
             .dust()
             .components(Potassium, 1 , NitrogenDioxide, 1)
             .buildAndRegister();
-
-    public static final Material Potassiumdichromate = new Material.Builder(GTOvervolt.id("potassiumdichromate"))
-            .color(0xFF087F)
-            .iconSet(DULL)
-            .dust()
-            .components(Potassium, 2, Chromium, 2, Oxygen, 7)
-            .buildAndRegister();
-
     public static final Material MTBEMixture = new Material.Builder(GTOvervolt.id("mtbe_mixture"))
             .color(0xFFFFFF)
             .iconSet(FLUID)
@@ -169,17 +128,16 @@ public class ChemistryMaterials {
             .components(Carbon, 6, Hydrogen, 14, Oxygen, 1)
             .buildAndRegister();
 
-    /*public static final Material SiliconSG = new Material.Builder(GTOvervolt.id("silicon_sg"))
+    public static final Material SiliconSG = new Material.Builder(GTOvervolt.id("silicon_solar_grade"))
             .color(0x505064)
             .iconSet(METALLIC)
-            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_ROUND, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_FOIL, GENERATE_LONG_ROD, GENERATE_SPRING, GENERATE_SPRING_SMALL)
-            .components(Silicon, 1)
+            //.components(Silicon, 1)
             .buildAndRegister();
 
-    public static final Material CalciumDisilicide = new Material.Builder(GTOvervolt.id("calcium_disilicide"))
+    /*public static final Material CalciumDisilicide = new Material.Builder(GTOvervolt.id("calcium_disilicide"))
             .color(0xB4B4B4)
             .iconSet(METALLIC)
             .ore()

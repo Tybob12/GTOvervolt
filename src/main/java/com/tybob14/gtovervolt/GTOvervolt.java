@@ -5,7 +5,11 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
+import com.tybob14.gtovervolt.common.data.GTOBMachines;
+import com.tybob14.gtovervolt.common.data.GTOVRecipeTypes;
 import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
 import com.tybob14.gtovervolt.common.data.materials.OriginalMaterials;
 import com.tybob14.gtovervolt.data.GTOvervoltDatagen;
@@ -30,6 +34,9 @@ public class GTOvervolt {
         GTOvervolt.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
+
+        bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+        bus.addGenericListener(MachineDefinition.class, this::registerMachines);
     }
 
 
@@ -39,6 +46,7 @@ public class GTOvervolt {
         GTOvervoltDatagen.init();
 
         GTOvervoltRegistries.REGISTRATE.registerRegistrate();
+
     }
 
     public static ResourceLocation id(String path) {
@@ -48,6 +56,16 @@ public class GTOvervolt {
     @SubscribeEvent
     public void registerMaterialRegistry(MaterialRegistryEvent event) {
         MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTOvervolt.MOD_ID);
+    }
+
+    @SubscribeEvent
+    public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+        GTOVRecipeTypes.init();
+    }
+
+    @SubscribeEvent
+    public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
+        GTOBMachines.init();
     }
 
     @SubscribeEvent
