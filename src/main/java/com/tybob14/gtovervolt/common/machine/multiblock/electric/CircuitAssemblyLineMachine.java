@@ -52,28 +52,6 @@ public class CircuitAssemblyLineMachine extends WorkableElectricMultiblockMachin
                     return false;
                 }
             }
-
-            if (ConfigHolder.INSTANCE.machines.orderedAssemblyLineFluids) {
-                recipeInputs = recipe.inputs.get(FluidRecipeCapability.CAP);
-                var itemFluidInventory = Objects
-                        .requireNonNullElseGet(getCapabilitiesProxy().get(IO.IN, FluidRecipeCapability.CAP),
-                                Collections::<IRecipeHandler<?>>emptyList)
-                        .stream()
-                        .map(container -> container.getContents().stream().filter(FluidStack.class::isInstance)
-                                .map(FluidStack.class::cast).toList())
-                        .filter(container -> !container.isEmpty())
-                        .toList();
-
-                if (itemFluidInventory.size() < recipeInputs.size()) return false;
-
-                for (int i = 0; i < recipeInputs.size(); i++) {
-                    var fluidStack = (FluidStack) itemFluidInventory.get(i).get(0);
-                    FluidIngredient recipeStack = FluidRecipeCapability.CAP.of(recipeInputs.get(i).content);
-                    if (!recipeStack.test(fluidStack) || recipeStack.getAmount() > fluidStack.getAmount()) {
-                        return false;
-                    }
-                }
-            }
         }
         return super.beforeWorking(recipe);
     }

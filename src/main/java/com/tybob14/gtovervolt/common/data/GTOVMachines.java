@@ -6,26 +6,19 @@ import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
-import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
-import com.gregtechceu.gtceu.common.data.GTCompassSections;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
-import com.gregtechceu.gtceu.common.data.machines.GCyMMachines;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.tybob14.gtovervolt.common.machine.multiblock.electric.CircuitAssemblyLineMachine;
-import net.minecraft.network.chat.Component;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
-import static com.gregtechceu.gtceu.common.data.GTCreativeModeTabs.MACHINE;
-import static com.gregtechceu.gtceu.common.data.GTMachines.CIRCUIT_ASSEMBLER;
 import static com.gregtechceu.gtceu.common.data.GTMachines.ITEM_IMPORT_BUS;
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 
-public class GTOBMachines {
+public class GTOVMachines {
 
     public static void init() {
 
@@ -47,7 +40,8 @@ public class GTOBMachines {
                     .where('F', blocks(CASING_STEEL_SOLID.get())
                             .or(!ConfigHolder.INSTANCE.machines.orderedAssemblyLineFluids ?
                                     Predicates.abilities(PartAbility.IMPORT_FLUIDS) :
-                                    Predicates.abilities(PartAbility.IMPORT_FLUIDS_1X).setMaxGlobalLimited(1)))
+                                    Predicates.abilities(PartAbility.IMPORT_FLUIDS_1X).setMaxGlobalLimited(1))
+                            .or(Predicates.abilities(PartAbility.MAINTENANCE).setMaxGlobalLimited(1)))
                     .where('O', Predicates.abilities(PartAbility.EXPORT_ITEMS))
                     .where('I', blocks(ITEM_IMPORT_BUS[0].getBlock()))
                     .where('G', blocks(CASING_GRATE.get()))

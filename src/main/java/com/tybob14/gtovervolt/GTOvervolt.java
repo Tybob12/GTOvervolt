@@ -8,7 +8,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistr
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
-import com.tybob14.gtovervolt.common.data.GTOBMachines;
+import com.tybob14.gtovervolt.common.data.GTOVMachines;
 import com.tybob14.gtovervolt.common.data.GTOVRecipeTypes;
 import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
 import com.tybob14.gtovervolt.common.data.materials.OriginalMaterials;
@@ -65,7 +65,7 @@ public class GTOvervolt {
 
     @SubscribeEvent
     public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
-        GTOBMachines.init();
+        GTOVMachines.init();
     }
 
     @SubscribeEvent

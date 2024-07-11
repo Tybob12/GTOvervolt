@@ -28,6 +28,14 @@ public class PrimaryMaterials {
     static {REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);}
 
 
+    public static final Material Indalloy140 =  new Material.Builder(GTOvervolt.id("indalloy_140"))
+            .color(0x685d91)
+            .iconSet(SHINY)
+            .fluid()
+            .components(Bismuth, 47, Lead, 25, Tin, 13, Cadmium, 10, Indium, 5)
+            .buildAndRegister();
+
+
     /*public static final Material TestMaterials = new Material.Builder(GTOvervolt.id("testmaterials"))
             .color(0xFFFFFF)
             .iconSet(SHINY)
