@@ -1,19 +1,99 @@
 package com.tybob14.gtovervolt.common.data.materials;
 
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import com.enderio.base.common.init.EIOBlocks;
+import com.enderio.base.common.init.EIOItems;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.Element;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.tybob14.gtovervolt.GTOvervolt;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_FOIL;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.SHINY;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.CertusQuartz;
 
 public class IntegratedMaterials {
 
     public static void init(){
+        dust.setIgnored(Skystone);
+        dust.setIgnored(Fluix);
+        gem.setIgnored(Fluix);
+        block.setIgnored(Fluix);
+        gem.setIgnored(CertusQuartz);
+        dust.setIgnored(CertusQuartz);
 
+        ingot.setIgnored(CopperAlloy);
+        block.setIgnored(CopperAlloy);
+        nugget.setIgnored(CopperAlloy);
+        ingot.setIgnored(EnergeticAlloy);
+        block.setIgnored(EnergeticAlloy);
+        nugget.setIgnored(EnergeticAlloy);
+        ingot.setIgnored(VibrantAlloy);
+        block.setIgnored(VibrantAlloy);
+        nugget.setIgnored(VibrantAlloy);
+        ingot.setIgnored(RedstoneAlloy);
+        block.setIgnored(RedstoneAlloy);
+        nugget.setIgnored(RedstoneAlloy);
+        ingot.setIgnored(ConductiveAlloy);
+        block.setIgnored(ConductiveAlloy);
+        nugget.setIgnored(ConductiveAlloy);
+        ingot.setIgnored(PulsatingAlloy);
+        block.setIgnored(PulsatingAlloy);
+        nugget.setIgnored(PulsatingAlloy);
+        ingot.setIgnored(DarKSteel);
+        block.setIgnored(DarKSteel);
+        nugget.setIgnored(DarKSteel);
+        ingot.setIgnored(Soularium);
+        block.setIgnored(Soularium);
+        nugget.setIgnored(Soularium);
+        ingot.setIgnored(EndSteel);
+        block.setIgnored(EndSteel);
+        nugget.setIgnored(EndSteel);
+    }
+
+    public static void modifyAE2Materials() {
+        dust.setIgnored(Skystone, AEItems.SKY_DUST);
+        dust.setIgnored(Fluix, AEItems.FLUIX_DUST);
+        gem.setIgnored(Fluix, AEItems.FLUIX_CRYSTAL);
+        block.setIgnored(Fluix, AEBlocks.FLUIX_BLOCK);
+        gem.setIgnored(CertusQuartz, AEItems.CERTUS_QUARTZ_CRYSTAL);
+        dust.setIgnored(CertusQuartz, AEItems.CERTUS_QUARTZ_DUST);
+    }
+
+    public static void modifyEnderIOMaterials() {
+        ingot.setIgnored(CopperAlloy, EIOItems.COPPER_ALLOY_INGOT.asItem());
+        ingot.setIgnored(CopperAlloy, EIOItems.COPPER_ALLOY_INGOT.asItem());
+        block.setIgnored(CopperAlloy, EIOBlocks.COPPER_ALLOY_BLOCK.asItem());
+        nugget.setIgnored(CopperAlloy, EIOItems.COPPER_ALLOY_NUGGET.asItem());
+        ingot.setIgnored(EnergeticAlloy, EIOItems.ENERGETIC_ALLOY_INGOT.asItem());
+        block.setIgnored(EnergeticAlloy, EIOBlocks.ENERGETIC_ALLOY_BLOCK.asItem());
+        nugget.setIgnored(EnergeticAlloy, EIOItems.ENERGETIC_ALLOY_NUGGET.asItem());
+        ingot.setIgnored(VibrantAlloy, EIOItems.VIBRANT_ALLOY_INGOT.asItem());
+        block.setIgnored(VibrantAlloy, EIOBlocks.VIBRANT_ALLOY_BLOCK.asItem());
+        nugget.setIgnored(VibrantAlloy, EIOItems.VIBRANT_ALLOY_NUGGET.asItem());
+        ingot.setIgnored(RedstoneAlloy, EIOItems.REDSTONE_ALLOY_INGOT.asItem());
+        block.setIgnored(RedstoneAlloy, EIOBlocks.REDSTONE_ALLOY_BLOCK.asItem());
+        nugget.setIgnored(RedstoneAlloy, EIOItems.REDSTONE_ALLOY_NUGGET.asItem());
+        ingot.setIgnored(ConductiveAlloy, EIOItems.CONDUCTIVE_ALLOY_INGOT.asItem());
+        block.setIgnored(ConductiveAlloy, EIOBlocks.CONDUCTIVE_ALLOY_BLOCK.asItem());
+        nugget.setIgnored(ConductiveAlloy, EIOItems.CONDUCTIVE_ALLOY_NUGGET.asItem());
+        ingot.setIgnored(PulsatingAlloy, EIOItems.PULSATING_ALLOY_INGOT.asItem());
+        block.setIgnored(PulsatingAlloy, EIOBlocks.PULSATING_ALLOY_BLOCK.asItem());
+        nugget.setIgnored(PulsatingAlloy, EIOItems.PULSATING_ALLOY_NUGGET.asItem());
+        ingot.setIgnored(DarKSteel, EIOItems.DARK_STEEL_INGOT.asItem());
+        block.setIgnored(DarKSteel, EIOBlocks.DARK_STEEL_BLOCK.asItem());
+        nugget.setIgnored(DarKSteel, EIOItems.DARK_STEEL_NUGGET.asItem());
+        ingot.setIgnored(Soularium, EIOItems.SOULARIUM_INGOT.asItem());
+        block.setIgnored(Soularium, EIOBlocks.SOULARIUM_BLOCK.asItem());
+        nugget.setIgnored(Soularium, EIOItems.SOULARIUM_NUGGET.asItem());
+        ingot.setIgnored(EndSteel, EIOItems.END_STEEL_INGOT.asItem());
+        block.setIgnored(EndSteel, EIOBlocks.END_STEEL_BLOCK.asItem());
+        nugget.setIgnored(EndSteel, EIOItems.END_STEEL_NUGGET.asItem());
     }
 
     /*
@@ -41,7 +121,27 @@ public class IntegratedMaterials {
     public static Materials Vinteum                 = new Materials( 529, TextureSet.SET_METALLIC          ,  10.0F,    128,  3, 1|2|4|8      |64|128      , 100, 200, 255,   0,   "Vinteum"                 ,   "Vinteum"                       ,    5,      32,         -1,    0, false, false,   4,   1,   1, Dyes.dyeLightBlue   , 2, Collections.singletonList(new MaterialStack(Thaumium, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.VITREUS, 2), new TC_AspectStack(TC_Aspects.PRAECANTATIO, 1)));
     public static Materials Shadow                  = new Materials( 368, TextureSet.SET_METALLIC          ,  32.0F,   8192,  4, 1|2  |8      |64|128      ,  16,   3,  66,   0,   "Shadow"                  ,   "Shadow Metal"                  ,    0,       0,       1800, 1800,  true, false,   3,   4,   3, Dyes.dyeBlue        );
 
+
+   //High Pressure, Enderium, Mysterious Crystal, Awakened Draconium, Infinity, SpaceTime, Transcendent Metal, Hypogen, Lumium, Signalum
  */
+
+    public static final Material Skystone = new Material.Builder(GTOvervolt.id("skystone"))
+            .color(0x303031)
+            .secondaryColor(0x3a4447)
+            .iconSet(METALLIC)
+            .dust()
+            .flags(GENERATE_LENS)
+            .element(new Element(14, 16, -1, null, "Sky Stone", "Sk", false))
+            .buildAndRegister();
+
+    public static final Material Fluix = new Material.Builder(GTOvervolt.id("fluix"))
+            .color(0x9A63C5)
+            .secondaryColor(0x604FAA)
+            .iconSet(METALLIC)
+            .gem()
+            .flags(NO_WORKING)
+            .components(GTMaterials.Redstone, 1, CertusQuartz, 2)
+            .buildAndRegister();
 
     public static final Material CopperAlloy = new Material.Builder(GTOvervolt.id("copper_alloy"))
             .color(0xB97D06).secondaryColor(0x7B5504)

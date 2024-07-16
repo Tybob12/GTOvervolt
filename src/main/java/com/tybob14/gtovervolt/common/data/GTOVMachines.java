@@ -58,27 +58,26 @@ public class GTOVMachines {
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .register();
-
     public static final MultiblockMachineDefinition PCB_FACTORY = REGISTRATE
             .multiblock("pcb_factory", PCBFactoryMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .langValue("PCB Factory")
             .recipeTypes(GTOVRecipeTypes.PCB_FACTORY_RECIPES)
-            .alwaysTryModifyRecipe(true)
             .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT)
             .appearanceBlock(CASING_STEEL_SOLID)
             .pattern(definition -> FactoryBlockPattern.start(BACK, UP, RIGHT)
                     .aisle("FCCSCCF", "FGGGGGF", "FGGGGGF", "FGGGGGF", "FFFFFFF", "#######")
                     .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CGGGGGC", "F#####F")
-                    .aisle("CPPPPPC", "R#####R", "R#####R", "C#####C", "CGGGGGC", "F#####F")
-                    .aisle("CPPPPPC", "R#####R", "R#####R", "C#####C", "CCCCCCC", "FFFFFFF")
-                    .aisle("CPPPPPC", "R#####R", "R#####R", "C#####C", "CCCCCCC", "F#####F")
+                    .aisle("CPPPPPC", "R#TTT#R", "R#####R", "C#####C", "CGGGGGC", "F#####F")
+                    .aisle("CPPPPPC", "R#TTT#R", "R#####R", "C#####C", "CCCCCCC", "FFFFFFF")
+                    .aisle("CPPPPPC", "R#TTT#R", "R#####R", "C#####C", "CCCCCCC", "F#####F")
                     .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CCCCCCC", "F#####F")
-                    .aisle("FCCCCCF", "FGGGGGF", "FGGGGGF", "FGGGGGF", "F#####F", "#######")
+                    .aisle("FCCCCCF", "FCCCCCF", "FCCCCCF", "FCCCCCF", "F#####F", "#######")
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('R', blocks(CASING_GRATE.get()))
                     .where('G', blocks(CASING_LAMINATED_GLASS.get()))
                     .where('F',  Predicates.frames(GTMaterials.BlackSteel))
+                    .where('T',  Predicates.frames(GTMaterials.IncoloyMA956))
                     .where('C', blocks(CASING_HSSE_STURDY.get())
                             .or(Predicates.abilities(PartAbility.MAINTENANCE).setMinGlobalLimited(1).setMaxGlobalLimited(1))
                             .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1).setMaxGlobalLimited(1))
@@ -87,7 +86,6 @@ public class GTOVMachines {
                             .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(1)))
                     .where('P', blocks(PLASTCRETE.get()))
                     .where('#', Predicates.any())
-
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_sturdy_hsse"),
                     GTCEu.id("block/multiblock/assembly_line"))

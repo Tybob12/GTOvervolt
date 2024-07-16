@@ -24,8 +24,6 @@ public class OriginalMaterials {
 
         WroughtIron.setProperty(PropertyKey.FLUID_PIPE, new FluidPipeProperties(2500, 3600, true, true, false, false));
 
-        //High Pressure, Enderium, Mysterious Crystal, Awakened Draconium, Infinity, SpaceTime, Transcendent Metal, Hypogen, Lumium, Signalum
-
         Zinc.setProperty(PropertyKey.WIRE, new WireProperties(32, 1, 2));
 
         Titanium.setProperty(PropertyKey.WIRE, new WireProperties(2048, 4, 4));

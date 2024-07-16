@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.lowdragmc.lowdraglib.Platform;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
 import com.tybob14.gtovervolt.common.data.GTOVMachines;
 import com.tybob14.gtovervolt.common.data.GTOVRecipeTypes;
@@ -19,6 +20,7 @@ import com.tybob14.gtovervolt.common.data.materials.PrimaryMaterials;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,10 +35,10 @@ public class GTOvervolt {
     public GTOvervolt(){
         GTOvervolt.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
-        bus.register(this);
-
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        bus.register(this);
     }
 
 
@@ -47,6 +49,11 @@ public class GTOvervolt {
 
         GTOvervoltRegistries.REGISTRATE.registerRegistrate();
 
+    }
+
+    private void onCommonSetup(FMLCommonSetupEvent event) {
+        if (Platform.isModLoaded("ae2")) IntegratedMaterials.modifyAE2Materials();
+        if (Platform.isModLoaded("enderio")) IntegratedMaterials.modifyEnderIOMaterials();
     }
 
     public static ResourceLocation id(String path) {

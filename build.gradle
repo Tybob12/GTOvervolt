@@ -12,6 +12,7 @@ apply plugin: "java"
 apply plugin: "architectury-plugin"
 apply plugin: "maven-publish"
 
+
 archivesBaseName = "${project.name}-${libs.versions.minecraft.get()}"
 group = properties.maven_group
 
@@ -155,6 +156,13 @@ repositories {
         name = "TerraformersMC"
         url = "https://maven.terraformersmc.com/"
     }
+    maven { url 'https://maven.rover656.dev/releases' }
+
+    maven {
+        allowInsecureProtocol(true)
+        url 'http://dogforce-games.com/maven'
+    }
+
 }
 
 dependencies {
@@ -194,6 +202,10 @@ dependencies {
 
     // AE2
     modImplementation(forge.ae2) { transitive = false }
+
+
+    implementation "dev.gigaherz.graph:GraphLib3:3.0.5"
+    modImplementation("com.enderio:EnderIO:1.20.1-6.1.6-beta")
 }
 
 processResources {
