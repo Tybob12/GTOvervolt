@@ -70,7 +70,7 @@ public class GTOVEMI implements EmiPlugin {
             registry.removeEmiStacks(EmiStack.of(AEItems.SILICON));
             registry.removeEmiStacks(EmiStack.of(AEItems.SILICON_PRESS));
 
-            if (Platform.isDevEnv()){
+            if (Platform.isDevEnv()) {
                 registry.removeEmiStacks(EmiStack.of(AEItems.DEBUG_CARD));
                 registry.removeEmiStacks(EmiStack.of(AEItems.DEBUG_ERASER));
                 registry.removeEmiStacks(EmiStack.of(AEItems.DEBUG_METEORITE_PLACER));

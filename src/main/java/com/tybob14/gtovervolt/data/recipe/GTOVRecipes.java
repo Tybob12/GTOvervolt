@@ -24,6 +24,7 @@ public class GTOVRecipes {
 
 
     }
+
     public static void removedInit(Consumer<ResourceLocation> provider) {
         GTRecipeRemoval.init(provider);
         if (Platform.isModLoaded("ae2")) AE2RecipeRemoval.init(provider);

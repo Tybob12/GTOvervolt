@@ -10,6 +10,7 @@ public class AE2RecipeRemoval {
     public static void init(Consumer<ResourceLocation> registry) {
         removeAE2Recipes(registry);
     }
+
     private static void removeAE2Recipes(Consumer<ResourceLocation> registry) {
         registry.accept(new ResourceLocation("ae2:blasting/silicon_from_certus_quartz_dust"));
         registry.accept(new ResourceLocation("ae2:blasting/sky_stone_block"));

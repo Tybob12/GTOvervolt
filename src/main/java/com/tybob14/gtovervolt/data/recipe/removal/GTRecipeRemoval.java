@@ -69,7 +69,6 @@ public class GTRecipeRemoval {
         registry.accept(new ResourceLocation("gtceu:large_chemical_reactor/extreme_circuit_board_persulfate"));
 
 
-
     }
 
 }

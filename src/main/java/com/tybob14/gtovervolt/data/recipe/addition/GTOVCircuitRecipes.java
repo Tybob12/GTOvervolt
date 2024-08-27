@@ -8,7 +8,6 @@ import com.tybob14.gtovervolt.GTOvervolt;
 import com.tybob14.gtovervolt.common.data.GTOVMachines;
 import com.tybob14.gtovervolt.common.data.GTOVRecipeTypes;
 import com.tybob14.gtovervolt.common.data.materials.ChemistryMaterials;
-import com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials;
 import com.tybob14.gtovervolt.common.data.materials.PrimaryMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -17,8 +16,7 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
-import static com.gregtechceu.gtceu.common.data.GTMachines.*;
+import static com.gregtechceu.gtceu.common.data.GTMachines.CIRCUIT_ASSEMBLER;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials.EnergeticAlloy;
@@ -42,7 +40,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(250))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD,  8)
+                .outputItems(PLASTIC_CIRCUIT_BOARD, 8)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pcv_to_plastic_boards")).EUt(90).duration(550)
@@ -52,7 +50,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(353))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD,  12)
+                .outputItems(PLASTIC_CIRCUIT_BOARD, 12)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("ptfe_to_plastic_boards")).EUt(360).duration(450)
@@ -62,7 +60,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(433))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD,  16)
+                .outputItems(PLASTIC_CIRCUIT_BOARD, 16)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_plastic_boards")).EUt(1440).duration(360)
@@ -72,7 +70,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(500))
                 .inputFluids(SulfuricAcid.getFluid(1000))
                 .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD,  23)
+                .outputItems(PLASTIC_CIRCUIT_BOARD, 23)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_plastic_boards")).EUt(5760).duration(300)
@@ -82,7 +80,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(559))
                 .inputFluids(SulfuricAcid.getFluid(1118))
                 .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD,  32)
+                .outputItems(PLASTIC_CIRCUIT_BOARD, 32)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_plastic_boards")).EUt(23040).duration(240)
@@ -92,7 +90,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(612))
                 .inputFluids(SulfuricAcid.getFluid(1224))
                 .circuitMeta(1)
-                .outputItems(PLASTIC_CIRCUIT_BOARD,  46)
+                .outputItems(PLASTIC_CIRCUIT_BOARD, 46)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pcv_to_epoxy_boards")).EUt(90).duration(550)
@@ -102,7 +100,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(500))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD,  8)
+                .outputItems(ADVANCED_CIRCUIT_BOARD, 8)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("ptfe_to_epoxy_boards")).EUt(360).duration(450)
@@ -112,7 +110,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(707))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD,  12)
+                .outputItems(ADVANCED_CIRCUIT_BOARD, 12)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_epoxy_boards")).EUt(1440).duration(360)
@@ -122,7 +120,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(866))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD,  16)
+                .outputItems(ADVANCED_CIRCUIT_BOARD, 16)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_epoxy_boards")).EUt(5760).duration(300)
@@ -132,7 +130,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(1000))
                 .inputFluids(SulfuricAcid.getFluid(1000))
                 .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD,  23)
+                .outputItems(ADVANCED_CIRCUIT_BOARD, 23)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_epoxy_boards")).EUt(23040).duration(240)
@@ -142,7 +140,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(1118))
                 .inputFluids(SulfuricAcid.getFluid(1118))
                 .circuitMeta(1)
-                .outputItems(ADVANCED_CIRCUIT_BOARD,  32)
+                .outputItems(ADVANCED_CIRCUIT_BOARD, 32)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("ptfe_to_fiber_epoxy_boards")).EUt(360).duration(450)
@@ -152,7 +150,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(1000))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
-                .outputItems(EXTREME_CIRCUIT_BOARD,  8)
+                .outputItems(EXTREME_CIRCUIT_BOARD, 8)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_fiber_epoxy_boards")).EUt(1440).duration(360)
@@ -162,7 +160,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(1414))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
-                .outputItems(EXTREME_CIRCUIT_BOARD,  12)
+                .outputItems(EXTREME_CIRCUIT_BOARD, 12)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_fiber_epoxy_boards")).EUt(5760).duration(300)
@@ -172,7 +170,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(1732))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
-                .outputItems(EXTREME_CIRCUIT_BOARD,  16)
+                .outputItems(EXTREME_CIRCUIT_BOARD, 16)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_fiber_epoxy_boards")).EUt(23040).duration(240)
@@ -182,7 +180,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(2000))
                 .inputFluids(SulfuricAcid.getFluid(1000))
                 .circuitMeta(1)
-                .outputItems(EXTREME_CIRCUIT_BOARD,  23)
+                .outputItems(EXTREME_CIRCUIT_BOARD, 23)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_fiber_multi_epoxy_boards")).EUt(1440).duration(360)
@@ -192,7 +190,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(2000))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
-                .outputItems(ELITE_CIRCUIT_BOARD,  8)
+                .outputItems(ELITE_CIRCUIT_BOARD, 8)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_multi_fiber_epoxy_boards")).EUt(5760).duration(300)
@@ -202,7 +200,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(2828))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
-                .outputItems(ELITE_CIRCUIT_BOARD,  12)
+                .outputItems(ELITE_CIRCUIT_BOARD, 12)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_mutli_fiber_epoxy_boards")).EUt(23040).duration(240)
@@ -212,7 +210,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(Iron3Chloride.getFluid(3464))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
-                .outputItems(ELITE_CIRCUIT_BOARD,  16)
+                .outputItems(ELITE_CIRCUIT_BOARD, 16)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_wetware_boards")).EUt(5760).duration(300)
@@ -223,7 +221,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .inputFluids(SterileGrowthMedium.getFluid(2000))
                 .circuitMeta(1)
-                .outputItems(WETWARE_CIRCUIT_BOARD,  8)
+                .outputItems(WETWARE_CIRCUIT_BOARD, 8)
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_wetware_boards")).EUt(23040).duration(240)
@@ -234,7 +232,7 @@ public class GTOVCircuitRecipes {
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .inputFluids(SterileGrowthMedium.getFluid(2828))
                 .circuitMeta(1)
-                .outputItems(WETWARE_CIRCUIT_BOARD,  12)
+                .outputItems(WETWARE_CIRCUIT_BOARD, 12)
                 .save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder(GTOvervolt.id("fiber_board")).EUt(30).duration(1200)
@@ -275,7 +273,7 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder(GTOvervolt.id("pcb_factory")).EUt(300000).duration(2000)
-                .inputItems(frameGt , Neutronium, 32)
+                .inputItems(frameGt, Neutronium, 32)
                 .inputItems(CIRCUIT_ASSEMBLER[ZPM], 4)
                 .inputItems(CustomTags.LuV_CIRCUITS, 16)
                 .inputItems(ROBOT_ARM_ZPM)
@@ -306,7 +304,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(CustomTags.CAPACITORS, 2)
                 .inputItems(CustomTags.TRANSISTORS, 2)
                 .inputItems(wireFine, Copper, 2)
-                .outputItems(MICROPROCESSOR_LV,  2)
+                .outputItems(MICROPROCESSOR_LV, 2)
                 .save(provider);
 
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTOvervolt.id("microprocessor_lv_soc")).EUt(600).duration(50)
@@ -356,7 +354,7 @@ public class GTOVCircuitRecipes {
 
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTOvervolt.id("nano_processor_hv_soc")).EUt(9600).duration(50)
                 .inputItems(ADVANCED_CIRCUIT_BOARD, 6)
-                .inputItems(ADVANCED_SYSTEM_ON_CHIP,6)
+                .inputItems(ADVANCED_SYSTEM_ON_CHIP, 6)
                 .inputItems(wireFine, Electrum, 48)
                 .inputItems(bolt, Platinum, 48)
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(288))
@@ -503,7 +501,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(wireFine, NiobiumTitanium, 48)
                 .inputItems(bolt, YttriumBariumCuprate, 48)
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(288))
-                .outputItems(CRYSTAL_PROCESSOR_IV, 1 )
+                .outputItems(CRYSTAL_PROCESSOR_IV, 1)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
 
@@ -571,7 +569,7 @@ public class GTOVCircuitRecipes {
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTOvervolt.id("wetware_processor_luv")).EUt(38400).duration(200)
                 .inputItems(NEURO_PROCESSOR, 6)
                 .inputItems(CRYSTAL_CENTRAL_PROCESSING_UNIT, 6)
-                .inputItems(NANO_CENTRAL_PROCESSING_UNIT,6)
+                .inputItems(NANO_CENTRAL_PROCESSING_UNIT, 6)
                 .inputItems(ADVANCED_SMD_CAPACITOR, 48)
                 .inputItems(ADVANCED_SMD_TRANSISTOR, 48)
                 .inputItems(wireFine, YttriumBariumCuprate, 48)
@@ -586,7 +584,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(wireFine, YttriumBariumCuprate, 48)
                 .inputItems(bolt, Naquadah, 8) //Cosmic Neutronium
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(576))
-                .outputItems(WETWARE_PROCESSOR_LUV, 1 )
+                .outputItems(WETWARE_PROCESSOR_LUV, 1)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
 

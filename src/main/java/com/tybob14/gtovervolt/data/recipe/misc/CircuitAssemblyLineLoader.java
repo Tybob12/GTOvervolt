@@ -6,12 +6,11 @@ import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
 
-
-import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.bolt;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.wireFine;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Copper;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Tin;
 
 public class CircuitAssemblyLineLoader {
 

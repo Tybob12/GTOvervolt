@@ -2,14 +2,11 @@ package com.tybob14.gtovervolt.common.data;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.RotationState;
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
@@ -17,18 +14,15 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.tybob14.gtovervolt.common.machine.multiblock.electric.CircuitAssemblyLineMachine;
 import com.tybob14.gtovervolt.common.machine.multiblock.electric.PCBFactoryMachine;
 
-import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
+import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.ITEM_IMPORT_BUS;
-import static com.gregtechceu.gtceu.common.data.GTMachines.registerTieredMultis;
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 
 public class GTOVMachines {
 
-    public static void init() {
-
-    }
     public static final MultiblockMachineDefinition CIRCUIT_ASSEMBLY_LINE = REGISTRATE
             .multiblock("circuit_assembly_line", CircuitAssemblyLineMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
@@ -76,8 +70,8 @@ public class GTOVMachines {
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('R', blocks(CASING_GRATE.get()))
                     .where('G', blocks(CASING_LAMINATED_GLASS.get()))
-                    .where('F',  Predicates.frames(GTMaterials.BlackSteel))
-                    .where('T',  Predicates.frames(GTMaterials.IncoloyMA956))
+                    .where('F', Predicates.frames(GTMaterials.BlackSteel))
+                    .where('T', Predicates.frames(GTMaterials.IncoloyMA956))
                     .where('C', blocks(CASING_HSSE_STURDY.get())
                             .or(Predicates.abilities(PartAbility.MAINTENANCE).setMinGlobalLimited(1).setMaxGlobalLimited(1))
                             .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1).setMaxGlobalLimited(1))
@@ -90,6 +84,10 @@ public class GTOVMachines {
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_sturdy_hsse"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .register();
+
+    public static void init() {
+
+    }
 
 
 }

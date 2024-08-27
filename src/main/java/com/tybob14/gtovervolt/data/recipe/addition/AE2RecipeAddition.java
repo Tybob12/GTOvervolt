@@ -14,22 +14,22 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.function.Consumer;
+
+import static appeng.core.definitions.AEBlocks.*;
 import static appeng.core.definitions.AEItems.*;
+import static appeng.core.definitions.AEParts.*;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
-import static appeng.core.definitions.AEBlocks.*;
-import static appeng.core.definitions.AEParts.*;
-import static com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials.*;
-
-import java.util.function.Consumer;
+import static com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials.Fluix;
+import static com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials.Skystone;
 
 public class AE2RecipeAddition {
 
     /**
-     *
      * Network Tool, Portable Cells, Wireless Terminal, Wireless Crafing Terminal
      */
     public static void init(Consumer<FinishedRecipe> provider) {

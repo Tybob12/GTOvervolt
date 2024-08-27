@@ -4,11 +4,12 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import net.minecraft.core.BlockPos;
+
 import java.util.Comparator;
 import java.util.function.Function;
 
 
-public class PCBFactoryMachine extends WorkableElectricMultiblockMachine{
+public class PCBFactoryMachine extends WorkableElectricMultiblockMachine {
 
     public PCBFactoryMachine(IMachineBlockEntity holder) {
         super(holder);

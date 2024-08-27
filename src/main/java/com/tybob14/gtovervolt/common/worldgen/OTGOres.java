@@ -28,7 +28,7 @@ public class OTGOres extends GTOres {
                     .placement(SurfaceIndicatorGenerator.IndicatorPlacement.ABOVE)
             ));
 
-    public static void init(){
+    public static void init() {
 
     }
 }
