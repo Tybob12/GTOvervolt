@@ -2,7 +2,6 @@ package com.tybob14.gtovervolt.data.recipe.addition;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
-import com.gregtechceu.gtceu.common.data.GCyMRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tybob14.gtovervolt.GTOvervolt;
 import com.tybob14.gtovervolt.common.data.GTOVMachines;
@@ -15,6 +14,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GCYMRecipeTypes.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.CIRCUIT_ASSEMBLER;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
@@ -286,7 +286,7 @@ public class GTOVCircuitRecipes {
                         .duration(1200))
                 .save(provider);
 
-        GCyMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder(GTOvervolt.id("microprocessor_lv")).EUt(7680).duration(800)
+        ALLOY_BLAST_RECIPES.recipeBuilder(GTOvervolt.id("microprocessor_lv")).EUt(7680).duration(800)
                 .inputItems(dust, Bismuth, 47)
                 .inputItems(dust, Lead, 25)
                 .inputItems(dust, Tin, 13)
@@ -466,7 +466,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(NOR_MEMORY_CHIP, 4)
                 .inputItems(RANDOM_ACCESS_MEMORY, 16)
                 .inputItems(wireFine, Platinum, 48)
-                .outputItems(QUANTUM_COMPUTER_LUV)
+                .outputItems(QUANTUM_COMPUTER_LuV)
                 .solderMultiplier(2)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
@@ -478,7 +478,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(NOR_MEMORY_CHIP, 4)
                 .inputItems(RANDOM_ACCESS_MEMORY, 16)
                 .inputItems(wireFine, Platinum, 48)
-                .outputItems(QUANTUM_COMPUTER_LUV)
+                .outputItems(QUANTUM_COMPUTER_LuV)
                 .solderMultiplier(2)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
@@ -522,13 +522,13 @@ public class GTOVCircuitRecipes {
                 .inputItems(RANDOM_ACCESS_MEMORY, 64)
                 .inputItems(wireFine, NiobiumTitanium, 64)
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(576))
-                .outputItems(CRYSTAL_ASSEMBLY_LUV, 1)
+                .outputItems(CRYSTAL_ASSEMBLY_LuV, 1)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
 
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTOvervolt.id("crystal_computer_zpm")).EUt(9600).duration(400)
                 .inputItems(ELITE_CIRCUIT_BOARD, 6)
-                .inputItems(CRYSTAL_ASSEMBLY_LUV, 2)
+                .inputItems(CRYSTAL_ASSEMBLY_LuV, 2)
                 .inputItems(RANDOM_ACCESS_MEMORY, 24)
                 .inputItems(NOR_MEMORY_CHIP, 64)
                 .inputItems(NAND_MEMORY_CHIP, 64)
@@ -574,7 +574,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(ADVANCED_SMD_TRANSISTOR, 48)
                 .inputItems(wireFine, YttriumBariumCuprate, 48)
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(288))
-                .outputItems(WETWARE_PROCESSOR_LUV, 1)
+                .outputItems(WETWARE_PROCESSOR_LuV, 1)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
 
@@ -584,7 +584,7 @@ public class GTOVCircuitRecipes {
                 .inputItems(wireFine, YttriumBariumCuprate, 48)
                 .inputItems(bolt, Naquadah, 8) //Cosmic Neutronium
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(576))
-                .outputItems(WETWARE_PROCESSOR_LUV, 1)
+                .outputItems(WETWARE_PROCESSOR_LuV, 1)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .save(provider);
 
@@ -594,12 +594,12 @@ public class GTOVCircuitRecipes {
                 .inputItems(wireGtQuadruple, YttriumBariumCuprate, 8)
                 .inputItems(bolt, Naquadah, 64)
                 .inputFluids(PrimaryMaterials.Indalloy140.getFluid(144))
-                .outputItems(WETWARE_PROCESSOR_LUV, 16)
+                .outputItems(WETWARE_PROCESSOR_LuV, 16)
                 .save(provider);
 
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(GTOvervolt.id("wetware_processor_assembly_zpm")).EUt(38400).duration(400)
                 .inputItems(WETWARE_CIRCUIT_BOARD, 8)
-                .inputItems(WETWARE_PROCESSOR_LUV, 2)
+                .inputItems(WETWARE_PROCESSOR_LuV, 2)
                 .inputItems(ADVANCED_SMD_INDUCTOR, 48)
                 .inputItems(ADVANCED_SMD_CAPACITOR, 64)
                 .inputItems(RANDOM_ACCESS_MEMORY, 64)
