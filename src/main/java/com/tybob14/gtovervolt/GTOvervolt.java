@@ -57,7 +57,6 @@ public class GTOvervolt {
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
         if (Platform.isModLoaded("ae2")) IntegratedMaterials.modifyAE2Materials();
-        if (Platform.isModLoaded("enderio")) IntegratedMaterials.modifyEnderIOMaterials();
     }
 
     @SubscribeEvent

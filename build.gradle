@@ -211,11 +211,6 @@ dependencies {
 
     // AE2
     modImplementation(forge.ae2) { transitive = false }
-
-    //EnderIO
-    implementation "dev.gigaherz.graph:GraphLib3:3.0.5"
-    modImplementation("com.enderio:EnderIO:1.20.1-6.1.8-beta")
-
 }
 
 processResources {

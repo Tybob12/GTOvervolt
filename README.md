@@ -11,17 +11,19 @@ Developement builds can be made from the github and official releases will be po
 
 ## Installation
 
-GT Overvolt Core requires GTCEu 1.1.1.a. and Forge Version 47.1.3
+GT Overvolt Core requires GTCEu 1.6.3 and Forge Version 47.1.3
 Place the downloaded jar file into your mods/ folder. A number of other mods may be required, see dependencies.gradle
 
 ## Issues
 
-Please report any issues you to find to the main GT Overvolt Modpack issue tracker. Include as much information as possible including
+Please report any issues you to find to the main GT Overvolt Modpack issue tracker. Include as much information as
+possible including
 as version and steps to reproduce.
 
 ## Attribution
 
-Some textures/ideas have been taken from texture pack authors for GTNH. Credit goes to the GTNH team. They have put a lot
+Some textures/ideas have been taken from texture pack authors for GTNH. Credit goes to the GTNH team. They have put a
+lot
 of time and effort into their pack so please support the official release. <https://github.com/GTNewHorizons/>
 
 ## License
@@ -30,7 +32,7 @@ GT Overvolt Coremod is free software: you can redistribute it and/or modify it u
 GNU Lesser General Public License as published by the Free Software Foundation, either version 3
 of the License, or (at your option) any later version.
 
-GGT Overvolt Coremod is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+GT Overvolt Coremod is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for more details.
 

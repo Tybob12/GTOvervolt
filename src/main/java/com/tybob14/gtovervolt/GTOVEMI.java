@@ -2,7 +2,6 @@ package com.tybob14.gtovervolt;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
-import com.enderio.base.common.init.EIOItems;
 import com.lowdragmc.lowdraglib.Platform;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
@@ -85,26 +84,7 @@ public class GTOVEMI implements EmiPlugin {
 
         }
 
-        if (Platform.isModLoaded("enderio")) {
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_COAL));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_IRON));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_GOLD));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_COPPER));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_TIN));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_ENDER_PEARL));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_OBSIDIAN));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_COBALT));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_LAPIS_LAZULI));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.POWDERED_QUARTZ));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.SOUL_POWDER));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.CONFUSION_POWDER));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.WITHERING_POWDER));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.FLOUR));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.SILICON));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.GEAR_WOOD));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.GEAR_STONE));
-            registry.removeEmiStacks(EmiStack.of(EIOItems.GEAR_IRON));
-        }
+
 
     }
 }

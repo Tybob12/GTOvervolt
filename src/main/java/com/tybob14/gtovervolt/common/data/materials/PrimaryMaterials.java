@@ -19,6 +19,7 @@ public class PrimaryMaterials {
             .fluid()
             .components(Bismuth, 47, Lead, 25, Tin, 13, Cadmium, 10, Indium, 5)
             .buildAndRegister();
+
     public static final Material Adamantium = new Material.Builder(GTOvervolt.id("adamantium"))
             .color(0xFFFFFF)
             .iconSet(SHINY)
