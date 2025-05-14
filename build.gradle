@@ -206,10 +206,11 @@ dependencies {
     implementation(annotationProcessor("org.spongepowered:mixin:${libs.versions.mixin.get()}:processor"))
 
     // lombok
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     // AE2
+    modImplementation("org.appliedenergistics:guideme:20.1.7")
     modImplementation(forge.ae2) { transitive = false }
 }
 

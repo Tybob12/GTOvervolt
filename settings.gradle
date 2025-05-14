@@ -21,7 +21,7 @@ dependencyResolutionManagement {
         def minecraftVersion = "1.20.1"
 
         // Mod Dependencies Versions
-        def ae2Version = "15.3.3"
+        def ae2Version = "15.4.1"
 
 
         // Forge
@@ -38,8 +38,8 @@ dependencyResolutionManagement {
         def vineFlowerVersion = "1.+"
         def macheteVersion = "1.+"
         def configurationVersion = "2.2.0"
-        def gtCeuVersion = "1.6.3"
-        def ldLibVersion = "1.0.31"
+        def gtCeuVersion = "1.6.4"
+        def ldLibVersion = "1.0.34"
         def mixinExtrasVersion = "0.2.0"
         def mixinVersion = "0.8.6-SNAPSHOT"
 
