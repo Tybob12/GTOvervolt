@@ -7,8 +7,9 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.tybob14.gtovervolt.GTOvervolt;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_LENS;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_WORKING;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.CertusQuartz;
 

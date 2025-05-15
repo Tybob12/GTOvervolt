@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GCYMRecipeTypes.*;
+import static com.gregtechceu.gtceu.common.data.GCYMRecipeTypes.ALLOY_BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.CIRCUIT_ASSEMBLER;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;

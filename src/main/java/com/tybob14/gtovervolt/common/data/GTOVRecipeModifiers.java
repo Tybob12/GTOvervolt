@@ -7,7 +7,6 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction;
 import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
-import net.minecraft.world.item.crafting.Recipe;
 import org.jetbrains.annotations.NotNull;
 
 public class GTOVRecipeModifiers {
@@ -18,10 +17,10 @@ public class GTOVRecipeModifiers {
         if (!(machine instanceof CoilWorkableElectricMultiblockMachine coilMachine)) {
             return RecipeModifier.nullWrongType(CoilWorkableElectricMultiblockMachine.class, machine);
         }
-        if (1-(coilMachine.getCoilTier()*.1) < 0.1) {
+        if (1 - (coilMachine.getCoilTier() * .1) < 0.1) {
             durationMult = 0.1;
-        }else{
-            durationMult = (1-(coilMachine.getCoilTier()*.1));
+        } else {
+            durationMult = (1 - (coilMachine.getCoilTier() * .1));
         }
 
         var oc = OverclockingLogic.NON_PERFECT_OVERCLOCK_SUBTICK.getModifier(machine, recipe, coilMachine.getOverclockVoltage());
@@ -41,10 +40,10 @@ public class GTOVRecipeModifiers {
         }
 
         var oc = OverclockingLogic.NON_PERFECT_OVERCLOCK_SUBTICK.getModifier(machine, recipe, electricMachine.getOverclockVoltage());
-                var modifer = ModifierFunction.builder()
-                    .eutMultiplier(0.8)
-                    .build();
-            oc = oc.andThen(modifer);
+        var modifer = ModifierFunction.builder()
+                .eutMultiplier(0.8)
+                .build();
+        oc = oc.andThen(modifer);
         return oc;
     }
 

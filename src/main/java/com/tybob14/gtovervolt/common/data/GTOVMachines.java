@@ -14,8 +14,10 @@ import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
-import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.data.GCYMBlocks;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.tybob14.gtovervolt.common.machine.multiblock.electric.CircuitAssemblyLineMachine;
@@ -24,7 +26,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
@@ -189,7 +193,7 @@ public class GTOVMachines {
                             .or(abilities(PartAbility.MUFFLER).setExactLimit(1)))
                     .where('G', blocks(CASING_LAMINATED_GLASS.get()))
                     .where('X', blocks(CASING_GRATE.get()))
-                    .where('P', Predicates.blocks( CASING_BRONZE_PIPE.get(), CASING_STEEL_PIPE.get(), CASING_TITANIUM_PIPE.get(),CASING_TUNGSTENSTEEL_PIPE.get()))
+                    .where('P', Predicates.blocks(CASING_BRONZE_PIPE.get(), CASING_STEEL_PIPE.get(), CASING_TITANIUM_PIPE.get(), CASING_TUNGSTENSTEEL_PIPE.get()))
                     .where('#', any())
                     .build())
             .shapeInfos(definition -> {
@@ -291,13 +295,13 @@ public class GTOVMachines {
             .tooltips(Component.translatable("gtovervolt.machine.coil_speed_bonus"),
                     Component.translatable("gtovervolt.machine.eu_reduction_80"))
             .pattern(definition -> FactoryBlockPattern.start(BACK, UP, RIGHT)
-                    .aisle("C#######C","C#######C","CCCCCCCCC","CCCCCCCCC","CCCCCCCCC","C#######C","#########")
-                    .aisle("#########","CCCCCCCCC","G#######G","G#######G","G#######G","CCCCCCCCC","C#######C")
-                    .aisle("CCCCCCCCC","G#######G","G#######G","G#######G","G#######G","G#######G","CCCCCCCCC")
-                    .aisle("SCCCCCCCC","G#######G","G#######G","G#######G","G#######G","G#######G","CTTTTTTTC")
-                    .aisle("CCCCCCCCC","G#######G","G#######G","G#######G","G#######G","G#######G","CCCCCCCCC")
-                    .aisle("#########","CCCCCCCCC","G#######G","G#######G","G#######G","CCCCCCCCC","C#######C")
-                    .aisle("C#######C","C#######C","CCCCCCCCC","CCCCCCCCC","CCCCCCCCC","C#######C","#########")
+                    .aisle("C#######C", "C#######C", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "C#######C", "#########")
+                    .aisle("#########", "CCCCCCCCC", "G#######G", "G#######G", "G#######G", "CCCCCCCCC", "C#######C")
+                    .aisle("CCCCCCCCC", "G#######G", "G#######G", "G#######G", "G#######G", "G#######G", "CCCCCCCCC")
+                    .aisle("SCCCCCCCC", "G#######G", "G#######G", "G#######G", "G#######G", "G#######G", "CTTTTTTTC")
+                    .aisle("CCCCCCCCC", "G#######G", "G#######G", "G#######G", "G#######G", "G#######G", "CCCCCCCCC")
+                    .aisle("#########", "CCCCCCCCC", "G#######G", "G#######G", "G#######G", "CCCCCCCCC", "C#######C")
+                    .aisle("C#######C", "C#######C", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "C#######C", "#########")
                     .where('S', controller(blocks(definition.get())))
                     .where('C', blocks(CASING_STAINLESS_CLEAN.get())
                             .or(Predicates.abilities(PartAbility.MAINTENANCE))
@@ -313,13 +317,13 @@ public class GTOVMachines {
             .shapeInfos(definition -> {
                 List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
                 var builder = MultiblockShapeInfo.builder()
-                        .aisle("C#######C","C#######C","CCCCCCCCC","CCCCCCCCC","CCCCCCCCC","C#######C","#########")
-                        .aisle("#########","CCCCCCCCC","G#######G","G#######G","G#######G","CCCCCCCCC","C#######C")
-                        .aisle("CCCCCCCDL","G#######G","G#######G","G#######G","G#######G","G#######G","CCCCCCCCC")
-                        .aisle("SCCCCCCCE","G#######G","G#######G","G#######G","G#######G","G#######G","CTTTTTTTC")
-                        .aisle("MCCCCCCQO","G#######G","G#######G","G#######G","G#######G","G#######G","CCCCCCCCC")
-                        .aisle("#########","CCCCCCCCC","G#######G","G#######G","G#######G","CCCCCCCCC","C#######C")
-                        .aisle("C#######C","C#######C","CCCCCCCCC","CCCCCCCCC","CCCCCCCCC","C#######C","#########")
+                        .aisle("C#######C", "C#######C", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "C#######C", "#########")
+                        .aisle("#########", "CCCCCCCCC", "G#######G", "G#######G", "G#######G", "CCCCCCCCC", "C#######C")
+                        .aisle("CCCCCCCDL", "G#######G", "G#######G", "G#######G", "G#######G", "G#######G", "CCCCCCCCC")
+                        .aisle("SCCCCCCCE", "G#######G", "G#######G", "G#######G", "G#######G", "G#######G", "CTTTTTTTC")
+                        .aisle("MCCCCCCQO", "G#######G", "G#######G", "G#######G", "G#######G", "G#######G", "CCCCCCCCC")
+                        .aisle("#########", "CCCCCCCCC", "G#######G", "G#######G", "G#######G", "CCCCCCCCC", "C#######C")
+                        .aisle("C#######C", "C#######C", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "C#######C", "#########")
                         .where('S', definition, Direction.EAST)
                         .where('C', CASING_STAINLESS_CLEAN.getDefaultState())
                         .where('G', CASING_LAMINATED_GLASS.getDefaultState())

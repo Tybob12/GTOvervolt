@@ -86,6 +86,7 @@ public class GTOvervolt {
     @SubscribeEvent
     public void modifyMaterials(PostMaterialEvent event) {
         PrimaryMaterials.modifyMaterials();
+        ChemistryMaterials.modifyMaterials();
         OriginalMaterials.modifyMaterials();
     }
 

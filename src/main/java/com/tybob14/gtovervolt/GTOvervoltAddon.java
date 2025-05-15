@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
+import com.tybob14.gtovervolt.common.worldgen.GTOresRemoval;
 import com.tybob14.gtovervolt.common.worldgen.OTGOres;
 import com.tybob14.gtovervolt.data.recipe.GTOVRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -31,6 +32,7 @@ public class GTOvervoltAddon implements IGTAddon {
 
     @Override
     public void registerOreVeins() {
+        GTOresRemoval.init();
         OTGOres.init();
     }
 
