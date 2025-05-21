@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:callisto",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:callisto",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:callisto"
+    }
+  }
+}

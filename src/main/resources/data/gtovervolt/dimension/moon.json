@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:moon",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:moon",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:moon"
+    }
+  }
+}

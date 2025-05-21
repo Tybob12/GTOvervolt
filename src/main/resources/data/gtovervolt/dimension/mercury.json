@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:mercury",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:mercury",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:mercury"
+    }
+  }
+}

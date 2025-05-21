@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:vega_b",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:vega_b",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:vega_b"
+    }
+  }
+}

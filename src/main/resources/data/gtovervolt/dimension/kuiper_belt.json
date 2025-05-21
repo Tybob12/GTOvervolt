@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:kuiper_belt",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:kuiper_belt",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:kuiper_belt"
+    }
+  }
+}

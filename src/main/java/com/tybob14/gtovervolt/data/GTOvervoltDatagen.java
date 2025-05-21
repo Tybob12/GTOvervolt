@@ -13,4 +13,12 @@ public class GTOvervoltDatagen {
         GTOvervoltRegistries.REGISTRATE.addDataGenerator(ProviderType.LANG, LangHandler::init);
 
     }
+
+    //Dimension List
+
+    /*
+        a_centuari_bb, anubis, asteroid_belt, barnardec, barnarde, barnardf, callisto, ceres, deep_dark, deimos, enceladus, europa, ganymede, haumea, horus, io, kuiper_belt, maahes, makemake, mars, mehem_belt, mercury, miranda, moon, neper, oberon, phobos, pluto, proteus, ross128b, ross128ba, seth, t_ceti_e, titan, triton, vega_b, venus
+
+
+     */
 }

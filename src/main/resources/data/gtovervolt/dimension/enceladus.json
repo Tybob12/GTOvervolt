@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:enceladus",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:enceladus",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:enceladus"
+    }
+  }
+}

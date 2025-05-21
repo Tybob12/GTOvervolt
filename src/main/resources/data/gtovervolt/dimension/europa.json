@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:europa",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:europa",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:europa"
+    }
+  }
+}

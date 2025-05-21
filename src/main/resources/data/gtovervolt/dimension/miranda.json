@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:miranda",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:miranda",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:miranda"
+    }
+  }
+}

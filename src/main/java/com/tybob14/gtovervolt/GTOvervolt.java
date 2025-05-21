@@ -1,6 +1,7 @@
 package com.tybob14.gtovervolt;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.data.DimensionMarker;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
@@ -9,10 +10,7 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.lowdragmc.lowdraglib.Platform;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
-import com.tybob14.gtovervolt.common.data.GTOVItems;
-import com.tybob14.gtovervolt.common.data.GTOVMachines;
-import com.tybob14.gtovervolt.common.data.GTOVRecipeTypes;
-import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
+import com.tybob14.gtovervolt.common.data.*;
 import com.tybob14.gtovervolt.common.data.materials.ChemistryMaterials;
 import com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials;
 import com.tybob14.gtovervolt.common.data.materials.OriginalMaterials;
@@ -39,6 +37,7 @@ public class GTOvervolt {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        bus.addGenericListener(DimensionMarker.class, this::registerDimensionMarkers);
         bus.register(this);
     }
 
@@ -46,7 +45,10 @@ public class GTOvervolt {
     public static void init() {
         GTOvervoltCreativeModeTabs.init();
 
+        GTOVBlocks.init();
         GTOVItems.init();
+
+
         GTOvervoltDatagen.init();
         GTOvervoltRegistries.REGISTRATE.registerRegistrate();
     }
@@ -63,6 +65,12 @@ public class GTOvervolt {
     public void registerMaterialRegistry(MaterialRegistryEvent event) {
         MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTOvervolt.MOD_ID);
 
+
+    }
+
+    @SubscribeEvent
+    public void registerDimensionMarkers(GTCEuAPI.RegisterEvent<ResourceLocation, DimensionMarker> event) {
+        GTOVDimensionMarkers.init();
 
     }
 
@@ -89,5 +97,6 @@ public class GTOvervolt {
         ChemistryMaterials.modifyMaterials();
         OriginalMaterials.modifyMaterials();
     }
+
 
 }

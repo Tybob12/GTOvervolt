@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:mehem_belt",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:mehem_belt",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:mehem_belt"
+    }
+  }
+}

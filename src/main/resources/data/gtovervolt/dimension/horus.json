@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:horus",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:horus",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:horus"
+    }
+  }
+}

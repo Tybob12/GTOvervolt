@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:haumea",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:haumea",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:haumea"
+    }
+  }
+}

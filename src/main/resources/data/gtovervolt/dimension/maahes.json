@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:maahes",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:maahes",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:maahes"
+    }
+  }
+}

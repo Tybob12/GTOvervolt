@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:makemake",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:makemake",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:makemake"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:deimos",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:deimos",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:deimos"
+    }
+  }
+}

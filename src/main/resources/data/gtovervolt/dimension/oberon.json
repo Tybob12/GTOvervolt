@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:oberon",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:oberon",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:oberon"
+    }
+  }
+}

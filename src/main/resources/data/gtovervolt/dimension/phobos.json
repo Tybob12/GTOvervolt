@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:phobos",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:phobos",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:phobos"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:t_ceti_e",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:t_ceti_e",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:t_ceti_e"
+    }
+  }
+}

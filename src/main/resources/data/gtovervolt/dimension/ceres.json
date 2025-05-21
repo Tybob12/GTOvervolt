@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:ceres",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:ceres",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:ceres"
+    }
+  }
+}

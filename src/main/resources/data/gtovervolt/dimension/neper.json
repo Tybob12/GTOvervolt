@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:neper",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:neper",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:neper"
+    }
+  }
+}

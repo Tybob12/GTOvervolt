@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:anubis",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:anubis",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:anubis"
+    }
+  }
+}

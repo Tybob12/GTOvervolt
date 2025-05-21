@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:barnardf",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:barnardf",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:barnardf"
+    }
+  }
+}

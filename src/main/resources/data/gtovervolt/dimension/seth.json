@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:seth",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:seth",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:seth"
+    }
+  }
+}

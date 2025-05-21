@@ -38,6 +38,7 @@ public class GTOvervoltAddon implements IGTAddon {
 
     @Override
     public String addonModId() {
+
         return GTOvervolt.MOD_ID;
     }
 

@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:ross128ba",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:ross128ba",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:ross128ba"
+    }
+  }
+}

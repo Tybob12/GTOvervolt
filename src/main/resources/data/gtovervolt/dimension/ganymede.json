@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:ganymede",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:ganymede",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:ganymede"
+    }
+  }
+}

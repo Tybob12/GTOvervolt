@@ -1,0 +1,11 @@
+{
+  "type": "gtovervolt:deep_dark",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gtovervolt:deep_dark",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gtovervolt:deep_dark"
+    }
+  }
+}
