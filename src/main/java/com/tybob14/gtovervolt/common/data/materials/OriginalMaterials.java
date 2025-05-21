@@ -17,13 +17,9 @@ public class OriginalMaterials {
     public static void modifyMaterials() {
 
         WroughtIron.setProperty(PropertyKey.FLUID_PIPE, new FluidPipeProperties(2500, 3600, true, true, false, false));
-
         Zinc.setProperty(PropertyKey.WIRE, new WireProperties(32, 1, 2));
-
         Titanium.setProperty(PropertyKey.WIRE, new WireProperties(2048, 4, 4));
-
         Duranium.setProperty(PropertyKey.WIRE, new WireProperties(524288, 1, 16));
-
     }
 
 }

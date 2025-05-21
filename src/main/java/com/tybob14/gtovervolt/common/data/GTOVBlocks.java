@@ -91,27 +91,27 @@ public class GTOVBlocks {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<Block> BARNARDEC_CRUST = REGISTRATE
-            .block("barnardec_crust", Block::new)
-            .lang("Barnardec Crust")
+    public static final BlockEntry<Block> BARNARDC_CRUST = REGISTRATE
+            .block("barnardc_crust", Block::new)
+            .lang("barnardc Crust")
             .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
             .blockstate(GTOVModels::randomRotatedModel)
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .simpleItem()
             .register();
 
-    public static final BlockEntry<Block> BARNARDEC_ROCK = REGISTRATE
-            .block("barnardec_rock", Block::new)
-            .lang("Barnardec Rock")
+    public static final BlockEntry<Block> BARNARDC_ROCK = REGISTRATE
+            .block("barnardc_rock", Block::new)
+            .lang("barnardc Rock")
             .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
             .blockstate(GTOVModels::randomRotatedModel)
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .simpleItem()
             .register();
 
-    public static final BlockEntry<Block> BARNARDEC_CORE_METAL = REGISTRATE
-            .block("barnardec_core_metal", Block::new)
-            .lang("Barnardec Core Metal")
+    public static final BlockEntry<Block> BARNARDC_CORE_METAL = REGISTRATE
+            .block("barnardc_core_metal", Block::new)
+            .lang("barnardc Core Metal")
             .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
             .blockstate(GTOVModels::randomRotatedModel)
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)

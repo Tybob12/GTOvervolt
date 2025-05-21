@@ -68,5 +68,5 @@ side = "BOTH"
 modId = "gtceu"
 mandatory = true
 versionRange = "[1.1.1.a,)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "BOTH"

@@ -6,7 +6,7 @@
   "ore_veins_enabled": false,
   "legacy_random_source": false,
   "default_block": {
-    "Name": "gtovervolt:mane_dust"
+    "Name": "gtovervolt:mehen_dust"
   },
   "default_fluid": {
     "Name": "minecraft:air"
@@ -305,7 +305,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gtovervolt:mehem_belt"
+            "gtovervolt:mehen_belt"
           ]
         },
         "then_run": {
@@ -330,7 +330,7 @@
             "then_run": {
               "type": "minecraft:block",
               "result_state": {
-                "Name": "gtovervolt:mane_gravel"
+                "Name": "gtovervolt:mehen_gravel"
               }
             }
           }
@@ -343,7 +343,7 @@
           "false_at_and_above": {
             "absolute": 8
           },
-          "random_name": "gtovervolt:mane_core_silica",
+          "random_name": "gtovervolt:mehen_core_silica",
           "true_at_and_below": {
             "absolute": 0
           }
@@ -351,7 +351,7 @@
         "then_run": {
           "type": "minecraft:block",
           "result_state": {
-            "Name": "gtovervolt:mane_core_silica",
+            "Name": "gtovervolt:mehen_core_silica",
             "Properties": {
               "axis": "y"
             }

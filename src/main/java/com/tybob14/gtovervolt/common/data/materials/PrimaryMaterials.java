@@ -2,50 +2,29 @@ package com.tybob14.gtovervolt.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.Element;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.tybob14.gtovervolt.GTOvervolt;
+import com.tybob14.gtovervolt.common.data.GTOvervoltCreativeModeTabs;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 
 @SuppressWarnings("unused")
 public class PrimaryMaterials {
 
-    public static final Material Indalloy140 = new Material.Builder(GTOvervolt.id("indalloy_140"))
-            .color(0x685d91)
-            .iconSet(SHINY)
-            .fluid()
-            .components(Bismuth, 47, Lead, 25, Tin, 13, Cadmium, 10, Indium, 5)
-            .buildAndRegister();
+    public static void init() {
 
-    public static final Material Adamantium = new Material.Builder(GTOvervolt.id("adamantium"))
-            .color(0xFFFFFF)
-            .iconSet(SHINY)
-            .ingot()
-            .fluid()
-            //.ore()
-            .blastTemp(7200, GasTier.LOW)
-            //rotorStats()
-            .toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
-            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
-            .buildAndRegister();
+    }
 
+    public static void modifyMaterials() {
 
-    //static {REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);}
-    public static final Material Alduorite = new Material.Builder(GTOvervolt.id("alduorite"))
-            .color(0x9FB4B4)
-            .iconSet(SHINY)
-            .ingot()
-            .fluid()
-            //.ore()
-            .blastTemp(6000, GasTier.LOW)
-            //.rotorStats()
-            .toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
-            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
-            .buildAndRegister();
+    }
 
+    static {REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);}
 
     /*public static final Material TestMaterials = new Material.Builder(GTOvervolt.id("testmaterials"))
             .color(0xFFFFFF)
@@ -67,21 +46,140 @@ public class PrimaryMaterials {
             .cableProperties(32, 4, 0) //If superconductor, doesnt generate cables
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, FORCE_GENERATE_BLOCK, MORTAR_GRINDABLE, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND )
             .buildAndRegister();*/
-    public static final Material Amber = new Material.Builder(GTOvervolt.id("amber"))
+
+    public static final Material Indalloy140 = new Material.Builder(GTOvervolt.id("indalloy_140"))
+            .color(0x685d91)
+            .iconSet(SHINY)
+            .fluid()
+            .components(Bismuth, 47, Lead, 25, Tin, 13, Cadmium, 10, Indium, 5)
+            .buildAndRegister();
+
+    public static final Material InfinityCatalyst = new Material.Builder(GTOvervolt.id("infinity_catalyst"))
+            .color(0xFFFFFF)
+            .iconSet(SHINY)
+            .ingot()
+            .fluid()
+            .ore()
+            .blastTemp(10800, GasTier.HIGH)
+            //rotorStats()
+            //.toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
+            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
+            .buildAndRegister();
+
+    public static final Material BlackPlutonium = new Material.Builder(GTOvervolt.id("black_plutonium"))
+            .color(0x262626)
+            .iconSet(SHINY)
+            .ingot()
+            .fluid()
+            .ore()
+            .blastTemp(9000, GasTier.HIGH)
+            //rotorStats()
+            //.toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
+            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
+            .buildAndRegister();
+
+    public static final Material ShadowIron = new Material.Builder(GTOvervolt.id("shadow_iron"))
+            .color(0x606060)
+            .iconSet(SHINY)
+            .ingot()
+            .fluid()
+            .ore()
+            .blastTemp(8400, GasTier.HIGH)
+            //rotorStats()
+            //.toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
+            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
+            .buildAndRegister();
+
+    public static final Material Vermiculite = new Material.Builder(GTOvervolt.id("vermiculite"))
+            .color(0xc6ac00)
+            .iconSet(DULL)
+            .ore()
+            .buildAndRegister();
+
+    public static final Material Cryolite = new Material.Builder(GTOvervolt.id("cryolite"))
+            .color(0x97d4dd)
+            .iconSet(SHINY)
+            .ore()
+            .buildAndRegister();
+
+    public static final Material Dolomite = new Material.Builder(GTOvervolt.id("dolomite"))
+            .color(0xc7b8b8)
+            .iconSet(DULL)
+            .ore()
+            .buildAndRegister();
+
+    public static final Material Wollastonite = new Material.Builder(GTOvervolt.id("wollastonite"))
+            .color(0xFFFFFF)
+            .iconSet(DULL)
+            .ore()
+            .buildAndRegister();
+
+    public static final Material Glauconite = new Material.Builder(GTOvervolt.id("glauconite"))
+            .color(0x4e7a21)
+            .iconSet(DULL)
+            .ore()
+            .buildAndRegister();
+
+    public static final Material Kaolinite = new Material.Builder(GTOvervolt.id("kaolinite"))
+            .color(0xbbb2b2)
+            .iconSet(DULL)
+            .ore()
+            .buildAndRegister();
+
+    public static final Material Bedrockium = new Material.Builder(GTOvervolt.id("bedrockium"))
+            .color(0x3c3c3c)
+            .iconSet(DULL)
+            .ingot()
+            .fluid()
+            .ore()
+            .blastTemp(9900, GasTier.HIGH)
+            //rotorStats()
+            //.toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
+            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
+            .buildAndRegister();
+
+
+    public static final Material Adamantium = new Material.Builder(GTOvervolt.id("adamantium"))
+            .color(0xFFFFFF)
+            .iconSet(MaterialIconSet.DIAMOND)
+            .ingot()
+            .fluid()
+            .ore()
+            .blastTemp(7200, GasTier.LOW)
+            //rotorStats()
+            .toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
+            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
+            .buildAndRegister();
+
+
+    public static final Material Alduorite = new Material.Builder(GTOvervolt.id("alduorite"))
+            .color(0x9FB4B4)
+            .iconSet(SHINY)
+            .ingot()
+            .fluid()
+            .ore()
+            .blastTemp(6000, GasTier.LOW)
+            //.rotorStats()
+            .toolStats(ToolProperty.Builder.of(32F, 24F, 8192, 10).attackSpeed(0.3F).enchantability(33).build())
+            .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
+            .buildAndRegister();
+
+    /*public static final Material Amber = new Material.Builder(GTOvervolt.id("amber"))
             .color(0x9B8000)
             .iconSet(RUBY)
             .gem()
-            //.ore()
+            .ore()
             .components(Carbon, 10, Hydrogen, 10, Oxygen, 16)
             //.toolStats(ToolProperty.Builder.of(4F, 24F, 128, 10).attackSpeed(0.3F).enchantability(33).build())
-            //.flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_LONG_ROD, GENERATE_LENS)
+            .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_LONG_ROD, GENERATE_LENS)
             .buildAndRegister();
+
     public static final Material Ardite = new Material.Builder(GTOvervolt.id("ardite"))
             .color(0xFA8100)
             .iconSet(METALLIC)
             .ingot()
             .fluid()
-            //.ore()
+            .ore()
             .blastTemp(1600, GasTier.LOW)
             //rotorStats
             .element(new Element(5, 5, -1, null, "Ardite", "Ai", false))
@@ -98,10 +196,12 @@ public class PrimaryMaterials {
             .iconSet(DULL)
             .dust()
             .buildAndRegister();
+
+     */
     public static final Material CertusQuartzCharged = new Material.Builder(GTOvervolt.id("charged_certus_quartz"))
             .color(0xDDDDEC)
             .iconSet(QUARTZ)
-            //.ore()
+            .ore()
             .flags(GENERATE_ROD, GENERATE_PLATE)
             .buildAndRegister();
     public static final Material Ceruclase = new Material.Builder(GTOvervolt.id("ceruclase"))
@@ -109,13 +209,13 @@ public class PrimaryMaterials {
             .iconSet(METALLIC)
             .ingot()
             .fluid()
-            //.ore()
+            .ore()
             .blastTemp(6600, GasTier.LOW)
             //.rotorStats()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
             .toolStats(ToolProperty.Builder.of(32F, 24F, 1280, 10).attackSpeed(0.3F).enchantability(33).build())
             .buildAndRegister();
-    public static final Material CobaltHexahydrate = new Material.Builder(GTOvervolt.id("cobalthexahydrate"))
+    /*public static final Material CobaltHexahydrate = new Material.Builder(GTOvervolt.id("cobalthexahydrate"))
             .color(0x5050FA)
             .iconSet(METALLIC)
             .dust()
@@ -126,16 +226,18 @@ public class PrimaryMaterials {
             .iconSet(DULL)
             .ingot()
             .fluid()
-            //.ore()
+            .ore()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
             .toolStats(ToolProperty.Builder.of(7F, 24F, 384, 10).attackSpeed(0.3F).enchantability(33).build())
             .buildAndRegister();
+
+     */
     public static final Material Desh = new Material.Builder(GTOvervolt.id("desh"))
             .color(0x282828)
             .iconSet(DULL)
             .ingot()
             .fluid()
-            //.ore()
+            .ore()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
             .blastTemp(2500, GasTier.LOW)
             .toolStats(ToolProperty.Builder.of(20F, 24F, 2080, 10).attackSpeed(0.3F).enchantability(33).build())
@@ -145,15 +247,15 @@ public class PrimaryMaterials {
             .iconSet(DIAMOND)
             .gem()
             .dust()
-            //.ore()
+            .ore()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_LENS, FORCE_GENERATE_BLOCK)
             .buildAndRegister();
-    public static final Material ElectrumFlux = new Material.Builder(GTOvervolt.id("electrumflux"))
+   /* public static final Material ElectrumFlux = new Material.Builder(GTOvervolt.id("electrumflux"))
             .color(0xFFFF78)
             .iconSet(SHINY)
             .ingot()
-            //.ore()
+            .ore()
             .fluid()
             //rotorStats()
             .cableProperties(524288, 3, 1)
@@ -164,7 +266,7 @@ public class PrimaryMaterials {
     public static final Material Emery = new Material.Builder(GTOvervolt.id("emery"))
             .color(0xFFFFFF)
             .iconSet(DULL)
-            //.ore()
+            .ore()
             .dust()
             .buildAndRegister();
     public static final Material EnderiumBase = new Material.Builder(GTOvervolt.id("enderium_base"))
@@ -196,7 +298,7 @@ public class PrimaryMaterials {
             .color(0xFFFF00)
             .iconSet(DIAMOND)
             .ingot()
-            //.ore()
+            .ore()
             .fluid()
             .plasma()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -206,7 +308,7 @@ public class PrimaryMaterials {
     public static final Material Forcicium = new Material.Builder(GTOvervolt.id("forcicium"))
             .color(0x323246)
             .iconSet(DIAMOND)
-            //.ore()
+            .ore()
             .gem()
             .fluid()
             .flags(GENERATE_ROD, GENERATE_PLATE, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_LENS)
@@ -214,7 +316,7 @@ public class PrimaryMaterials {
     public static final Material Forcillium = new Material.Builder(GTOvervolt.id("forcillium"))
             .color(0x323246)
             .iconSet(DIAMOND)
-            //.ore()
+            .ore()
             .gem()
             .fluid()
             .flags(GENERATE_ROD, GENERATE_PLATE, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_LENS)
@@ -224,10 +326,12 @@ public class PrimaryMaterials {
             .iconSet(DULL)
             .dust()
             .buildAndRegister();
+
+    */
     public static final Material InfusedGold = new Material.Builder(GTOvervolt.id("infused_gold"))
             .color(0xFFC83C)
             .iconSet(SHINY)
-            //.ore()
+            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -239,14 +343,14 @@ public class PrimaryMaterials {
             .iconSet(SHINY)
             .gem()
             .dust()
-            //.ore()
+            .ore()
             //.rotorStats()
             .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW)
             .buildAndRegister();
     public static final Material MeteoricIron = new Material.Builder(GTOvervolt.id("meteoric_iron"))
             .color(0x0A3250)
             .iconSet(METALLIC)
-            //.ore()
+            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -257,7 +361,7 @@ public class PrimaryMaterials {
     public static final Material MeteoricSteel = new Material.Builder(GTOvervolt.id("meteoric_steel"))
             .color(0x321928)
             .iconSet(METALLIC)
-            //.ore()
+            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -273,7 +377,7 @@ public class PrimaryMaterials {
     public static final Material Orichalcum = new Material.Builder(GTOvervolt.id("orichalcum"))
             .color(0x547A38)
             .iconSet(METALLIC)
-            //.ore()
+            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -284,7 +388,7 @@ public class PrimaryMaterials {
     public static final Material Rubracium = new Material.Builder(GTOvervolt.id("rubracium"))
             .color(0x972D2D)
             .iconSet(METALLIC)
-            //.ore()
+            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -305,7 +409,7 @@ public class PrimaryMaterials {
     public static final Material Tartarite = new Material.Builder(GTOvervolt.id("tartarite"))
             .color(0xFF763C)
             .iconSet(METALLIC)
-            //.ore()
+            .ore()
             .ingot()
             .fluid()
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_FINE_WIRE, GENERATE_ROTOR, GENERATE_ROUND)
@@ -390,7 +494,7 @@ public class PrimaryMaterials {
     public static final Material Lignite = new Material.Builder(GTOvervolt.id("lignite"))
             .color(0x644646)
             .iconSet(LIGNITE)
-            //.ore()
+            .ore()
             .gem()
             .burnTime(1200)
             .flags(FORCE_GENERATE_BLOCK, GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW)
@@ -411,7 +515,7 @@ public class PrimaryMaterials {
     public static final Material BandedIron = new Material.Builder(GTOvervolt.id("banded_iron"))
             .color(0x915A5A)
             .iconSet(DULL)
-            //.ore()
+            .ore()
             .dust()
             .buildAndRegister();
     public static final Material DeepIron = new Material.Builder(GTOvervolt.id("deep_iron"))
@@ -419,6 +523,7 @@ public class PrimaryMaterials {
             .iconSet(METALLIC)
             .ingot()
             .fluid()
+            .ore()
             .toolStats(ToolProperty.Builder.of(6F, 1F, 228, 2).attackSpeed(0.3F).enchantability(30).build())
             .flags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_ROUND, GENERATE_RING, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_ROTOR, GENERATE_LONG_ROD)
             .buildAndRegister();
@@ -432,18 +537,12 @@ public class PrimaryMaterials {
             .color(0xC81400)
             .iconSet(QUARTZ)
             .gem()
-            //.ore()
+            .ore()
             .flags(GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_LENS, GENERATE_PLATE, FORCE_GENERATE_BLOCK)
             .toolStats(ToolProperty.Builder.of(6F, 24F, 1280, 10).attackSpeed(0.3F).enchantability(33).build())
             .buildAndRegister();
 
-    public static void init() {
 
-    }
-
-    public static void modifyMaterials() {
-
-    }
 
 
 }

@@ -6,7 +6,7 @@
   "ore_veins_enabled": false,
   "legacy_random_source": false,
   "default_block": {
-    "Name": "gtovervolt:barnardec_rock"
+    "Name": "gtovervolt:barnardc_rock"
   },
   "default_fluid": {
     "Name": "minecraft:air"
@@ -305,7 +305,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gtovervolt:barnardec"
+            "gtovervolt:barnardc"
           ]
         },
         "then_run": {
@@ -330,7 +330,7 @@
             "then_run": {
               "type": "minecraft:block",
               "result_state": {
-                "Name": "gtovervolt:barnardec_crust"
+                "Name": "gtovervolt:barnardc_crust"
               }
             }
           }
@@ -343,7 +343,7 @@
           "false_at_and_above": {
             "absolute": 8
           },
-          "random_name": "gtovervolt:barnardec_core_metal",
+          "random_name": "gtovervolt:barnardc_core_metal",
           "true_at_and_below": {
             "absolute": 0
           }
@@ -351,7 +351,7 @@
         "then_run": {
           "type": "minecraft:block",
           "result_state": {
-            "Name": "gtovervolt:barnardec_core_metal",
+            "Name": "gtovervolt:barnardc_core_metal",
             "Properties": {
               "axis": "y"
             }

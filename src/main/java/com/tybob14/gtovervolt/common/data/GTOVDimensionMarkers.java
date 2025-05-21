@@ -55,8 +55,8 @@ public class GTOVDimensionMarkers {
     public static final DimensionMarker MAKEMAKE = createAndRegister(GTOvervolt.id("makemake"), 7, () -> MAKEMAKE_MARKER, null);
     public static final BlockEntry<Block> MARS_MARKER = createMarker("mars");
     public static final DimensionMarker MARS = createAndRegister(GTOvervolt.id("mars"), 2, () -> MARS_MARKER, null);
-    public static final BlockEntry<Block> MANE_BELT_MARKER = createMarker("mehen_belt");
-    public static final DimensionMarker MANE_BELT = createAndRegister(GTOvervolt.id("mehne_belt"), 9, () -> MANE_BELT_MARKER, null);
+    public static final BlockEntry<Block> MEHEN_BELT_MARKER = createMarker("mehen_belt");
+    public static final DimensionMarker MEHEN_BELT = createAndRegister(GTOvervolt.id("mehen_belt"), 9, () -> MEHEN_BELT_MARKER, null);
     public static final BlockEntry<Block> MERCURY_MARKER = createMarker("mercury");
     public static final DimensionMarker MERCURY = createAndRegister(GTOvervolt.id("mercury"), 4, () -> MERCURY_MARKER, null);
     public static final BlockEntry<Block> MIRANDA_MARKER = createMarker("miranda");

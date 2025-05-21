@@ -8,16 +8,16 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.lowdragmc.lowdraglib.Platform;
 import com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries;
 import com.tybob14.gtovervolt.common.data.*;
-import com.tybob14.gtovervolt.common.data.materials.ChemistryMaterials;
-import com.tybob14.gtovervolt.common.data.materials.IntegratedMaterials;
-import com.tybob14.gtovervolt.common.data.materials.OriginalMaterials;
-import com.tybob14.gtovervolt.common.data.materials.PrimaryMaterials;
+import com.tybob14.gtovervolt.common.data.materials.*;
 import com.tybob14.gtovervolt.data.GTOvervoltDatagen;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -34,20 +34,22 @@ public class GTOvervolt {
     public GTOvervolt() {
         GTOvervolt.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
+        bus.register(this);
+
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
         bus.addGenericListener(DimensionMarker.class, this::registerDimensionMarkers);
-        bus.register(this);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
     }
 
 
     public static void init() {
+        ConfigHolder.init();
+
         GTOvervoltCreativeModeTabs.init();
 
         GTOVBlocks.init();
         GTOVItems.init();
-
 
         GTOvervoltDatagen.init();
         GTOvervoltRegistries.REGISTRATE.registerRegistrate();
@@ -64,8 +66,6 @@ public class GTOvervolt {
     @SubscribeEvent
     public void registerMaterialRegistry(MaterialRegistryEvent event) {
         MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTOvervolt.MOD_ID);
-
-
     }
 
     @SubscribeEvent
@@ -96,6 +96,7 @@ public class GTOvervolt {
         PrimaryMaterials.modifyMaterials();
         ChemistryMaterials.modifyMaterials();
         OriginalMaterials.modifyMaterials();
+        OreMaterials.modifyMaterials();
     }
 
 
