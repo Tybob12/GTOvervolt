@@ -2,6 +2,7 @@ package com.tybob14.gtovervolt;
 
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
+import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.lowdragmc.lowdraglib.Platform;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
@@ -12,6 +13,8 @@ import dev.emi.emi.api.stack.EmiStack;
 public class GTOVEMI implements EmiPlugin {
     @Override
     public void register(EmiRegistry registry) {
+
+        registry.removeEmiStacks(EmiStack.of(GTBlocks.CASING_BRONZE_PIPE));
 
         if (Platform.isModLoaded("ae2")) {
             registry.removeEmiStacks(EmiStack.of(AEBlocks.CHARGER));

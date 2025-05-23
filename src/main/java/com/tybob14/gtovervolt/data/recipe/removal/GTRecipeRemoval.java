@@ -1,5 +1,6 @@
 package com.tybob14.gtovervolt.data.recipe.removal;
 
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
@@ -12,6 +13,10 @@ public class GTRecipeRemoval {
 
 
     private static void removeCircuitRecipes(Consumer<ResourceLocation> registry) {
+
+        registry.accept(new ResourceLocation("gtceu:arc_furnace/arc_bronze_pipe_casing"));
+        registry.accept(new ResourceLocation("gtceu:macerator/macerate_bronze_pipe_casing"));
+        registry.accept(new ResourceLocation("gtceu:shaped/casing_bronze_pipe"));
         registry.accept(new ResourceLocation("gtceu:circuit_assembler/microprocessor_lv"));
         registry.accept(new ResourceLocation("gtceu:circuit_assembler/microprocessor_lv_soc"));
         registry.accept(new ResourceLocation("gtceu:circuit_assembler/microprocessor_lv_soldering_alloy"));

@@ -81,6 +81,7 @@ public class GTOvervolt {
 
     @SubscribeEvent
     public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
+        GTOVRemoveMachines.init();
         GTOVMachines.init();
     }
 

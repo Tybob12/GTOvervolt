@@ -44,7 +44,6 @@ public class OreMaterials {
         Borax.setProperty(PropertyKey.ORE, new OreProperty());
         QuartzSand.setProperty(PropertyKey.ORE, new OreProperty());
         Silicon.setProperty(PropertyKey.ORE, new OreProperty());
-        Trona.setProperty(PropertyKey.ORE, new OreProperty());
 
     }
 

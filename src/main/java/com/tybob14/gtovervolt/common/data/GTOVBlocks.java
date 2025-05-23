@@ -1,14 +1,91 @@
 package com.tybob14.gtovervolt.common.data;
 
 
+import com.gregtechceu.gtceu.GTCEu;
+import com.gregtechceu.gtceu.api.block.ActiveBlock;
+import com.gregtechceu.gtceu.api.block.ICoilType;
+import com.gregtechceu.gtceu.common.block.CoilBlock;
+import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTModels;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
+import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import com.tybob14.gtovervolt.GTOvervolt;
+import com.tybob14.gtovervolt.api.GTOVAPI;
+import com.tybob14.gtovervolt.api.block.IPipeCasingType;
+import com.tybob14.gtovervolt.api.block.ISteamMachineCasingType;
+import com.tybob14.gtovervolt.common.block.PipeCasing;
+import com.tybob14.gtovervolt.common.block.SteamMachineCasing;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraftforge.client.model.generators.ModelFile;
+
+import java.util.Map;
+import java.util.function.Supplier;
 
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 
 public class GTOVBlocks {
+
+    public static final BlockEntry<SteamMachineCasing> CASING_BRONZE = createSteamMachineCasing(SteamMachineCasing.CasingType.BRONZE);
+    public static final BlockEntry<SteamMachineCasing> CASING_STEEL = createSteamMachineCasing(SteamMachineCasing.CasingType.STEEL);
+
+    public static final BlockEntry<PipeCasing> BRONZE_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.BRONZE);
+    public static final BlockEntry<PipeCasing> STEEL_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.STEEL);
+    public static final BlockEntry<PipeCasing> TITANIUM_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.TITANIUM);
+    public static final BlockEntry<PipeCasing> TUNGSTENSTEEL_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.TUNGSTENSTEEL);
+
+
+    public static void init(){
+
+    }
+
+
+
+    static {
+        REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);
+    }
+
+    public static NonNullBiConsumer<DataGenContext<Block, SteamMachineCasing>, RegistrateBlockstateProvider> createSteamCasingModel(String name) {
+        return (ctx, prov) -> {
+            prov.simpleBlock(ctx.getEntry(), prov.models().cubeBottomTop(name,
+                    GTOvervolt.id("block/casings/steam/%s/side".formatted(name)),
+                    GTOvervolt.id("block/casings/steam/%s/bottom".formatted(name)),
+                    GTOvervolt.id("block/casings/steam/%s/top".formatted(name))));
+        };
+    }
+
+    private static BlockEntry<SteamMachineCasing> createSteamMachineCasing(ISteamMachineCasingType casingType) {
+        var steamCasing = REGISTRATE
+                .block("%s_casing".formatted(casingType.getName()), p -> new SteamMachineCasing(p, casingType))
+                .initialProperties(() -> Blocks.IRON_BLOCK)
+                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+                .blockstate(createSteamCasingModel(casingType.getName()))
+                .item(BlockItem::new)
+                .build()
+                .register();
+        GTOVAPI.STEAM_CASING.put(casingType, steamCasing);
+        return steamCasing;
+    }
+
+    private static BlockEntry<PipeCasing> createMachinePipeCasing(IPipeCasingType casingType) {
+        var pipeCasing = REGISTRATE
+                .block("%s_pipe_casing".formatted(casingType.getName()), p -> new PipeCasing(p, casingType))
+                .initialProperties(() -> Blocks.IRON_BLOCK)
+                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+                .item(BlockItem::new)
+                .build()
+                .register();
+        GTOVAPI.PIPE_CASING.put(casingType, pipeCasing);
+        return pipeCasing;
+    }
 
 
     public static final BlockEntry<Block> CENTAURI_STONE = REGISTRATE
@@ -32,9 +109,6 @@ public class GTOVBlocks {
         REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);
     }
 
-    public static void init() {
-
-    }
 
     /*
     public static final BlockEntry<Block> ANUBIS_DUST = REGISTRATE

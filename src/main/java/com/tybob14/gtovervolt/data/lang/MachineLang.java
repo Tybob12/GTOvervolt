@@ -1,6 +1,7 @@
 package com.tybob14.gtovervolt.data.lang;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import net.minecraft.network.chat.Component;
 
 public class MachineLang {
 
@@ -13,5 +14,9 @@ public class MachineLang {
         provider.add("gtovervolt.machine.pipe_speed_bonus", "Every pipe casing tier gives a +10% speed bonus");
         provider.add("gtovervolt.machine.eu_reduction_90", "Only uses 90% of the EU/t normally required");
         provider.add("gtovervolt.machine.eu_reduction_80", "Only uses 80% of the EU/t normally required");
+        provider.add("gtovervolt.machine.autocave_overclock_tooltip", "Every coil tier above cupronickel gives a +25% speed bonus");
+        provider.add("gtovervolt.machine.autoclave_parallel_tooltip", "Processes 12 items per Pipe Casing Tier");
+        provider.add("gtovervolt.machine.autoclave_parallel", "Parallels: %s");
+
     }
 }
