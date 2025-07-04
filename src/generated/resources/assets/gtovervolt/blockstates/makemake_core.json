@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/makemake_core"
+      },
+      {
+        "model": "gtovervolt:block/makemake_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/makemake_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/makemake_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/centauri_stone"
+      },
+      {
+        "model": "gtovervolt:block/centauri_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/centauri_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/centauri_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

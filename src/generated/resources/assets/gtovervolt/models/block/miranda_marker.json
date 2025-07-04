@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/miranda/down",
+    "east": "gtovervolt:block/dim_markers/miranda/east",
+    "north": "gtovervolt:block/dim_markers/miranda/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/miranda/south",
+    "up": "gtovervolt:block/dim_markers/miranda/up",
+    "west": "gtovervolt:block/dim_markers/miranda/west"
+  }
+}

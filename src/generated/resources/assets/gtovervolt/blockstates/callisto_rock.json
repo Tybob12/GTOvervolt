@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/callisto_rock"
+      },
+      {
+        "model": "gtovervolt:block/callisto_rock",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/callisto_rock_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/callisto_rock_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/oberon_stone"
+      },
+      {
+        "model": "gtovervolt:block/oberon_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/oberon_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/oberon_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

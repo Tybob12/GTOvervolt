@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/maahes_glass"
+      },
+      {
+        "model": "gtovervolt:block/maahes_glass",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/maahes_glass_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/maahes_glass_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

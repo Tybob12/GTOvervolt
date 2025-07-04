@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/miranda_snow"
+      },
+      {
+        "model": "gtovervolt:block/miranda_snow",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/miranda_snow_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/miranda_snow_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

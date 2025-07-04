@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/kuiper_ice_dust"
+      },
+      {
+        "model": "gtovervolt:block/kuiper_ice_dust",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/kuiper_ice_dust_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/kuiper_ice_dust_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

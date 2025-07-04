@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/venus_rock"
+      },
+      {
+        "model": "gtovervolt:block/venus_rock",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/venus_rock_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/venus_rock_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

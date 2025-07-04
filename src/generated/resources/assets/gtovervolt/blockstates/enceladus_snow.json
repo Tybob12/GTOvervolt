@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/enceladus_snow"
+      },
+      {
+        "model": "gtovervolt:block/enceladus_snow",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/enceladus_snow_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/enceladus_snow_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/a_centauri_bb/down",
+    "east": "gtovervolt:block/dim_markers/a_centauri_bb/east",
+    "north": "gtovervolt:block/dim_markers/a_centauri_bb/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/a_centauri_bb/south",
+    "up": "gtovervolt:block/dim_markers/a_centauri_bb/up",
+    "west": "gtovervolt:block/dim_markers/a_centauri_bb/west"
+  }
+}

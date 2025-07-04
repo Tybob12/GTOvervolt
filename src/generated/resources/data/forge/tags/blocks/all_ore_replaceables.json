@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:end_stone",
+    "minecraft:stone",
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:granite",
+    "minecraft:deepslate",
+    "minecraft:netherrack"
+  ]
+}

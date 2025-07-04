@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/oberon_regolith"
+      },
+      {
+        "model": "gtovervolt:block/oberon_regolith",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/oberon_regolith_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/oberon_regolith_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

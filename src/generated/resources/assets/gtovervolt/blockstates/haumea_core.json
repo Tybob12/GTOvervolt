@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/haumea_core"
+      },
+      {
+        "model": "gtovervolt:block/haumea_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/haumea_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/haumea_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/barnardf/down",
+    "east": "gtovervolt:block/dim_markers/barnardf/east",
+    "north": "gtovervolt:block/dim_markers/barnardf/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/barnardf/south",
+    "up": "gtovervolt:block/dim_markers/barnardf/up",
+    "west": "gtovervolt:block/dim_markers/barnardf/west"
+  }
+}

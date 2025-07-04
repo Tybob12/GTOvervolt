@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/vegab_compacted_soil"
+      },
+      {
+        "model": "gtovervolt:block/vegab_compacted_soil",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/vegab_compacted_soil_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/vegab_compacted_soil_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

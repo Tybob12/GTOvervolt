@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/pluto/down",
+    "east": "gtovervolt:block/dim_markers/pluto/east",
+    "north": "gtovervolt:block/dim_markers/pluto/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/pluto/south",
+    "up": "gtovervolt:block/dim_markers/pluto/up",
+    "west": "gtovervolt:block/dim_markers/pluto/west"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/enceladus_stone"
+      },
+      {
+        "model": "gtovervolt:block/enceladus_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/enceladus_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/enceladus_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

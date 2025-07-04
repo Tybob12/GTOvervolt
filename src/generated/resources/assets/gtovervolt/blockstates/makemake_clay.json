@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/makemake_clay"
+      },
+      {
+        "model": "gtovervolt:block/makemake_clay",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/makemake_clay_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/makemake_clay_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

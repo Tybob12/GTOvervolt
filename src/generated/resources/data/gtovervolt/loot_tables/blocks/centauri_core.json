@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gtovervolt:centauri_core"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gtovervolt:blocks/centauri_core"
+}

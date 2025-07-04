@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gtovervolt:block/titanium_pipe_casing"
+  }
+}

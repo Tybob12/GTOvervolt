@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/moon_regolith"
+      },
+      {
+        "model": "gtovervolt:block/moon_regolith",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/moon_regolith_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/moon_regolith_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

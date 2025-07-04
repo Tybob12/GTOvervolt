@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/europa_rock"
+      },
+      {
+        "model": "gtovervolt:block/europa_rock",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/europa_rock_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/europa_rock_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

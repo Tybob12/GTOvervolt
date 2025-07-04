@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/titan_ice"
+      },
+      {
+        "model": "gtovervolt:block/titan_ice",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/titan_ice_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/titan_ice_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

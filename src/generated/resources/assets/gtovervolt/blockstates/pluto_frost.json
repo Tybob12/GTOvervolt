@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/pluto_frost"
+      },
+      {
+        "model": "gtovervolt:block/pluto_frost",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/pluto_frost_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/pluto_frost_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

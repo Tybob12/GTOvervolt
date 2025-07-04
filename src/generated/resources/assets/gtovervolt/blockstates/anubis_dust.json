@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/anubis_dust"
+      },
+      {
+        "model": "gtovervolt:block/anubis_dust",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/anubis_dust_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/anubis_dust_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

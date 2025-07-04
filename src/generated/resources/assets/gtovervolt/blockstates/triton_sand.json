@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/triton_sand"
+      },
+      {
+        "model": "gtovervolt:block/triton_sand",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/triton_sand_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/triton_sand_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

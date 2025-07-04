@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/oberon_core"
+      },
+      {
+        "model": "gtovervolt:block/oberon_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/oberon_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/oberon_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/deimos_stone"
+      },
+      {
+        "model": "gtovervolt:block/deimos_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/deimos_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/deimos_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

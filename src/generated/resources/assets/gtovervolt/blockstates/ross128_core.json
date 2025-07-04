@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/ross128_core"
+      },
+      {
+        "model": "gtovervolt:block/ross128_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/ross128_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/ross128_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

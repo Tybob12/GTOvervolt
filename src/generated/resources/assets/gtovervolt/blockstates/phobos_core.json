@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/phobos_core"
+      },
+      {
+        "model": "gtovervolt:block/phobos_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/phobos_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/phobos_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

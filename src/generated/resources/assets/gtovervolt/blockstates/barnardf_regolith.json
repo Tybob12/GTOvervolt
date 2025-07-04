@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/barnardf_regolith"
+      },
+      {
+        "model": "gtovervolt:block/barnardf_regolith",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/barnardf_regolith_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/barnardf_regolith_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

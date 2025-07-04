@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/asteroi_drock"
+      },
+      {
+        "model": "gtovervolt:block/asteroi_drock",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/asteroi_drock_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/asteroi_drock_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

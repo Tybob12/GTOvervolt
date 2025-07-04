@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/miranda_dust"
+      },
+      {
+        "model": "gtovervolt:block/miranda_dust",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/miranda_dust_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/miranda_dust_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

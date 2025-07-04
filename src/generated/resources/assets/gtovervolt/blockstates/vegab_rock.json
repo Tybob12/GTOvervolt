@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/vegab_rock"
+      },
+      {
+        "model": "gtovervolt:block/vegab_rock",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/vegab_rock_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/vegab_rock_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

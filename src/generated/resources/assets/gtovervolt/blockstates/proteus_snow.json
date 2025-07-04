@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/proteus_snow"
+      },
+      {
+        "model": "gtovervolt:block/proteus_snow",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/proteus_snow_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/proteus_snow_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

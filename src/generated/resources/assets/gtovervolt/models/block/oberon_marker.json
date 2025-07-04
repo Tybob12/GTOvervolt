@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/oberon/down",
+    "east": "gtovervolt:block/dim_markers/oberon/east",
+    "north": "gtovervolt:block/dim_markers/oberon/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/oberon/south",
+    "up": "gtovervolt:block/dim_markers/oberon/up",
+    "west": "gtovervolt:block/dim_markers/oberon/west"
+  }
+}

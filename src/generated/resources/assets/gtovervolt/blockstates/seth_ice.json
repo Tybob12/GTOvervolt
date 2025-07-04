@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/seth_ice"
+      },
+      {
+        "model": "gtovervolt:block/seth_ice",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/seth_ice_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/seth_ice_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

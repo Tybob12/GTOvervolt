@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gtovervolt:block/planet_blocks/phobos/phobosregolith"
+  }
+}

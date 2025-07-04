@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/ganymede_core"
+      },
+      {
+        "model": "gtovervolt:block/ganymede_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/ganymede_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/ganymede_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

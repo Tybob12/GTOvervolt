@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/horus_sandstone"
+      },
+      {
+        "model": "gtovervolt:block/horus_sandstone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/horus_sandstone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/horus_sandstone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

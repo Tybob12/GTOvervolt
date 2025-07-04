@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/mehen_gravel"
+      },
+      {
+        "model": "gtovervolt:block/mehen_gravel",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/mehen_gravel_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/mehen_gravel_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

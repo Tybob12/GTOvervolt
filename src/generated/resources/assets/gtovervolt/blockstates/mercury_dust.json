@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/mercury_dust"
+      },
+      {
+        "model": "gtovervolt:block/mercury_dust",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/mercury_dust_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/mercury_dust_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

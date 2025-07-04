@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/deimos_core"
+      },
+      {
+        "model": "gtovervolt:block/deimos_core",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/deimos_core_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/deimos_core_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/asteroid_belt/down",
+    "east": "gtovervolt:block/dim_markers/asteroid_belt/east",
+    "north": "gtovervolt:block/dim_markers/asteroid_belt/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/asteroid_belt/south",
+    "up": "gtovervolt:block/dim_markers/asteroid_belt/up",
+    "west": "gtovervolt:block/dim_markers/asteroid_belt/west"
+  }
+}

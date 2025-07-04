@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/barnardf_stone"
+      },
+      {
+        "model": "gtovervolt:block/barnardf_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/barnardf_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/barnardf_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

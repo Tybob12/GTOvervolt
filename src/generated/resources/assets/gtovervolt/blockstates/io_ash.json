@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/io_ash"
+      },
+      {
+        "model": "gtovervolt:block/io_ash",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/io_ash_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/io_ash_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

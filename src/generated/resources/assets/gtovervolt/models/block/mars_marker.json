@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/mars/down",
+    "east": "gtovervolt:block/dim_markers/mars/east",
+    "north": "gtovervolt:block/dim_markers/mars/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/mars/south",
+    "up": "gtovervolt:block/dim_markers/mars/up",
+    "west": "gtovervolt:block/dim_markers/mars/west"
+  }
+}

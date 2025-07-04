@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/mercury_stone"
+      },
+      {
+        "model": "gtovervolt:block/mercury_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/mercury_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/mercury_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

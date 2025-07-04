@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/triton/down",
+    "east": "gtovervolt:block/dim_markers/triton/east",
+    "north": "gtovervolt:block/dim_markers/triton/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/triton/south",
+    "up": "gtovervolt:block/dim_markers/triton/up",
+    "west": "gtovervolt:block/dim_markers/triton/west"
+  }
+}

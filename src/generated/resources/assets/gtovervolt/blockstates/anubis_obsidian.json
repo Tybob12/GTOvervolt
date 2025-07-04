@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/anubis_obsidian"
+      },
+      {
+        "model": "gtovervolt:block/anubis_obsidian",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/anubis_obsidian_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/anubis_obsidian_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

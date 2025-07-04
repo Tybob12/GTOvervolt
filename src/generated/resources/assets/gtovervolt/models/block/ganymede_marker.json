@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "gui_light": "front",
+  "textures": {
+    "down": "gtovervolt:block/dim_markers/ganymede/down",
+    "east": "gtovervolt:block/dim_markers/ganymede/east",
+    "north": "gtovervolt:block/dim_markers/ganymede/north",
+    "particle": "#north",
+    "south": "gtovervolt:block/dim_markers/ganymede/south",
+    "up": "gtovervolt:block/dim_markers/ganymede/up",
+    "west": "gtovervolt:block/dim_markers/ganymede/west"
+  }
+}

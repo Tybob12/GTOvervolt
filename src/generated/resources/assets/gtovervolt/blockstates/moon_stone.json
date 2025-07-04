@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/moon_stone"
+      },
+      {
+        "model": "gtovervolt:block/moon_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/moon_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/moon_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

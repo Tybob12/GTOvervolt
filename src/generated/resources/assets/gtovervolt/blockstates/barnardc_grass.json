@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/barnardc_grass"
+      },
+      {
+        "model": "gtovervolt:block/barnardc_grass",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/barnardc_grass_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/barnardc_grass_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

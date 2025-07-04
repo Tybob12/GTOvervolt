@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/vegab_crust"
+      },
+      {
+        "model": "gtovervolt:block/vegab_crust",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/vegab_crust_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/vegab_crust_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

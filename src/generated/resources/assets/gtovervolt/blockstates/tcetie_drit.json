@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/tcetie_drit"
+      },
+      {
+        "model": "gtovervolt:block/tcetie_drit",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/tcetie_drit_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/tcetie_drit_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

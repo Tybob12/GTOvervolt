@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gtovervolt:block/maahes_stone"
+      },
+      {
+        "model": "gtovervolt:block/maahes_stone",
+        "y": 180
+      },
+      {
+        "model": "gtovervolt:block/maahes_stone_mirrored"
+      },
+      {
+        "model": "gtovervolt:block/maahes_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

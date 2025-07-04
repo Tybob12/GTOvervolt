@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "gtovervolt:block/casings/steam/bronze/bottom",
+    "side": "gtovervolt:block/casings/steam/bronze/side",
+    "top": "gtovervolt:block/casings/steam/bronze/top"
+  }
+}
