@@ -13,6 +13,7 @@ import com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction;
 import com.gregtechceu.gtceu.api.recipe.modifier.ParallelLogic;
 import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.tybob14.gtovervolt.api.machine.multiblock.TieredSteamParallelMultiblockMachine;
 import org.jetbrains.annotations.NotNull;
 
 import static com.gregtechceu.gtceu.api.recipe.OverclockingLogic.NON_PERFECT_OVERCLOCK;
@@ -42,6 +43,21 @@ public class GTOVRecipeModifiers {
             oc = oc.andThen(coilModifier);
         }
         return oc;
+    }
+
+    public static @NotNull ModifierFunction highPressureSteam(@NotNull MetaMachine machine, @NotNull GTRecipe recipe) {
+        if (!(machine instanceof TieredSteamParallelMultiblockMachine steamMachine)) {
+            return RecipeModifier.nullWrongType(TieredSteamParallelMultiblockMachine.class, machine);
+        }
+
+        System.out.println(steamMachine.getTier());
+        if (steamMachine.getTier() == 1){
+            return ModifierFunction.builder().durationMultiplier(0.5).build();
+        }else{
+            return ModifierFunction.builder().durationMultiplier(1).build();
+        }
+
+
     }
 
     public static @NotNull ModifierFunction autoclaveOverclock(@NotNull MetaMachine machine, @NotNull GTRecipe recipe) {

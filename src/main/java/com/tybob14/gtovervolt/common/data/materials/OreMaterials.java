@@ -1,5 +1,6 @@
 package com.tybob14.gtovervolt.common.data.materials;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 
@@ -44,6 +45,7 @@ public class OreMaterials {
         Borax.setProperty(PropertyKey.ORE, new OreProperty());
         QuartzSand.setProperty(PropertyKey.ORE, new OreProperty());
         Silicon.setProperty(PropertyKey.ORE, new OreProperty());
+        Electrotine.setProperty(PropertyKey.INGOT, new IngotProperty());
 
     }
 
