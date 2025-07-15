@@ -30,8 +30,6 @@ java {
     withSourcesJar()
 }
 
-def mod_id = properties.mod_id
-
 architectury {
     platformSetupLoomIde()
     forge()
@@ -100,7 +98,10 @@ configurations {
 
 repositories {
     mavenLocal()
+    mavenCentral()
 
+
+    // GregTechCEu
     maven {
         name = 'GTCEu Maven'
         url = 'https://maven.gtceu.com'
@@ -109,70 +110,79 @@ repositories {
         }
     }
 
-    // mavens for Forge-exclusives
-    maven { url = "https://api.modrinth.com/maven" } // Jade
-    maven { url = "https://maven.theillusivec4.top/" } // Curios
-    maven { // Create Forge and Registrate Forge
+    // JitPack - used for GitHub-hosted libraries like MixinExtras
+    maven {
+
+        url = 'https://jitpack.io'
+    }
+
+
+    // Curse Maven - required for mods published via CurseForge
+    maven {
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+    // ModMaven - general mod mirror, also fallback for JEI
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+
+    // Jared's Maven - used for JEI and other mods by Jared
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+
+    // LDLib and Configuration
+    maven {url = "https://maven.firstdarkdev.xyz/snapshots"}
+
+    // Parchment mappings
+    maven {url = "https://maven.parchmentmc.org"}
+
+    // Quilt Mappings
+    maven {url = "https://maven.quiltmc.org/repository/release"}
+
+    // SpongePowered Maven - Mixin and related tools
+    maven {
+
+        name = "mixin"
+        url = "https://repo.spongepowered.org/repository/maven-public/"
+    }
+
+    // Team Resourceful Maven - EMI
+    maven {
+
+        url = "https://maven.teamresourceful.com/repository/maven-public/"
+    }
+
+    // Curios and mods by theillusivec4
+    maven {url = "https://maven.theillusivec4.top/"}
+
+    // Registrate
+    maven {
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.tterrag.registrate")
             includeGroup("com.simibubi.create")
         }
     }
-    maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
-    maven { url = "https://maven.quiltmc.org/repository/release" } // Quilt Mappings
-    maven { // TOP
-        url "https://maven.k-4u.nl"
-    }
+
+    // KubeJS, Rhino, and other mods by saps.dev
     maven {
-        // saps.dev Maven (KubeJS and Rhino)
         url = "https://maven.saps.dev/minecraft"
         content {
             includeGroup "dev.latvian.mods"
         }
     }
-    mavenLocal()
-    mavenCentral()
-    maven { url = "https://maven.shedaniel.me/" } // Cloth Config, REI
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    } // Curse Forge File
-    maven {
-        name = "Jared's maven"
-        url = "https://maven.blamejared.com/"
-    } // JEI
-    maven { url 'https://jitpack.io' } // MixinExtras
-    maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.dev"
-    } // JEI mirror, AE2
-    maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
-    maven { url = "https://maven.quiltmc.org/repository/release/" } // Quilt Mappings
-    maven { url = "https://maven.firstdarkdev.xyz/snapshots" } // LDLib
-    maven {
-        name = "redlance"
-        url = "https://repo.constructlegacy.ru/public"
-    }
-    maven {
-        name = "mixin"
-        url = "https://repo.spongepowered.org/repository/maven-public/"
-    }
-    maven {
-        name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/"
-    }
-    maven { url 'https://maven.rover656.dev/releases' }
 
-    maven {
-        allowInsecureProtocol(true)
-        url 'http://dogforce-games.com/maven'
-    }
+    // Jade - in-game info mod
+    maven {url = "https://api.modrinth.com/maven"}
 
-    maven {url = "https://maven.teamresourceful.com/repository/maven-public/"}
+    // Create mod's official Maven
     maven {url = "https://maven.createmod.net"}
 
 }
@@ -195,9 +205,8 @@ dependencies {
     // Registrate
     modImplementation("com.tterrag.registrate:Registrate:${forge.versions.registrate.get()}")
 
-
     //EMI
-    modImplementation "dev.emi:emi-forge:${emi_version}"
+    modImplementation(forge.emi) { transitive = false }
 
     // Configuration
     modImplementation(forge.configuration)
@@ -213,17 +222,37 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     // AE2
-    modImplementation("org.appliedenergistics:guideme:20.1.7")
+    modImplementation(forge.guideme) { transitive = false }
     modImplementation(forge.ae2) { transitive = false }
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "mod_id", project.mod_id
+    // set up properties for filling into metadata
+    var properties = [
+            "mod_license": mod_license,
+            "mod_id": mod_id,
+            "version": version,
+            "mod_name": mod_name,
+            "mod_url": mod_url,
+            "mod_author": mod_author,
+            "forge_version": forge_version.split("\\.")[0], // only specify major version of forge
+            "minecraft_version": minecraft_version,
+            "gtceu_version": forge.versions.gtceu
+    ]
+    inputs.properties(properties)
 
     filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+        expand properties
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // ensure that the encoding is set to UTF-8, no matter what the system default is
+    // this fixes some edge cases with special characters not displaying correctly
+    // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+    // If Javadoc is generated, this must be specified in that task too.
+    options.encoding = "UTF-8"
+    options.release.set(17)
 }
 
 remapJar {
@@ -233,7 +262,17 @@ remapJar {
 }
 
 jar {
-    archiveClassifier.set("dev")
+    manifest {
+        attributes([
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : mod_author,
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : version,
+                "Implementation-Vendor"   : mod_author,
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
 }
 
 components.java {

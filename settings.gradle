@@ -17,17 +17,21 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
+
         // Minecraft Version
         def minecraftVersion = "1.20.1"
 
         // Mod Dependencies Versions
         def ae2Version = "15.4.1"
-
+        def guideMeVersion = "20.1.7"
+        def gtCeuVersion = "1.6.4"
+        def kubejs_version="2001.6.5-build.14"
+        def jei_version="15.20.0.106"
+        def emiVersion = "1.1.22+1.20.1"
 
         // Forge
         def forgeVersion = "47.1.3"
         def registrateForgeVersion = "MC1.20-1.3.3"
-        def topForgeVersion = "1.20.1-10.0.1-3"
 
         // Libs
         def quiltMappingsVersion = "5"  // https://lambdaurora.dev/tools/import_quilt.html
@@ -38,7 +42,6 @@ dependencyResolutionManagement {
         def vineFlowerVersion = "1.+"
         def macheteVersion = "1.+"
         def configurationVersion = "2.2.0"
-        def gtCeuVersion = "1.6.4"
         def ldLibVersion = "1.0.34"
         def mixinExtrasVersion = "0.2.0"
         def mixinVersion = "0.8.6-SNAPSHOT"
@@ -54,9 +57,6 @@ dependencyResolutionManagement {
             def registrate = version("registrate", registrateForgeVersion)
             library("registrate", "com.tterrag.registrate", "Registrate").versionRef(registrate)
 
-            def theoneprobe = version("theoneprobe", topForgeVersion)
-            library("theoneprobe", "mcjty.theoneprobe", "theoneprobe").versionRef(theoneprobe)
-
             def gtceu = version("gtceu", gtCeuVersion)
             library("gtceu-forge", "com.gregtechceu.gtceu", "gtceu-${minecraftVersion}").versionRef(gtceu)
 
@@ -69,6 +69,12 @@ dependencyResolutionManagement {
 
             def ae2 = version("ae2", ae2Version)
             library("ae2", "appeng", "appliedenergistics2-forge").versionRef(ae2)
+
+            def guideMe = version("guideMe", guideMeVersion)
+            library("guideme", "org.appliedenergistics", "guideme").versionRef(guideMe)
+
+            def emi = version("emiVersion", emiVersion)
+            library("emi", "dev.emi", "emi-forge").versionRef(emi)
         }
 
         libs {
