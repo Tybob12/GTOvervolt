@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.SimpleTieredMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
@@ -24,6 +25,7 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachin
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.tterrag.registrate.Registrate;
 import com.tybob14.gtovervolt.api.GTOVAPI;
 import com.tybob14.gtovervolt.api.machine.multiblock.GTOVPartAbility;
 import com.tybob14.gtovervolt.api.machine.multiblock.part.SteamFluidPartMachine;
@@ -31,14 +33,18 @@ import com.tybob14.gtovervolt.common.machine.multiblock.electric.IndustrialPreci
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.gregtechceu.gtceu.api.GTValues.ULV;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
@@ -46,7 +52,8 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT;
 import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.OC_NON_PERFECT;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
-import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.registerLargeBoiler;
+import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
+import static com.ibm.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static com.tybob14.gtovervolt.api.pattern.GTOVPredicates.machinePipeCasings;
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 import static com.tybob14.gtovervolt.common.data.GTOVBlocks.*;
@@ -55,6 +62,9 @@ import static net.minecraft.world.level.block.Blocks.*;
 
 @Slf4j
 public class GTOVMachines {
+
+
+
 
     public static final MultiblockMachineDefinition LARGE_BOILER_BRONZE = registerLargeBoiler("bronze",
             CASING_BRONZE_BRICKS, BRONZE_PIPE_CASING, FIREBOX_BRONZE,
@@ -100,6 +110,9 @@ public class GTOVMachines {
             .allowCoverOnFront(true)
             .register();
 
+
+    public static final MachineDefinition[] MIXER = registerSimpleMachines("mixer", GTRecipeTypes.MIXER_RECIPES,
+            hvCappedTankSizeFunction, false, 0);
 
 
     /*public static final MultiblockMachineDefinition CIRCUIT_ASSEMBLY_LINE = REGISTRATE

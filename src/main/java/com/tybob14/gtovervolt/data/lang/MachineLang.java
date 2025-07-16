@@ -17,5 +17,6 @@ public class MachineLang {
         provider.add("gtovervolt.machine.autoclave_parallel_tooltip", "Processes 12 items per Pipe Casing Tier");
         provider.add("gtovervolt.machine.autoclave_parallel", "Parallels: %s");
 
+        provider.add("block.gtceu.ulv_mixer", "Primitive Mixer");
     }
 }

@@ -189,6 +189,10 @@ repositories {
     // Create mod's official Maven
     maven {url = "https://maven.createmod.net"}
 
+    maven {
+        url "https://maven.blamejared.com"
+    }
+
 }
 
 dependencies {
@@ -227,6 +231,17 @@ dependencies {
     // AE2
     modImplementation(forge.guideme) { transitive = false }
     modImplementation(forge.ae2) { transitive = false }
+
+    //Embeddium
+    modRuntimeOnly(forge.embeddium) {transitive = false}
+
+    //Jade
+    modRuntimeOnly(forge.jade) {transitive = false}
+
+    //Mouse and Inventory Tweaks
+    //modRuntimeOnly ("curse.maven:mouse-tweaks-60089:5338457")
+    //modRuntimeOnly ("curse.maven:inventory-tweaks-refoxed-976858:6632417")
+
 }
 
 processResources {
