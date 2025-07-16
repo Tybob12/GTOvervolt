@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "gtovervolt:block/steel"
+      "model": "gtovervolt:block/steel_casing"
     }
   }
 }

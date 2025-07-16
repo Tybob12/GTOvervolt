@@ -60,7 +60,7 @@ public class GTOVRecipeModifiers {
 
     }
 
-    public static @NotNull ModifierFunction autoclaveOverclock(@NotNull MetaMachine machine, @NotNull GTRecipe recipe) {
+    /*public static @NotNull ModifierFunction autoclaveOverclock(@NotNull MetaMachine machine, @NotNull GTRecipe recipe) {
         if (!(machine instanceof CoilWorkableElectricMultiblockMachine coilMachine)) {
             return RecipeModifier.nullWrongType(CoilWorkableElectricMultiblockMachine.class, machine);
         }

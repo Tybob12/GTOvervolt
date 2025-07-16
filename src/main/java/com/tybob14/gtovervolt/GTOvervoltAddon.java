@@ -15,6 +15,7 @@ import java.util.function.Consumer;
 
 @GTAddon
 public class GTOvervoltAddon implements IGTAddon {
+
     @Override
     public GTRegistrate getRegistrate() {
         return GTOvervoltRegistries.REGISTRATE;

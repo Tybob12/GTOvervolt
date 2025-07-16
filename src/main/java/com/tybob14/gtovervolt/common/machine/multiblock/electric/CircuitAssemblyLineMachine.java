@@ -24,7 +24,7 @@ public class CircuitAssemblyLineMachine extends WorkableElectricMultiblockMachin
         super(holder);
     }
 
-    @Override
+    /*@Override
     public boolean beforeWorking(@Nullable GTRecipe recipe) {
         if (ConfigHolder.INSTANCE.machines.orderedAssemblyLineItems) {
 
@@ -60,5 +60,5 @@ public class CircuitAssemblyLineMachine extends WorkableElectricMultiblockMachin
 
     private Function<BlockPos, Integer> multiblockPartSorter() {
         return RelativeDirection.RIGHT.getSorter(getFrontFacing(), getUpwardsFacing(), isFlipped());
-    }
+    }*/
 }

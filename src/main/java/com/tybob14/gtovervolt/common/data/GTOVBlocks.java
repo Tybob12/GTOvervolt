@@ -6,7 +6,7 @@ import com.gregtechceu.gtceu.api.block.ActiveBlock;
 import com.gregtechceu.gtceu.api.block.ICoilType;
 import com.gregtechceu.gtceu.common.block.CoilBlock;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
-import com.gregtechceu.gtceu.common.data.GTModels;
+import com.gregtechceu.gtceu.common.data.models.GTModels;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -34,8 +34,10 @@ import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTR
 
 public class GTOVBlocks {
 
+
     public static final BlockEntry<SteamMachineCasing> CASING_BRONZE = createSteamMachineCasing(SteamMachineCasing.CasingType.BRONZE);
     public static final BlockEntry<SteamMachineCasing> CASING_STEEL = createSteamMachineCasing(SteamMachineCasing.CasingType.STEEL);
+
 
     public static final BlockEntry<PipeCasing> BRONZE_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.BRONZE);
     public static final BlockEntry<PipeCasing> STEEL_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.STEEL);
@@ -67,13 +69,13 @@ public class GTOVBlocks {
                 .block("%s_casing".formatted(casingType.getName()), p -> new SteamMachineCasing(p, casingType))
                 .initialProperties(() -> Blocks.IRON_BLOCK)
                 .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
-                .blockstate(createSteamCasingModel(casingType.getName()))
                 .item(BlockItem::new)
                 .build()
                 .register();
         GTOVAPI.STEAM_CASING.put(casingType, steamCasing);
         return steamCasing;
     }
+
 
     private static BlockEntry<PipeCasing> createMachinePipeCasing(IPipeCasingType casingType) {
         var pipeCasing = REGISTRATE

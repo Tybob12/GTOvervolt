@@ -59,7 +59,7 @@ loom {
 
     runConfigs.named("data").configure {
         programArg("--existing=" + file("src/main/resources").absolutePath)
-        programArgs("--client", "--server")
+        programArgs("--client", "--server", "--existing-mod=gtceu")
     }
 
     if (isJetBrainsRuntime()) {
@@ -67,6 +67,10 @@ loom {
             client {
                 vmArgs '-XX:+AllowEnhancedClassRedefinition'
                 vmArgs '-XX:HotswapAgent=fatjar'
+
+            }
+            data {
+                args '--existing-mod', 'gtceu'
             }
         }
     }
@@ -75,13 +79,13 @@ loom {
             server()
             name("Minecraft Game Test")
             source("main")
-
             property("forge.enabledGameTestNamespaces", mod_id)
             property("forge.gameTestServer", "true")
 
             mods {
                 create(mod_id) {
                     sourceSet("main")
+
                 }
             }
         }
@@ -191,7 +195,6 @@ dependencies {
     minecraft libs.minecraft
     forge forge.minecraftForge
 
-    // The following line declares the mojmap mappings, you may use other mappings as well
     mappings loom.layered {
         it.mappings("org.quiltmc:quilt-mappings:${libs.versions.minecraft.get()}+build.${libs.versions.quiltMappings.get()}:intermediary-v2")
         it.parchment("org.parchmentmc.data:parchment-${libs.versions.minecraft.get()}:${libs.versions.parchment.get()}@zip")
@@ -199,8 +202,8 @@ dependencies {
     }
 
     // LDLib
-    modImplementation(forge.gtceu.forge) { transitive = false }
     modImplementation(forge.ldlib.forge) { transitive = false }
+    modImplementation(forge.gtceu.forge) { transitive = false }
 
     // Registrate
     modImplementation("com.tterrag.registrate:Registrate:${forge.versions.registrate.get()}")
@@ -227,7 +230,6 @@ dependencies {
 }
 
 processResources {
-    // set up properties for filling into metadata
     var properties = [
             "mod_license": mod_license,
             "mod_id": mod_id,
@@ -235,7 +237,7 @@ processResources {
             "mod_name": mod_name,
             "mod_url": mod_url,
             "mod_author": mod_author,
-            "forge_version": forge_version.split("\\.")[0], // only specify major version of forge
+            "forge_version": forge_version.split("\\.")[0],
             "minecraft_version": minecraft_version,
             "gtceu_version": forge.versions.gtceu
     ]
@@ -247,10 +249,6 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    // ensure that the encoding is set to UTF-8, no matter what the system default is
-    // this fixes some edge cases with special characters not displaying correctly
-    // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-    // If Javadoc is generated, this must be specified in that task too.
     options.encoding = "UTF-8"
     options.release.set(17)
 }

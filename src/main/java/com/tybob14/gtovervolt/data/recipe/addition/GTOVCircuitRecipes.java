@@ -1,6 +1,6 @@
 package com.tybob14.gtovervolt.data.recipe.addition;
 
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tybob14.gtovervolt.GTOvervolt;
@@ -33,9 +33,9 @@ public class GTOVCircuitRecipes {
          */
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("polyethylene_to_plastic_boards")).EUt(22).duration(665)
-                .inputItems(new UnificationEntry(plate, Polyethylene))
-                .inputItems(new UnificationEntry(foil, Copper), 16)
-                .inputItems(new UnificationEntry(foil, AnnealedCopper), 16)
+                .inputItems(new MaterialEntry(plate, Polyethylene))
+                .inputItems(new MaterialEntry(foil, Copper), 16)
+                .inputItems(new MaterialEntry(foil, AnnealedCopper), 16)
                 .inputFluids(Iron3Chloride.getFluid(250))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
@@ -43,9 +43,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pcv_to_plastic_boards")).EUt(90).duration(550)
-                .inputItems(new UnificationEntry(plate, PolyvinylChloride))
-                .inputItems(new UnificationEntry(foil, Copper), 22)
-                .inputItems(new UnificationEntry(foil, AnnealedCopper), 22)
+                .inputItems(new MaterialEntry(plate, PolyvinylChloride))
+                .inputItems(new MaterialEntry(foil, Copper), 22)
+                .inputItems(new MaterialEntry(foil, AnnealedCopper), 22)
                 .inputFluids(Iron3Chloride.getFluid(353))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
@@ -53,9 +53,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("ptfe_to_plastic_boards")).EUt(360).duration(450)
-                .inputItems(new UnificationEntry(plate, Polytetrafluoroethylene))
-                .inputItems(new UnificationEntry(foil, Copper), 27)
-                .inputItems(new UnificationEntry(foil, AnnealedCopper), 27)
+                .inputItems(new MaterialEntry(plate, Polytetrafluoroethylene))
+                .inputItems(new MaterialEntry(foil, Copper), 27)
+                .inputItems(new MaterialEntry(foil, AnnealedCopper), 27)
                 .inputFluids(Iron3Chloride.getFluid(433))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
@@ -63,9 +63,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_plastic_boards")).EUt(1440).duration(360)
-                .inputItems(new UnificationEntry(plate, Epoxy))
-                .inputItems(new UnificationEntry(foil, Copper), 32)
-                .inputItems(new UnificationEntry(foil, AnnealedCopper), 32)
+                .inputItems(new MaterialEntry(plate, Epoxy))
+                .inputItems(new MaterialEntry(foil, Copper), 32)
+                .inputItems(new MaterialEntry(foil, AnnealedCopper), 32)
                 .inputFluids(Iron3Chloride.getFluid(500))
                 .inputFluids(SulfuricAcid.getFluid(1000))
                 .circuitMeta(1)
@@ -73,9 +73,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_plastic_boards")).EUt(5760).duration(300)
-                .inputItems(new UnificationEntry(plate, ReinforcedEpoxyResin))
-                .inputItems(new UnificationEntry(foil, Copper), 35)
-                .inputItems(new UnificationEntry(foil, AnnealedCopper), 35)
+                .inputItems(new MaterialEntry(plate, ReinforcedEpoxyResin))
+                .inputItems(new MaterialEntry(foil, Copper), 35)
+                .inputItems(new MaterialEntry(foil, AnnealedCopper), 35)
                 .inputFluids(Iron3Chloride.getFluid(559))
                 .inputFluids(SulfuricAcid.getFluid(1118))
                 .circuitMeta(1)
@@ -83,9 +83,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_plastic_boards")).EUt(23040).duration(240)
-                .inputItems(new UnificationEntry(plate, Polybenzimidazole))
-                .inputItems(new UnificationEntry(foil, Copper), 39)
-                .inputItems(new UnificationEntry(foil, AnnealedCopper), 39)
+                .inputItems(new MaterialEntry(plate, Polybenzimidazole))
+                .inputItems(new MaterialEntry(foil, Copper), 39)
+                .inputItems(new MaterialEntry(foil, AnnealedCopper), 39)
                 .inputFluids(Iron3Chloride.getFluid(612))
                 .inputFluids(SulfuricAcid.getFluid(1224))
                 .circuitMeta(1)
@@ -93,9 +93,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pcv_to_epoxy_boards")).EUt(90).duration(550)
-                .inputItems(new UnificationEntry(plate, PolyvinylChloride))
-                .inputItems(new UnificationEntry(foil, Gold), 16)
-                .inputItems(new UnificationEntry(foil, Electrum), 16)
+                .inputItems(new MaterialEntry(plate, PolyvinylChloride))
+                .inputItems(new MaterialEntry(foil, Gold), 16)
+                .inputItems(new MaterialEntry(foil, Electrum), 16)
                 .inputFluids(Iron3Chloride.getFluid(500))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
@@ -103,9 +103,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("ptfe_to_epoxy_boards")).EUt(360).duration(450)
-                .inputItems(new UnificationEntry(plate, Polytetrafluoroethylene))
-                .inputItems(new UnificationEntry(foil, Gold), 22)
-                .inputItems(new UnificationEntry(foil, Electrum), 22)
+                .inputItems(new MaterialEntry(plate, Polytetrafluoroethylene))
+                .inputItems(new MaterialEntry(foil, Gold), 22)
+                .inputItems(new MaterialEntry(foil, Electrum), 22)
                 .inputFluids(Iron3Chloride.getFluid(707))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
@@ -113,9 +113,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_epoxy_boards")).EUt(1440).duration(360)
-                .inputItems(new UnificationEntry(plate, Epoxy))
-                .inputItems(new UnificationEntry(foil, Gold), 27)
-                .inputItems(new UnificationEntry(foil, Electrum), 27)
+                .inputItems(new MaterialEntry(plate, Epoxy))
+                .inputItems(new MaterialEntry(foil, Gold), 27)
+                .inputItems(new MaterialEntry(foil, Electrum), 27)
                 .inputFluids(Iron3Chloride.getFluid(866))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
@@ -123,9 +123,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_epoxy_boards")).EUt(5760).duration(300)
-                .inputItems(new UnificationEntry(plate, ReinforcedEpoxyResin))
-                .inputItems(new UnificationEntry(foil, Gold), 32)
-                .inputItems(new UnificationEntry(foil, Electrum), 32)
+                .inputItems(new MaterialEntry(plate, ReinforcedEpoxyResin))
+                .inputItems(new MaterialEntry(foil, Gold), 32)
+                .inputItems(new MaterialEntry(foil, Electrum), 32)
                 .inputFluids(Iron3Chloride.getFluid(1000))
                 .inputFluids(SulfuricAcid.getFluid(1000))
                 .circuitMeta(1)
@@ -133,9 +133,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_epoxy_boards")).EUt(23040).duration(240)
-                .inputItems(new UnificationEntry(plate, Polybenzimidazole))
-                .inputItems(new UnificationEntry(foil, Gold), 35)
-                .inputItems(new UnificationEntry(foil, Electrum), 35)
+                .inputItems(new MaterialEntry(plate, Polybenzimidazole))
+                .inputItems(new MaterialEntry(foil, Gold), 35)
+                .inputItems(new MaterialEntry(foil, Electrum), 35)
                 .inputFluids(Iron3Chloride.getFluid(1118))
                 .inputFluids(SulfuricAcid.getFluid(1118))
                 .circuitMeta(1)
@@ -143,9 +143,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("ptfe_to_fiber_epoxy_boards")).EUt(360).duration(450)
-                .inputItems(new UnificationEntry(plate, Polytetrafluoroethylene))
-                .inputItems(new UnificationEntry(foil, Aluminium), 16)
-                .inputItems(new UnificationEntry(foil, RoseGold), 16)
+                .inputItems(new MaterialEntry(plate, Polytetrafluoroethylene))
+                .inputItems(new MaterialEntry(foil, Aluminium), 16)
+                .inputItems(new MaterialEntry(foil, RoseGold), 16)
                 .inputFluids(Iron3Chloride.getFluid(1000))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
@@ -153,9 +153,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_fiber_epoxy_boards")).EUt(1440).duration(360)
-                .inputItems(new UnificationEntry(plate, Epoxy))
-                .inputItems(new UnificationEntry(foil, Aluminium), 22)
-                .inputItems(new UnificationEntry(foil, RoseGold), 22)
+                .inputItems(new MaterialEntry(plate, Epoxy))
+                .inputItems(new MaterialEntry(foil, Aluminium), 22)
+                .inputItems(new MaterialEntry(foil, RoseGold), 22)
                 .inputFluids(Iron3Chloride.getFluid(1414))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
@@ -163,9 +163,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_fiber_epoxy_boards")).EUt(5760).duration(300)
-                .inputItems(new UnificationEntry(plate, ReinforcedEpoxyResin))
-                .inputItems(new UnificationEntry(foil, Aluminium), 27)
-                .inputItems(new UnificationEntry(foil, RoseGold), 27)
+                .inputItems(new MaterialEntry(plate, ReinforcedEpoxyResin))
+                .inputItems(new MaterialEntry(foil, Aluminium), 27)
+                .inputItems(new MaterialEntry(foil, RoseGold), 27)
                 .inputFluids(Iron3Chloride.getFluid(1732))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
@@ -173,9 +173,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_fiber_epoxy_boards")).EUt(23040).duration(240)
-                .inputItems(new UnificationEntry(plate, Polybenzimidazole))
-                .inputItems(new UnificationEntry(foil, Aluminium), 32)
-                .inputItems(new UnificationEntry(foil, RoseGold), 32)
+                .inputItems(new MaterialEntry(plate, Polybenzimidazole))
+                .inputItems(new MaterialEntry(foil, Aluminium), 32)
+                .inputItems(new MaterialEntry(foil, RoseGold), 32)
                 .inputFluids(Iron3Chloride.getFluid(2000))
                 .inputFluids(SulfuricAcid.getFluid(1000))
                 .circuitMeta(1)
@@ -183,9 +183,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("epoxy_to_fiber_multi_epoxy_boards")).EUt(1440).duration(360)
-                .inputItems(new UnificationEntry(plate, Epoxy))
-                .inputItems(new UnificationEntry(foil, Palladium), 16)
-                .inputItems(new UnificationEntry(foil, Platinum), 16)
+                .inputItems(new MaterialEntry(plate, Epoxy))
+                .inputItems(new MaterialEntry(foil, Palladium), 16)
+                .inputItems(new MaterialEntry(foil, Platinum), 16)
                 .inputFluids(Iron3Chloride.getFluid(2000))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .circuitMeta(1)
@@ -193,9 +193,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_multi_fiber_epoxy_boards")).EUt(5760).duration(300)
-                .inputItems(new UnificationEntry(plate, ReinforcedEpoxyResin))
-                .inputItems(new UnificationEntry(foil, Palladium), 22)
-                .inputItems(new UnificationEntry(foil, Platinum), 22)
+                .inputItems(new MaterialEntry(plate, ReinforcedEpoxyResin))
+                .inputItems(new MaterialEntry(foil, Palladium), 22)
+                .inputItems(new MaterialEntry(foil, Platinum), 22)
                 .inputFluids(Iron3Chloride.getFluid(2828))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .circuitMeta(1)
@@ -203,9 +203,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_mutli_fiber_epoxy_boards")).EUt(23040).duration(240)
-                .inputItems(new UnificationEntry(plate, Polybenzimidazole))
-                .inputItems(new UnificationEntry(foil, Palladium), 27)
-                .inputItems(new UnificationEntry(foil, Platinum), 27)
+                .inputItems(new MaterialEntry(plate, Polybenzimidazole))
+                .inputItems(new MaterialEntry(foil, Palladium), 27)
+                .inputItems(new MaterialEntry(foil, Platinum), 27)
                 .inputFluids(Iron3Chloride.getFluid(3464))
                 .inputFluids(SulfuricAcid.getFluid(866))
                 .circuitMeta(1)
@@ -213,9 +213,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("fiber_epoxy_to_wetware_boards")).EUt(5760).duration(300)
-                .inputItems(new UnificationEntry(plate, ReinforcedEpoxyResin))
-                .inputItems(new UnificationEntry(foil, Holmium), 16)
-                .inputItems(new UnificationEntry(foil, NiobiumTitanium), 16)
+                .inputItems(new MaterialEntry(plate, ReinforcedEpoxyResin))
+                .inputItems(new MaterialEntry(foil, Holmium), 16)
+                .inputItems(new MaterialEntry(foil, NiobiumTitanium), 16)
                 .inputFluids(Iron3Chloride.getFluid(5000))
                 .inputFluids(SulfuricAcid.getFluid(500))
                 .inputFluids(SterileGrowthMedium.getFluid(2000))
@@ -224,9 +224,9 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         GTOVRecipeTypes.PCB_FACTORY_RECIPES.recipeBuilder(GTOvervolt.id("pbi_to_wetware_boards")).EUt(23040).duration(240)
-                .inputItems(new UnificationEntry(plate, Polybenzimidazole))
-                .inputItems(new UnificationEntry(foil, Palladium), 22)
-                .inputItems(new UnificationEntry(foil, Platinum), 22)
+                .inputItems(new MaterialEntry(plate, Polybenzimidazole))
+                .inputItems(new MaterialEntry(foil, Palladium), 22)
+                .inputItems(new MaterialEntry(foil, Platinum), 22)
                 .inputFluids(Iron3Chloride.getFluid(7071))
                 .inputFluids(SulfuricAcid.getFluid(707))
                 .inputFluids(SterileGrowthMedium.getFluid(2828))
@@ -235,22 +235,22 @@ public class GTOVCircuitRecipes {
                 .save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder(GTOvervolt.id("fiber_board")).EUt(30).duration(1200)
-                .inputItems(new UnificationEntry(plate, ReinforcedEpoxyResin))
-                .inputItems(new UnificationEntry(foil, Aluminium), 8)
+                .inputItems(new MaterialEntry(plate, ReinforcedEpoxyResin))
+                .inputItems(new MaterialEntry(foil, Aluminium), 8)
                 .inputFluids(SulfuricAcid.getFluid(125))
                 .outputItems(FIBER_BOARD)
                 .save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder(GTOvervolt.id("fiber_circuit_board_iron3")).EUt(30).duration(1200)
                 .inputItems(FIBER_BOARD)
-                .inputItems(new UnificationEntry(foil, SterlingSilver), 12)
+                .inputItems(new MaterialEntry(foil, SterlingSilver), 12)
                 .inputFluids(Iron3Chloride.getFluid(1000))
                 .outputItems(EXTREME_CIRCUIT_BOARD)
                 .save(provider);
 
         CHEMICAL_RECIPES.recipeBuilder(GTOvervolt.id("fiber_circuit_board_persulfate")).EUt(30).duration(1200)
                 .inputItems(FIBER_BOARD)
-                .inputItems(new UnificationEntry(foil, SterlingSilver), 12)
+                .inputItems(new MaterialEntry(foil, SterlingSilver), 12)
                 .inputFluids(SodiumPersulfate.getFluid(2000))
                 .outputItems(EXTREME_CIRCUIT_BOARD)
                 .save(provider);

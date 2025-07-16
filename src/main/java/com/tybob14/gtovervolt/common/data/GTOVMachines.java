@@ -15,12 +15,19 @@ import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
+import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
+import com.gregtechceu.gtceu.api.registry.registrate.provider.GTBlockstateProvider;
 import com.gregtechceu.gtceu.common.block.BoilerFireboxType;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.AssemblyLineMachine;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.LargeMinerMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
 import com.gregtechceu.gtceu.config.ConfigHolder;
+import com.gregtechceu.gtceu.data.model.builder.MachineModelBuilder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tybob14.gtovervolt.GTOvervolt;
 import com.tybob14.gtovervolt.api.GTOVAPI;
 import com.tybob14.gtovervolt.api.machine.multiblock.TieredSteamParallelMultiblockMachine;
 import com.tybob14.gtovervolt.common.machine.multiblock.electric.CircuitAssemblyLineMachine;
@@ -32,8 +39,13 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -41,12 +53,17 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
+import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT;
+import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.OC_NON_PERFECT;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.registerLargeBoiler;
+import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.MATERIALS_TO_CASING_TEXTURES;
+import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.createWorkableCasingMachineModel;
 import static com.tybob14.gtovervolt.api.pattern.GTOVPredicates.machinePipeCasings;
 import static com.tybob14.gtovervolt.api.pattern.GTOVPredicates.steamMachineCasings;
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 import static com.tybob14.gtovervolt.common.data.GTOVBlocks.*;
+import static com.tybob14.gtovervolt.common.data.GTOVRecipeTypes.CIRCUIT_ASSEMBLY_LINE_RECIPES;
 import static net.minecraft.world.level.block.Blocks.IRON_BLOCK;
 
 @Slf4j
@@ -75,14 +92,12 @@ public class GTOVMachines {
             ConfigHolder.INSTANCE.machines.largeBoilers.tungstensteelBoilerHeatSpeed);
 
 
-    public static final MultiblockMachineDefinition CIRCUIT_ASSEMBLY_LINE = REGISTRATE
-            .multiblock("circuit_assembly_line", CircuitAssemblyLineMachine::new)
-            .rotationState(RotationState.NON_Y_AXIS)
+    /*public static final MultiblockMachineDefinition CIRCUIT_ASSEMBLY_LINE = REGISTRATE
+            .multiblock("circuit_assembly_line", AssemblyLineMachine::new)
+            .rotationState(RotationState.ALL)
             .langValue("Circuit Assembly Line")
             .recipeTypes(GTOVRecipeTypes.CIRCUIT_ASSEMBLY_LINE_RECIPES, GTRecipeTypes.CIRCUIT_ASSEMBLER_RECIPES)
-            .alwaysTryModifyRecipe(true)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT,
-                    GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.PERFECT_OVERCLOCK))
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.PERFECT_OVERCLOCK))
             .appearanceBlock(CASING_STEEL_SOLID)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("FIF", "RAR", "SEG")
@@ -101,15 +116,52 @@ public class GTOVMachines {
                     .where('A', blocks(CASING_ASSEMBLY_LINE.get()))
                     .where('R', blocks(CASING_LAMINATED_GLASS.get()))
                     .build())
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
+            .partSorter(AssemblyLineMachine::partSorter)
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/assembly_line"))
+            .register();*/
+
+    public static final MultiblockMachineDefinition CIRCUIT_ASSEMBLY_LINE = REGISTRATE
+            .multiblock("circuit_assembly_line", AssemblyLineMachine::new)
+            .rotationState(RotationState.ALL)
+            .recipeTypes(GTRecipeTypes.CIRCUIT_ASSEMBLER_RECIPES, CIRCUIT_ASSEMBLY_LINE_RECIPES)
+            .alwaysTryModifyRecipe(true)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT, OC_NON_PERFECT)
+            .appearanceBlock(CASING_STEEL_SOLID)
+            .pattern(definition -> FactoryBlockPattern.start(BACK, UP, RIGHT)
+                    .aisle("FIF", "RTR", "SAG")
+                    .aisle("FIF", "RTR", "GGG").setRepeatable(3, 5)
+                    .aisle("FOF", "RTR", "GAG")
+                    .where('S', Predicates.controller(blocks(definition.getBlock())))
+                    .where('F', blocks(CASING_STEEL_SOLID.get())
+                            .or(!ConfigHolder.INSTANCE.machines.orderedAssemblyLineFluids ?
+                                    Predicates.abilities(PartAbility.IMPORT_FLUIDS_1X,
+                                            PartAbility.IMPORT_FLUIDS_4X, PartAbility.IMPORT_FLUIDS_9X) :
+                                    Predicates.abilities(PartAbility.IMPORT_FLUIDS_1X).setMaxGlobalLimited(4)))
+                    .where('O',
+                            Predicates.abilities(PartAbility.EXPORT_ITEMS)
+                                    .addTooltips(Component.translatable("gtceu.multiblock.pattern.location_end")))
+                    .where('Y',
+                            blocks(CASING_STEEL_SOLID.get()))
+                    .where('I', blocks(ITEM_IMPORT_BUS[0].getBlock()))
+                    .where('G', blocks(CASING_GRATE.get()))
+                    .where('A', blocks(CASING_GRATE.get()).or(Predicates.abilities(PartAbility.INPUT_ENERGY)
+                            .setExactLimit(1)))
+                    .where('R', blocks(CASING_LAMINATED_GLASS.get()))
+                    .where('T', blocks(CASING_ASSEMBLY_LINE.get()))
+                    .build())
+            .partSorter(AssemblyLineMachine::partSorter)
+            .workableCasingModel(GTCEu.id("gtceu:block/casings/solid/machine_casing_solid_steel"),
+                    GTCEu.id("gtceu:block/multiblock/assembly_line"))
             .register();
+
+
     public static final MultiblockMachineDefinition PCB_FACTORY = REGISTRATE
             .multiblock("pcb_factory", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .langValue("PCB Factory")
             .recipeTypes(GTOVRecipeTypes.PCB_FACTORY_RECIPES)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT)
             .appearanceBlock(CASING_STEEL_SOLID)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("FCCSCCF", "FGGGGGF", "FGGGGGF", "FGGGGGF", "FFFFFFF", "#######")
@@ -133,7 +185,7 @@ public class GTOVMachines {
                     .where('P', blocks(PLASTCRETE.get()))
                     .where('#', Predicates.any())
                     .build())
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_sturdy_hsse"),
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_sturdy_hsse"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .register();
 
@@ -141,7 +193,7 @@ public class GTOVMachines {
             .multiblock("large_extractor", CoilWorkableElectricMultiblockMachine::new)
             .langValue("Large Extractor")
             .recipeTypes(EXTRACTOR_RECIPES)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT, GTOVRecipeModifiers::coilSpeedDiscount)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT, GTOVRecipeModifiers::coilSpeedDiscount)
             .appearanceBlock(CASING_TUNGSTENSTEEL_ROBUST)
             .rotationState(RotationState.NON_Y_AXIS)
             .tooltips(Component.translatable("gtovervolt.machine.coil_speed_bonus"),
@@ -190,7 +242,7 @@ public class GTOVMachines {
                                 coil -> shapeInfo.add(builder.shallowCopy().where('T', coil.getValue().get()).build()));
                 return shapeInfo;
             })
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
@@ -212,7 +264,7 @@ public class GTOVMachines {
             .langValue("Industrial Precision Lathe")
             .recipeType(LATHE_RECIPES)
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT, GTOVRecipeModifiers::latheOverclock)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT)
             .appearanceBlock(CASING_STEEL_SOLID)
             .pattern((definition) -> FactoryBlockPattern.start()
                     .aisle("CCCCCCC", "#######", "#######", "#######", "#######")
@@ -255,7 +307,7 @@ public class GTOVMachines {
                                 pipecasings -> shapeInfo.add(builder.shallowCopy().where('P', pipecasings.getValue().get()).build()));
                 return shapeInfo;
             })
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof WorkableElectricMultiblockMachine machine && controller.isFormed()) {
@@ -272,7 +324,7 @@ public class GTOVMachines {
             .tooltips(Component.translatable("gtovervolt.machine.eu_reduction_90"))
             .langValue("Large Electric Compressor")
             .recipeType(COMPRESSOR_RECIPES)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT, GTOVRecipeModifiers::ELECTRIC_COMPRESSOR_OC)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT, GTOVRecipeModifiers::ELECTRIC_COMPRESSOR_OC)
             .appearanceBlock(GCYMBlocks.CASING_STRESS_PROOF)
             .pattern((definition) -> FactoryBlockPattern.start()
                     .aisle("##CCC##", "##RRR##", "##RGR##", "##RGR##", "##RGR##", "##RRR##", "##CCC##", "#######")
@@ -314,16 +366,16 @@ public class GTOVMachines {
                         .where('M', MAINTENANCE_HATCH, Direction.NORTH).build();
                 return shapeInfo;
             })
-            .workableCasingRenderer(GTCEu.id("block/casings/gcym/stress_proof_casing"),
+            .workableCasingModel(GTCEu.id("block/casings/gcym/stress_proof_casing"),
                     GTCEu.id("block/multiblock/gcym/large_material_press"))
             .register();
 
 
-    public static final MultiblockMachineDefinition INDUSTRIAL_AUTOCLAVE = REGISTRATE
+    /*public static final MultiblockMachineDefinition INDUSTRIAL_AUTOCLAVE = REGISTRATE
             .multiblock("industrial_autoclave", IndustrialAutoclave::new)
             .langValue("Industrial Autoclave")
             .recipeTypes(AUTOCLAVE_RECIPES)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT, GTOVRecipeModifiers::autoclaveOverclock)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT)
             .appearanceBlock(CASING_STAINLESS_CLEAN)
             .rotationState(RotationState.NON_Y_AXIS)
             .tooltips(Component.translatable("gtovervolt.machine.eu_reduction_80"),
@@ -394,7 +446,7 @@ public class GTOVMachines {
                                 });
                 return shapeInfo;
             })
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
@@ -413,14 +465,14 @@ public class GTOVMachines {
                                     .setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN))));
                 }
             })
-            .register();
+            .register();*/
 
     /*public static final MultiblockMachineDefinition STEAM_PRESSER = REGISTRATE
             .multiblock("steam_presser", SteamPresserMachine::new)
             .langValue("Steam Presser")
             .recipeType(FORGE_HAMMER_RECIPES)
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeModifiers(GTRecipeModifiers.DEFAULT_ENVIRONMENT_REQUIREMENT)
+            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT)
             .appearanceBlock(BRONZE_HULL)
             .pattern((definition) -> FactoryBlockPattern.start()
                     .aisle("CCC", "CCC", "CPC")
@@ -457,7 +509,7 @@ public class GTOVMachines {
                                 });
                 return shapeInfo;
             })
-            .workableCasingRenderer(GTCEu.id("block/casings/steam/bronze/side"),
+            .workableCasingModel(GTCEu.id("block/casings/steam/bronze/side"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof WorkableElectricMultiblockMachine machine && controller.isFormed()) {
@@ -466,15 +518,14 @@ public class GTOVMachines {
                             .setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)));
                 }
             })
-            .register();*/
-
+            .register();
+*/
 
     public static final MultiblockMachineDefinition STEAM_PRESSER = REGISTRATE
             .multiblock("steam_presser", TieredSteamParallelMultiblockMachine::new)
             .langValue("Steam Presser")
             .recipeType(FORGE_HAMMER_RECIPES)
             .rotationState(RotationState.NON_Y_AXIS)
-            .recipeModifier(TieredSteamParallelMultiblockMachine::recipeModifier, true)
             .recipeModifier(GTOVRecipeModifiers::highPressureSteam, true)
             .appearanceBlock(CASING_BRONZE_BRICKS)
             .pattern((definition) -> FactoryBlockPattern.start()
@@ -524,7 +575,7 @@ public class GTOVMachines {
                 return shapeInfo;
             })
 
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
                     GTCEu.id("block/multiblock/assembly_line"))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof WorkableElectricMultiblockMachine machine && controller.isFormed()) {

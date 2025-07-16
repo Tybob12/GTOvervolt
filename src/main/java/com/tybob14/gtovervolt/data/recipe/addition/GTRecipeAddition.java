@@ -1,6 +1,7 @@
 package com.tybob14.gtovervolt.data.recipe.addition;
 
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
@@ -20,9 +21,9 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.TungstenSteel;
 public class GTRecipeAddition {
     public static void init(Consumer<FinishedRecipe> provider) {
 
-        VanillaRecipeHelper.addShapedRecipe(provider, GTOvervolt.id("gtovervolt/machine/fluid_extractor"), new ItemStack(GTOVMachines.LARGE_EXTRACTOR.getBlock()), "ABA", "CDE", "ABA", 'A', new UnificationEntry(plate, TungstenSteel), 'B', CustomTags.IV_CIRCUITS, 'C', GTItems.CONVEYOR_MODULE_EV, 'D', GTBlocks.MACHINE_CASING_EV, 'E', GTItems.ELECTRIC_PUMP_EV);
+        //VanillaRecipeHelper.addShapedRecipe(provider, GTOvervolt.id("gtovervolt/machine/fluid_extractor"), new ItemStack(GTOVMachines.LARGE_EXTRACTOR.getBlock()), "ABA", "CDE", "ABA", 'A', new MaterialEntry(plate, TungstenSteel), 'B', CustomTags.IV_CIRCUITS, 'C', GTItems.CONVEYOR_MODULE_EV, 'D', GTBlocks.MACHINE_CASING_EV, 'E', GTItems.ELECTRIC_PUMP_EV);
 
-        VanillaRecipeHelper.addShapedRecipe(provider, GTOvervolt.id("gtovervolt/casings/pipe_casings/bronze"), new ItemStack(GTOVBlocks.BRONZE_PIPE_CASING), "ABA", "BCB", "ABA", 'A', new UnificationEntry(plate, Bronze), 'B', new UnificationEntry(pipeNormalFluid, Bronze), 'C', new UnificationEntry(frameGt, Bronze));
+        //VanillaRecipeHelper.addShapedRecipe(provider, GTOvervolt.id("gtovervolt/casings/pipe_casings/bronze"), new ItemStack(GTOVBlocks.BRONZE_PIPE_CASING), "ABA", "BCB", "ABA", 'A', new MaterialEntry(plate, Bronze), 'B', new MaterialEntry(pipeNormalFluid, Bronze), 'C', new MaterialEntry(frameGt, Bronze));
 
 
     }
