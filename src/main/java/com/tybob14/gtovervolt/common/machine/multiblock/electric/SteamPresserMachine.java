@@ -21,22 +21,21 @@ public class SteamPresserMachine extends WorkableElectricMultiblockMachine {
     @Override
     public void onStructureFormed() {
         super.onStructureFormed();
-        if (getMultiblockState().getMatchContext().get("PipeCasingType") instanceof IPipeCasingType pipeCasing){
+        if (getMultiblockState().getMatchContext().get("PipeCasingType") instanceof IPipeCasingType pipeCasing) {
             this.pipeCasing = pipeCasing;
         }
 
-        if (getMultiblockState().getMatchContext().get("PipeCasingType") instanceof ISteamMachineCasingType steamCasing){
+        if (getMultiblockState().getMatchContext().get("PipeCasingType") instanceof ISteamMachineCasingType steamCasing) {
             this.steamCasing = steamCasing;
 
         }
 
 
-
     }
 
 
-    public void updateTexture(){
-        if (steamCasing.getMaterial() == GTMaterials.Bronze){
+    public void updateTexture() {
+        if (steamCasing.getMaterial() == GTMaterials.Bronze) {
 
             GTCEu.id("block/casings/steam/bronze/side");
         }

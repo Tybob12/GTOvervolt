@@ -1,22 +1,14 @@
 package com.tybob14.gtovervolt.common.data;
 
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.capability.recipe.EURecipeCapability;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
-import com.gregtechceu.gtceu.api.recipe.content.ContentModifier;
 import com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction;
-import com.gregtechceu.gtceu.api.recipe.modifier.ParallelLogic;
 import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
-import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.tybob14.gtovervolt.api.machine.multiblock.TieredSteamParallelMultiblockMachine;
 import org.jetbrains.annotations.NotNull;
-
-import static com.gregtechceu.gtceu.api.recipe.OverclockingLogic.NON_PERFECT_OVERCLOCK;
 
 public class GTOVRecipeModifiers {
 
@@ -51,9 +43,9 @@ public class GTOVRecipeModifiers {
         }
 
         System.out.println(steamMachine.getTier());
-        if (steamMachine.getTier() == 1){
+        if (steamMachine.getTier() == 1) {
             return ModifierFunction.builder().durationMultiplier(0.5).build();
-        }else{
+        } else {
             return ModifierFunction.builder().durationMultiplier(1).build();
         }
 
@@ -203,7 +195,6 @@ public class GTOVRecipeModifiers {
         oc = oc.andThen(modifer);
         return oc;
     }*/
-
 
 
     public static @NotNull ModifierFunction ELECTRIC_COMPRESSOR_OC(@NotNull MetaMachine machine, @NotNull GTRecipe recipe) {

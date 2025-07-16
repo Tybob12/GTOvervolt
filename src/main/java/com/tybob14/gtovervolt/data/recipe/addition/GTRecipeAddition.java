@@ -1,22 +1,8 @@
 package com.tybob14.gtovervolt.data.recipe.addition;
 
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
-import com.gregtechceu.gtceu.common.data.GTBlocks;
-import com.gregtechceu.gtceu.common.data.GTItems;
-import com.gregtechceu.gtceu.data.recipe.CustomTags;
-import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
-import com.tybob14.gtovervolt.GTOvervolt;
-import com.tybob14.gtovervolt.common.data.GTOVBlocks;
-import com.tybob14.gtovervolt.common.data.GTOVMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Consumer;
-
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Bronze;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.TungstenSteel;
 
 public class GTRecipeAddition {
     public static void init(Consumer<FinishedRecipe> provider) {

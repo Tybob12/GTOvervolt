@@ -30,16 +30,15 @@ public class SteamMachineCasing extends Block {
         private final Material material;
 
 
+        CasingType(String name, Material material) {
+            this.name = name;
+            this.material = material;
+        }
+
         @Override
         @NotNull
         public String getSerializedName() {
             return name;
-        }
-
-
-        CasingType(String name, Material material) {
-            this.name = name;
-            this.material = material;
         }
 
         public int getTier() {

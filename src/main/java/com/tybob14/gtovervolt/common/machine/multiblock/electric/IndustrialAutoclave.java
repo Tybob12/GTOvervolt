@@ -21,7 +21,7 @@ public class IndustrialAutoclave extends CoilWorkableElectricMultiblockMachine {
     @Override
     public void onStructureFormed() {
         super.onStructureFormed();
-        if (getMultiblockState().getMatchContext().get("PipeCasingType") instanceof IPipeCasingType pipeCasing){
+        if (getMultiblockState().getMatchContext().get("PipeCasingType") instanceof IPipeCasingType pipeCasing) {
             this.pipeCasing = pipeCasing;
         }
         if (getMultiblockState().getMatchContext().get("CoilType") instanceof ICoilType coil) {

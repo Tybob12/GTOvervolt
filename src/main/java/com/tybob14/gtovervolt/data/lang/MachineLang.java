@@ -1,7 +1,6 @@
 package com.tybob14.gtovervolt.data.lang;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
-import net.minecraft.network.chat.Component;
 
 public class MachineLang {
 

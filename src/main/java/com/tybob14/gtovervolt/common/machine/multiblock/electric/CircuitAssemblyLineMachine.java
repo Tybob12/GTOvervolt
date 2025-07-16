@@ -1,23 +1,7 @@
 package com.tybob14.gtovervolt.common.machine.multiblock.electric;
 
-import com.gregtechceu.gtceu.api.capability.recipe.IO;
-import com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
-import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
-import com.gregtechceu.gtceu.api.recipe.GTRecipe;
-import com.gregtechceu.gtceu.config.ConfigHolder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-
-import javax.annotation.Nullable;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-
-import static com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability.CAP;
 
 public class CircuitAssemblyLineMachine extends WorkableElectricMultiblockMachine {
     public CircuitAssemblyLineMachine(IMachineBlockEntity holder) {

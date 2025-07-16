@@ -1,6 +1,5 @@
 package com.tybob14.gtovervolt.data.recipe.removal;
 
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;

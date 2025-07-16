@@ -2,10 +2,7 @@ package com.tybob14.gtovervolt.data.tags;
 
 import com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer;
 import com.gregtechceu.gtceu.api.data.worldgen.WorldGeneratorUtils;
-import com.tybob14.gtovervolt.GTOvervolt;
 import com.tybob14.gtovervolt.common.worldgen.GTOVDimensions;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.Level;

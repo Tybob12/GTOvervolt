@@ -3,9 +3,11 @@ package com.tybob14.gtovervolt.common.data;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
@@ -13,41 +15,29 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
-import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
-import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
-import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
-import com.gregtechceu.gtceu.api.registry.registrate.provider.GTBlockstateProvider;
 import com.gregtechceu.gtceu.common.block.BoilerFireboxType;
-import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.data.GCYMBlocks;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.AssemblyLineMachine;
-import com.gregtechceu.gtceu.common.machine.multiblock.electric.LargeMinerMachine;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
 import com.gregtechceu.gtceu.config.ConfigHolder;
-import com.gregtechceu.gtceu.data.model.builder.MachineModelBuilder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.tterrag.registrate.providers.DataGenContext;
-import com.tterrag.registrate.util.entry.BlockEntry;
-import com.tybob14.gtovervolt.GTOvervolt;
 import com.tybob14.gtovervolt.api.GTOVAPI;
-import com.tybob14.gtovervolt.api.machine.multiblock.TieredSteamParallelMultiblockMachine;
-import com.tybob14.gtovervolt.common.machine.multiblock.electric.CircuitAssemblyLineMachine;
-import com.tybob14.gtovervolt.common.machine.multiblock.electric.IndustrialAutoclave;
+import com.tybob14.gtovervolt.api.machine.multiblock.GTOVPartAbility;
+import com.tybob14.gtovervolt.api.machine.multiblock.part.SteamFluidPartMachine;
 import com.tybob14.gtovervolt.common.machine.multiblock.electric.IndustrialPrecisionLathe;
-import com.tybob14.gtovervolt.common.machine.multiblock.electric.SteamPresserMachine;
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.*;
@@ -57,14 +47,11 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.DEFAULT_ENVIRO
 import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.OC_NON_PERFECT;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.registerLargeBoiler;
-import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.MATERIALS_TO_CASING_TEXTURES;
-import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.createWorkableCasingMachineModel;
 import static com.tybob14.gtovervolt.api.pattern.GTOVPredicates.machinePipeCasings;
-import static com.tybob14.gtovervolt.api.pattern.GTOVPredicates.steamMachineCasings;
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 import static com.tybob14.gtovervolt.common.data.GTOVBlocks.*;
 import static com.tybob14.gtovervolt.common.data.GTOVRecipeTypes.CIRCUIT_ASSEMBLY_LINE_RECIPES;
-import static net.minecraft.world.level.block.Blocks.IRON_BLOCK;
+import static net.minecraft.world.level.block.Blocks.*;
 
 @Slf4j
 public class GTOVMachines {
@@ -90,6 +77,29 @@ public class GTOVMachines {
             BoilerFireboxType.TUNGSTENSTEEL_FIREBOX,
             ConfigHolder.INSTANCE.machines.largeBoilers.tungstensteelBoilerMaxTemperature,
             ConfigHolder.INSTANCE.machines.largeBoilers.tungstensteelBoilerHeatSpeed);
+
+    public static final MachineDefinition STEAM_IMPORT_HATCH = REGISTRATE
+            .machine("steam_input_hatch", holder -> new SteamFluidPartMachine(holder, 0, IO.IN, FluidHatchPartMachine.INITIAL_TANK_CAPACITY_1X * 2, 1, GTOVPartAbility.STEAM_IMPORT_FLUIDS))
+            .rotationState(RotationState.ALL)
+            .abilities(GTOVPartAbility.STEAM_IMPORT_FLUIDS)
+            .colorOverlaySteamHullModel(GTCEu.id("block/overlay/machine/overlay_pipe_in_emissive"), null, GTCEu.id("block/overlay/machine/overlay_fluid_hatch"))
+            .langValue("Steam Input Hatch")
+            .tooltips(Component.translatable("gtceu.machine.fluid_hatch.import.tooltip"),
+                    Component.translatable("gtceu.machine.steam_bus.tooltip"))
+            .allowCoverOnFront(true)
+            .register();
+
+    public static final MachineDefinition STEAM_EXPORT_HATCH = REGISTRATE
+            .machine("steam_output_hatch", holder -> new SteamFluidPartMachine(holder, 0, IO.OUT, FluidHatchPartMachine.INITIAL_TANK_CAPACITY_1X * 2, 1, GTOVPartAbility.STEAM_IMPORT_FLUIDS))
+            .rotationState(RotationState.ALL)
+            .abilities(GTOVPartAbility.STEAM_EXPORT_FLUIDS)
+            .colorOverlaySteamHullModel(GTCEu.id("block/overlay/machine/overlay_pipe_out_emissive"), null, GTCEu.id("block/overlay/machine/overlay_fluid_hatch"))
+            .langValue("Steam Output Hatch")
+            .tooltips(Component.translatable("gtceu.machine.fluid_hatch.export.tooltip"),
+                    Component.translatable("gtceu.machine.steam_bus.tooltip"))
+            .allowCoverOnFront(true)
+            .register();
+
 
 
     /*public static final MultiblockMachineDefinition CIRCUIT_ASSEMBLY_LINE = REGISTRATE
@@ -312,8 +322,8 @@ public class GTOVMachines {
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof WorkableElectricMultiblockMachine machine && controller.isFormed()) {
                     components.add(Component.translatable(FormattingUtil.formatNumbers(machine.getTier() + 1) +
-                                                    "%")
-                                    .setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)));
+                                    "%")
+                            .setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)));
                 }
             })
             .register();
@@ -467,61 +477,9 @@ public class GTOVMachines {
             })
             .register();*/
 
+
+
     /*public static final MultiblockMachineDefinition STEAM_PRESSER = REGISTRATE
-            .multiblock("steam_presser", SteamPresserMachine::new)
-            .langValue("Steam Presser")
-            .recipeType(FORGE_HAMMER_RECIPES)
-            .rotationState(RotationState.NON_Y_AXIS)
-            .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT)
-            .appearanceBlock(BRONZE_HULL)
-            .pattern((definition) -> FactoryBlockPattern.start()
-                    .aisle("CCC", "CCC", "CPC")
-                    .aisle("CCC", "CCC", "PPP")
-                    .aisle("CCC", "CSC", "CPC")
-                    .where('S', controller(blocks(definition.get())))
-                    .where('C', steamMachineCasings().setMinGlobalLimited(10)
-                            .or(abilities(PartAbility.IMPORT_ITEMS).setMinGlobalLimited(1))
-                            .or(abilities(PartAbility.EXPORT_ITEMS).setExactLimit(1)))
-                    .where('P', machinePipeCasings())
-                    .build())
-            .shapeInfos(definition -> {
-                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-                var builder = MultiblockShapeInfo.builder()
-                        .aisle("CCC", "CSC", "CPC")
-                        .aisle("CCC", "CCC", "PPP")
-                        .aisle("ELO", "CCC", "CPC")
-                        .where('S', definition, Direction.NORTH)
-                        .where('E', ENERGY_INPUT_HATCH[GTValues.ULV], Direction.SOUTH)
-                        .where('L', ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
-                        .where('O', ITEM_EXPORT_BUS[GTValues.ULV], Direction.SOUTH)
-                        .where('M', MAINTENANCE_HATCH, Direction.NORTH);
-                GTOVAPI.STEAM_CASING.entrySet().stream()
-                        .sorted(Comparator.comparingInt(entry -> entry.getKey().getTier()))
-                        .forEach(steamcasings -> {
-                            GTOVAPI.PIPE_CASING.entrySet().stream()
-                                    .sorted(Comparator.comparingInt(entry -> entry.getKey().getTier()))
-                                    .forEach(
-                                            pipecasings -> shapeInfo.add(builder.shallowCopy()
-                                                    .where('P', pipecasings.getValue().get())
-                                                    .where('C', steamcasings.getValue().get())
-                                                    .build()));
-
-                                });
-                return shapeInfo;
-            })
-            .workableCasingModel(GTCEu.id("block/casings/steam/bronze/side"),
-                    GTCEu.id("block/multiblock/assembly_line"))
-            .additionalDisplay((controller, components) -> {
-                if (controller instanceof WorkableElectricMultiblockMachine machine && controller.isFormed()) {
-                    components.add(Component.translatable(FormattingUtil.formatNumbers(machine.getTier() + 1) +
-                                    "%")
-                            .setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)));
-                }
-            })
-            .register();
-*/
-
-    public static final MultiblockMachineDefinition STEAM_PRESSER = REGISTRATE
             .multiblock("steam_presser", TieredSteamParallelMultiblockMachine::new)
             .langValue("Steam Presser")
             .recipeType(FORGE_HAMMER_RECIPES)
@@ -583,12 +541,157 @@ public class GTOVMachines {
                             .setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)));
                 }
             })
+            .register();*/
+
+
+    public static final MachineDefinition STEAM_CENTRIFUGE = REGISTRATE.multiblock("steam_separator", SteamParallelMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .appearanceBlock(CASING_BRONZE_BRICKS)
+            .recipeType(CENTRIFUGE_RECIPES)
+            .recipeModifier(SteamParallelMultiblockMachine::recipeModifier, true)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("#FFF#", "#FFF#", "##F##", "#####", "#FFF#")
+                    .aisle("FFFFF", "FFGFF", "#FPF#", "#FGF#", "FFFFF")
+                    .aisle("FFFFF", "FGFGF", "FPFPF", "#GFG#", "FFFFF")
+                    .aisle("FFFFF", "FFGFF", "#FPF#", "#FGF#", "FFFFF")
+                    .aisle("#FFF#", "#FSF#", "##F##", "#####", "#FFF#")
+                    .where('S', Predicates.controller(blocks(definition.getBlock())))
+                    .where('#', Predicates.any())
+                    .where('G', blocks(CASING_BRONZE_GEARBOX.get()))
+                    .where('P', blocks(BRONZE_PIPE_CASING.get()))
+                    .where('F', blocks(CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(6)
+                            .or(Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS).setPreviewCount(1)))
+                    .build())
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    GTCEu.id("block/machines/centrifuge"))
+            .register();
+
+    public static final MachineDefinition STEAM_ALLOY_SMELTER = REGISTRATE.multiblock("steam_fuser", SteamParallelMultiblockMachine::new)
+            .appearanceBlock(CASING_BRONZE_BRICKS)
+            .recipeType(ALLOY_SMELTER_RECIPES)
+            .recipeModifier(SteamParallelMultiblockMachine::recipeModifier, true)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("FFF", "FFF", "FFF")
+                    .aisle("FFF", "GRG", "FFF")
+                    .aisle("FFF", "GRG", "FFF")
+                    .aisle("FFF", "FSF", "FFF")
+                    .where('S', Predicates.controller(blocks(definition.getBlock())))
+                    .where('G', blocks(Blocks.TINTED_GLASS))
+                    .where('R', blocks(CASING_BRONZE_GEARBOX.get()))
+                    .where('F', blocks(CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(6)
+                            .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS).setPreviewCount(1)))
+                    .build())
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    GTCEu.id("block/machines/alloy_smelter"))
+            .register();
+
+    public static final MultiblockMachineDefinition STEAM_PRESSER = REGISTRATE.multiblock("steam_presser", SteamParallelMultiblockMachine::new)
+            .appearanceBlock(CASING_BRONZE_BRICKS)
+            .recipeType(FORGE_HAMMER_RECIPES)
+            .recipeModifier(SteamParallelMultiblockMachine::recipeModifier, true)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .pattern((definition) -> FactoryBlockPattern.start()
+                    .aisle("#CCC#", "#####", "#####", "#####", "#####", "#####", "#####")
+                    .aisle("CCCCC", "#CCC#", "#####", "#####", "#####", "##C##", "#####")
+                    .aisle("CCCCC", "CC#CC", "C###C", "C#I#C", "C#I#C", "CCPCC", "##P##")
+                    .aisle("CCCCC", "#CSC#", "#####", "#####", "#####", "##C##", "#####")
+                    .aisle("#CCC#", "#####", "#####", "#####", "#####", "#####", "#####")
+                    .where('S', controller(blocks(definition.get())))
+                    .where('I', blocks(IRON_BLOCK))
+                    .where('C', blocks(CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(6)
+                            .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS).setPreviewCount(1)))
+                    .where('P', blocks(BRONZE_PIPE_CASING.get()))
+                    .where('#', Predicates.any())
+                    .build())
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    GTCEu.id("block/machines/forge_hammer"))
+            .register();
+
+
+    public static final MachineDefinition STEAM_COMPRESSOR = REGISTRATE.multiblock("steam_squasher", SteamParallelMultiblockMachine::new)
+            .appearanceBlock(CASING_BRONZE_BRICKS)
+            .recipeType(COMPRESSOR_RECIPES)
+            .recipeModifier(SteamParallelMultiblockMachine::recipeModifier, true)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("FFF", "FFF", "FFF")
+                    .aisle("FFF", "FRF", "FFF")
+                    .aisle("FFF", "FRF", "FFF")
+                    .aisle("FFF", "FSF", "FFF")
+                    .where('S', Predicates.controller(blocks(definition.getBlock())))
+                    .where('R', blocks(CASING_BRONZE_GEARBOX.get()))
+                    .where('F', blocks(CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(6)
+                            .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS).setPreviewCount(1)))
+                    .build())
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    GTCEu.id("block/machines/compressor"))
+            .register();
+
+    public static final MachineDefinition STEAM_MIXER = REGISTRATE.multiblock("steam_blender", SteamParallelMultiblockMachine::new)
+            .appearanceBlock(CASING_BRONZE_BRICKS)
+            .recipeType(MIXER_RECIPES)
+            .recipeModifier(SteamParallelMultiblockMachine::recipeModifier, true)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("#FFFFF#", "#FFFFF#", "#FFFFF#", "###F###", "###F###", "#######")
+                    .aisle("FFFFFFF", "FI###IF", "F#####F", "#######", "###F###", "###F###")
+                    .aisle("FFFFFFF", "F#I#I#F", "F#####F", "#######", "#######", "###F###")
+                    .aisle("FFFFFFF", "F##G##F", "F##P##F", "F##P##F", "FF#G#FF", "#FFFFF#")
+                    .aisle("FFFFFFF", "F#I#I#F", "F#####F", "#######", "#######", "###F###")
+                    .aisle("FFFFFFF", "FI###IF", "F#####F", "#######", "###F###", "###F###")
+                    .aisle("#FFFFF#", "#FFSFF#", "#FFFFF#", "###F###", "###F###", "#######")
+                    .where('S', Predicates.controller(blocks(definition.getBlock())))
+                    .where('G', blocks(CASING_BRONZE_GEARBOX.get()))
+                    .where('I', blocks(IRON_BLOCK))
+                    .where('P', blocks(BRONZE_PIPE_CASING.get()))
+                    .where('F', blocks(CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(6)
+                            .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(GTOVPartAbility.STEAM_IMPORT_FLUIDS).setPreviewCount(1))
+                            .or(Predicates.abilities(GTOVPartAbility.STEAM_EXPORT_FLUIDS).setPreviewCount(1)))
+                    .where('#', Predicates.any())
+                    .build())
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    GTCEu.id("block/machines/mixer"))
+            .register();
+
+    public static final MachineDefinition STEAM_WASHER = REGISTRATE.multiblock("steam_washer", SteamParallelMultiblockMachine::new)
+            .appearanceBlock(CASING_BRONZE_BRICKS)
+            .recipeType(ORE_WASHER_RECIPES)
+            .recipeModifier(SteamParallelMultiblockMachine::recipeModifier, true)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("####FFFFF", "####FGGGF", "####FGGGF", "#####FFF#", "#########", "#########")
+                    .aisle("FFF#FRRRF", "FFF#GWWWG", "FFF#G###G", "####F###F", "#########", "#########")
+                    .aisle("FFF#FRFRF", "FFF#GWPWG", "FFF#G#P#G", "#P##F#P#F", "#P####P##", "#PPPPPP##")
+                    .aisle("FFF#FRRRF", "FSF#GWWWG", "FFF#G###G", "####F###F", "#########", "#########")
+                    .aisle("####FFFFF", "####FGGGF", "####FGGGF", "#####FFF#", "#########", "#########")
+                    .where('S', Predicates.controller(blocks(definition.getBlock())))
+                    .where('R', blocks(CASING_BRONZE_GEARBOX.get()))
+                    .where('G', blocks(GLASS))
+                    .where('W', blocks(WATER))
+                    .where('P', blocks(BRONZE_PIPE_CASING.get()))
+                    .where('F', blocks(CASING_BRONZE_BRICKS.get()).setMinGlobalLimited(6)
+                            .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS).setPreviewCount(1))
+                            .or(Predicates.abilities(GTOVPartAbility.STEAM_IMPORT_FLUIDS).setPreviewCount(1))
+                            .or(Predicates.abilities(GTOVPartAbility.STEAM_EXPORT_FLUIDS).setPreviewCount(1)))
+                    .where('#', Predicates.any())
+                    .build())
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"),
+                    GTCEu.id("block/machines/mixer"))
             .register();
 
 
     public static void init() {
     }
-
 
 
 }

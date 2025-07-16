@@ -1,13 +1,7 @@
 package com.tybob14.gtovervolt.common.data;
 
 
-import com.gregtechceu.gtceu.GTCEu;
-import com.gregtechceu.gtceu.api.block.ActiveBlock;
-import com.gregtechceu.gtceu.api.block.ICoilType;
-import com.gregtechceu.gtceu.common.block.CoilBlock;
-import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.models.GTModels;
-import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -18,17 +12,11 @@ import com.tybob14.gtovervolt.api.block.IPipeCasingType;
 import com.tybob14.gtovervolt.api.block.ISteamMachineCasingType;
 import com.tybob14.gtovervolt.common.block.PipeCasing;
 import com.tybob14.gtovervolt.common.block.SteamMachineCasing;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.client.model.generators.ModelFile;
-
-import java.util.Map;
-import java.util.function.Supplier;
 
 import static com.tybob14.gtovervolt.api.registries.GTOvervoltRegistries.REGISTRATE;
 
@@ -43,52 +31,6 @@ public class GTOVBlocks {
     public static final BlockEntry<PipeCasing> STEEL_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.STEEL);
     public static final BlockEntry<PipeCasing> TITANIUM_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.TITANIUM);
     public static final BlockEntry<PipeCasing> TUNGSTENSTEEL_PIPE_CASING = createMachinePipeCasing(PipeCasing.PipeCasingType.TUNGSTENSTEEL);
-
-
-    public static void init(){
-
-    }
-
-
-
-    static {
-        REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);
-    }
-
-    public static NonNullBiConsumer<DataGenContext<Block, SteamMachineCasing>, RegistrateBlockstateProvider> createSteamCasingModel(String name) {
-        return (ctx, prov) -> {
-            prov.simpleBlock(ctx.getEntry(), prov.models().cubeBottomTop(name,
-                    GTOvervolt.id("block/casings/steam/%s/side".formatted(name)),
-                    GTOvervolt.id("block/casings/steam/%s/bottom".formatted(name)),
-                    GTOvervolt.id("block/casings/steam/%s/top".formatted(name))));
-        };
-    }
-
-    private static BlockEntry<SteamMachineCasing> createSteamMachineCasing(ISteamMachineCasingType casingType) {
-        var steamCasing = REGISTRATE
-                .block("%s_casing".formatted(casingType.getName()), p -> new SteamMachineCasing(p, casingType))
-                .initialProperties(() -> Blocks.IRON_BLOCK)
-                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
-                .item(BlockItem::new)
-                .build()
-                .register();
-        GTOVAPI.STEAM_CASING.put(casingType, steamCasing);
-        return steamCasing;
-    }
-
-
-    private static BlockEntry<PipeCasing> createMachinePipeCasing(IPipeCasingType casingType) {
-        var pipeCasing = REGISTRATE
-                .block("%s_pipe_casing".formatted(casingType.getName()), p -> new PipeCasing(p, casingType))
-                .initialProperties(() -> Blocks.IRON_BLOCK)
-                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
-                .item(BlockItem::new)
-                .build()
-                .register();
-        GTOVAPI.PIPE_CASING.put(casingType, pipeCasing);
-        return pipeCasing;
-    }
-
     public static final BlockEntry<Block> ANUBIS_DUST = REGISTRATE
             .block("anubis_dust", Block::new)
             .lang("Anubis Dust")
@@ -97,7 +39,6 @@ public class GTOVBlocks {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .simpleItem()
             .register();
-
     public static final BlockEntry<Block> ANUBIS_GRAVEL = REGISTRATE
             .block("anubis_gravel", Block::new)
             .lang("Anubis Gravel")
@@ -394,7 +335,6 @@ public class GTOVBlocks {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .simpleItem()
             .register();
-
     public static final BlockEntry<Block> HORUS_SAND = REGISTRATE
             .block("horus_sand", Block::new)
             .lang("Horus Sand")
@@ -403,514 +343,554 @@ public class GTOVBlocks {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .simpleItem()
             .register();
-
-public static final BlockEntry<Block> HORUS_SANDSTONE = REGISTRATE
-        .block("horus_sandstone", Block::new)
-        .lang("Horus Sandstone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/horus/horussandstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> HORUS_STONE = REGISTRATE
-        .block("horus_stone", Block::new)
-        .lang("Horus Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/horus/horusstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> IO_ASH = REGISTRATE
-        .block("io_ash", Block::new)
-        .lang("Io Ash")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/io/ioash")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> IO_CORE = REGISTRATE
-        .block("io_core", Block::new)
-        .lang("Io Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/io/iocore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> IO_VOLCANIC_ROCK = REGISTRATE
-        .block("io_volcanic_rock", Block::new)
-        .lang("Io_volcanic_rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/io/iovolcanicrock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> KUIPER_ICE_DUST = REGISTRATE
-        .block("kuiper_ice_dust", Block::new)
-        .lang("Kuiper Ice Dust")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/kuiperbelt/kuipericedust")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> KUIPER_ROCK = REGISTRATE
-        .block("kuiper_rock", Block::new)
-        .lang("Kuiper Rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/kuiperbelt/kuiperock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MAAHES_CORE = REGISTRATE
-        .block("maahes_core", Block::new)
-        .lang("Maahes Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/maahes/maahescore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MAAHES_GLASS = REGISTRATE
-        .block("maahes_glass", Block::new)
-        .lang("Maahes Glass")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/maahes/maahesglass")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MAAHES_STONE = REGISTRATE
-        .block("maahes_stone", Block::new)
-        .lang("Maahes Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/maahes/maahesstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MAKEMAKE_CLAY = REGISTRATE
-        .block("makemake_clay", Block::new)
-        .lang("MakeMake Clay")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/makemake/makeclay")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MAKEMAKE_CORE = REGISTRATE
-        .block("makemake_core", Block::new)
-        .lang("MakeMake Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/makemake/makecore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MAKEMAKESTONE = REGISTRATE
-        .block("makemake_stone", Block::new)
-        .lang("MakeMake Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/makemake/makestone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MARS_CORE = REGISTRATE
-        .block("mars_core", Block::new)
-        .lang("Mars Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mars/marscore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MARS_DUST = REGISTRATE
-        .block("mars_dust", Block::new)
-        .lang("Mars Dust")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mars/marsdust")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MARS_STONE = REGISTRATE
-        .block("mars_stone", Block::new)
-        .lang("Mars Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mars/marsstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MEHEN_GRAVEL = REGISTRATE
-        .block("mehen_gravel", Block::new)
-        .lang("Mehen Gravel")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mehenbelt/mehengravel")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MEHEN_STONE = REGISTRATE
-        .block("mehen_stone", Block::new)
-        .lang("Mehen Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mehenbelt/mehenstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MERCURY_CORE = REGISTRATE
-        .block("mercury_core", Block::new)
-        .lang("Mercury Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mercury/mercurycore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MERCURY_DUST = REGISTRATE
-        .block("mercury_dust", Block::new)
-        .lang("Mercury Dust")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mercury/mercurydust")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MERCURY_STONE = REGISTRATE
-        .block("mercury_stone", Block::new)
-        .lang("Mercury Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mercury/mercurystone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MIRANDA_CORE_ICE = REGISTRATE
-        .block("miranda_core_ice", Block::new)
-        .lang("Miranda Core Ice")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/miranda/mirandacoreice")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MIRANDA_DUST = REGISTRATE
-        .block("miranda_dust", Block::new)
-        .lang("Miranda Dust")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/miranda/mirandadust")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MIRANDA_SNOW = REGISTRATE
-        .block("miranda_snow", Block::new)
-        .lang("Miranda Snow")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/miranda/mirandasnow")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MOON_REGOLITH = REGISTRATE
-        .block("moon_regolith", Block::new)
-        .lang("Moon regolith")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/moon/moon_regolith")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MOON_SILICATE = REGISTRATE
-        .block("moon_silicate", Block::new)
-        .lang("Moon silicate")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/moon/moon_silicate")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> MOON_STONE = REGISTRATE
-        .block("moon_stone", Block::new)
-        .lang("Moon stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/moon/moon_stone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> NEPER_CORE = REGISTRATE
-        .block("neper_core", Block::new)
-        .lang("Neper Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/neper/nepercore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> NEPER_GRASS = REGISTRATE
-        .block("neper_grass", Block::new)
-        .lang("Neper Grass")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/neper/nepergrass")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> NEPER_ROCK = REGISTRATE
-        .block("neper_rock", Block::new)
-        .lang("Neper Rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/neper/neperrock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> OBERON_CORE = REGISTRATE
-        .block("oberon_core", Block::new)
-        .lang("Oberon Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/oberon/oberoncore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> OBERON_REGOLITH = REGISTRATE
-        .block("oberon_regolith", Block::new)
-        .lang("Oberon Regolith")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/oberon/oberonregolith")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> OBERON_STONE = REGISTRATE
-        .block("oberon_stone", Block::new)
-        .lang("Oberon Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/oberon/oberonstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PHOBOS_CORE = REGISTRATE
-        .block("phobos_core", Block::new)
-        .lang("Phobos Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/phobos/phoboscore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PHOBOS_REGOLITH = REGISTRATE
-        .block("phobos_regolith", Block::new)
-        .lang("Phobos Regolith")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/phobos/phobosregolith")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PHOBOS_STONE = REGISTRATE
-        .block("phobos_stone", Block::new)
-        .lang("Phobos Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/phobos/phobosstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PLUTO_CORE = REGISTRATE
-        .block("pluto_core", Block::new)
-        .lang("Pluto Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/pluto/plutocore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PLUTO_FROST = REGISTRATE
-        .block("pluto_frost", Block::new)
-        .lang("Pluto Frost")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/pluto/plutofrost")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PLUTO_ICE = REGISTRATE
-        .block("pluto_ice", Block::new)
-        .lang("Pluto Ice")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/pluto/plutoice")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PROTEUS_ROCK = REGISTRATE
-        .block("proteus_rock", Block::new)
-        .lang("Proteus Rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/proteus/proteusrock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PROTEUS_SNOW = REGISTRATE
-        .block("proteus_snow", Block::new)
-        .lang("Proteus Snow")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/proteus/proteussnow")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> PROTEUS_STONE = REGISTRATE
-        .block("proteus_stone", Block::new)
-        .lang("Proteus Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/proteus/proteusstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> ROSS128_CORE = REGISTRATE
-        .block("ross128_core", Block::new)
-        .lang("Ross128 Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128/rosscore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> ROSS128_REGOLITH = REGISTRATE
-        .block("ross128_regolith", Block::new)
-        .lang("Ross128 Regolith")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128/rossregolith")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> ROSS128_STONE = REGISTRATE
-        .block("ross128_stone", Block::new)
-        .lang("Ross128 Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128/rossstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> ROSS128B_CORE = REGISTRATE
-        .block("ross128b_core", Block::new)
-        .lang("Ross128B Core")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128b/rossbcore")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> ROSS128B_REGOLITH = REGISTRATE
-        .block("ross128b_bregolith", Block::new)
-        .lang("Ross128B Regolith")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128b/rossbregolith")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> ROSS128B_STONE = REGISTRATE
-        .block("ross128b_stone", Block::new)
-        .lang("Ross128B Stone")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128b/rossbstone")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> SETH_ICE = REGISTRATE
-        .block("seth_ice", Block::new)
-        .lang("Seth Ice")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/seth/sethice")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> SETH_OBSIDIAN = REGISTRATE
-        .block("seth_obsidian", Block::new)
-        .lang("Seth Obsidian")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/seth/sethobsidian")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> SETH_SNOW = REGISTRATE
-        .block("seth_snow", Block::new)
-        .lang("Seth Snow")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/seth/sethsnow")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> TITAN_CLAY = REGISTRATE
-        .block("titan_clay", Block::new)
-        .lang("Titan Clay")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/titan/titanclay")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> TITAN_DUST = REGISTRATE
-        .block("titan_dust", Block::new)
-        .lang("Titan Dust")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/titan/titandust")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> TITAN_ICE = REGISTRATE
-        .block("titan_ice", Block::new)
-        .lang("Titan Ice")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/titan/titanice")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> TRITON_ICE = REGISTRATE
-        .block("triton_ice", Block::new)
-        .lang("Triton Ice")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/triton/tritonice")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> TRITON_ROCK = REGISTRATE
-        .block("triton_rock", Block::new)
-        .lang("Triton Rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/triton/tritonrock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> TRITON_SAND = REGISTRATE
-        .block("triton_sand", Block::new)
-        .lang("Triton Sand")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/triton/tritonsand")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> VEGAB_COMPACTED_SOIL = REGISTRATE
-        .block("vegab_compacted_soil", Block::new)
-        .lang("VegaB Compacted Soil")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/vegab/vega_compactedsoil")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> VEGAB_CRUST = REGISTRATE
-        .block("vegab_crust", Block::new)
-        .lang("VegaB Crust")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/vegab/vega_crust")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> VEGAB_ROCK = REGISTRATE
-        .block("vegab_rock", Block::new)
-        .lang("VegaB Rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/vegab/vega_rock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> VENUS_ASH = REGISTRATE
-        .block("venus_ash", Block::new)
-        .lang("Venus Ash")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/venus/venus_ash")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> VENUS_METAL = REGISTRATE
-        .block("venus_metal", Block::new)
-        .lang("Venus Metal")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/venus/venus_metal")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
-public static final BlockEntry<Block> VENUS_ROCK = REGISTRATE
-        .block("venus_rock", Block::new)
-        .lang("Venus Rock")
-        .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
-        .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/venus/venus_rock")))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .simpleItem()
-        .register();
+    public static final BlockEntry<Block> HORUS_SANDSTONE = REGISTRATE
+            .block("horus_sandstone", Block::new)
+            .lang("Horus Sandstone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/horus/horussandstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> HORUS_STONE = REGISTRATE
+            .block("horus_stone", Block::new)
+            .lang("Horus Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/horus/horusstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> IO_ASH = REGISTRATE
+            .block("io_ash", Block::new)
+            .lang("Io Ash")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/io/ioash")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> IO_CORE = REGISTRATE
+            .block("io_core", Block::new)
+            .lang("Io Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/io/iocore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> IO_VOLCANIC_ROCK = REGISTRATE
+            .block("io_volcanic_rock", Block::new)
+            .lang("Io_volcanic_rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/io/iovolcanicrock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> KUIPER_ICE_DUST = REGISTRATE
+            .block("kuiper_ice_dust", Block::new)
+            .lang("Kuiper Ice Dust")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/kuiperbelt/kuipericedust")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> KUIPER_ROCK = REGISTRATE
+            .block("kuiper_rock", Block::new)
+            .lang("Kuiper Rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/kuiperbelt/kuiperock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MAAHES_CORE = REGISTRATE
+            .block("maahes_core", Block::new)
+            .lang("Maahes Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/maahes/maahescore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MAAHES_GLASS = REGISTRATE
+            .block("maahes_glass", Block::new)
+            .lang("Maahes Glass")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/maahes/maahesglass")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MAAHES_STONE = REGISTRATE
+            .block("maahes_stone", Block::new)
+            .lang("Maahes Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/maahes/maahesstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MAKEMAKE_CLAY = REGISTRATE
+            .block("makemake_clay", Block::new)
+            .lang("MakeMake Clay")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/makemake/makeclay")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MAKEMAKE_CORE = REGISTRATE
+            .block("makemake_core", Block::new)
+            .lang("MakeMake Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/makemake/makecore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MAKEMAKESTONE = REGISTRATE
+            .block("makemake_stone", Block::new)
+            .lang("MakeMake Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/makemake/makestone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MARS_CORE = REGISTRATE
+            .block("mars_core", Block::new)
+            .lang("Mars Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mars/marscore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MARS_DUST = REGISTRATE
+            .block("mars_dust", Block::new)
+            .lang("Mars Dust")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mars/marsdust")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MARS_STONE = REGISTRATE
+            .block("mars_stone", Block::new)
+            .lang("Mars Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mars/marsstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MEHEN_GRAVEL = REGISTRATE
+            .block("mehen_gravel", Block::new)
+            .lang("Mehen Gravel")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mehenbelt/mehengravel")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MEHEN_STONE = REGISTRATE
+            .block("mehen_stone", Block::new)
+            .lang("Mehen Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mehenbelt/mehenstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MERCURY_CORE = REGISTRATE
+            .block("mercury_core", Block::new)
+            .lang("Mercury Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mercury/mercurycore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MERCURY_DUST = REGISTRATE
+            .block("mercury_dust", Block::new)
+            .lang("Mercury Dust")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mercury/mercurydust")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MERCURY_STONE = REGISTRATE
+            .block("mercury_stone", Block::new)
+            .lang("Mercury Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/mercury/mercurystone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MIRANDA_CORE_ICE = REGISTRATE
+            .block("miranda_core_ice", Block::new)
+            .lang("Miranda Core Ice")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/miranda/mirandacoreice")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MIRANDA_DUST = REGISTRATE
+            .block("miranda_dust", Block::new)
+            .lang("Miranda Dust")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/miranda/mirandadust")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MIRANDA_SNOW = REGISTRATE
+            .block("miranda_snow", Block::new)
+            .lang("Miranda Snow")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/miranda/mirandasnow")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MOON_REGOLITH = REGISTRATE
+            .block("moon_regolith", Block::new)
+            .lang("Moon regolith")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/moon/moon_regolith")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MOON_SILICATE = REGISTRATE
+            .block("moon_silicate", Block::new)
+            .lang("Moon silicate")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/moon/moon_silicate")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> MOON_STONE = REGISTRATE
+            .block("moon_stone", Block::new)
+            .lang("Moon stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/moon/moon_stone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> NEPER_CORE = REGISTRATE
+            .block("neper_core", Block::new)
+            .lang("Neper Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/neper/nepercore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> NEPER_GRASS = REGISTRATE
+            .block("neper_grass", Block::new)
+            .lang("Neper Grass")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/neper/nepergrass")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> NEPER_ROCK = REGISTRATE
+            .block("neper_rock", Block::new)
+            .lang("Neper Rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/neper/neperrock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> OBERON_CORE = REGISTRATE
+            .block("oberon_core", Block::new)
+            .lang("Oberon Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/oberon/oberoncore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> OBERON_REGOLITH = REGISTRATE
+            .block("oberon_regolith", Block::new)
+            .lang("Oberon Regolith")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/oberon/oberonregolith")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> OBERON_STONE = REGISTRATE
+            .block("oberon_stone", Block::new)
+            .lang("Oberon Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/oberon/oberonstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PHOBOS_CORE = REGISTRATE
+            .block("phobos_core", Block::new)
+            .lang("Phobos Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/phobos/phoboscore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PHOBOS_REGOLITH = REGISTRATE
+            .block("phobos_regolith", Block::new)
+            .lang("Phobos Regolith")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/phobos/phobosregolith")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PHOBOS_STONE = REGISTRATE
+            .block("phobos_stone", Block::new)
+            .lang("Phobos Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/phobos/phobosstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PLUTO_CORE = REGISTRATE
+            .block("pluto_core", Block::new)
+            .lang("Pluto Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/pluto/plutocore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PLUTO_FROST = REGISTRATE
+            .block("pluto_frost", Block::new)
+            .lang("Pluto Frost")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/pluto/plutofrost")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PLUTO_ICE = REGISTRATE
+            .block("pluto_ice", Block::new)
+            .lang("Pluto Ice")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/pluto/plutoice")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PROTEUS_ROCK = REGISTRATE
+            .block("proteus_rock", Block::new)
+            .lang("Proteus Rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/proteus/proteusrock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PROTEUS_SNOW = REGISTRATE
+            .block("proteus_snow", Block::new)
+            .lang("Proteus Snow")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/proteus/proteussnow")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> PROTEUS_STONE = REGISTRATE
+            .block("proteus_stone", Block::new)
+            .lang("Proteus Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/proteus/proteusstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> ROSS128_CORE = REGISTRATE
+            .block("ross128_core", Block::new)
+            .lang("Ross128 Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128/rosscore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> ROSS128_REGOLITH = REGISTRATE
+            .block("ross128_regolith", Block::new)
+            .lang("Ross128 Regolith")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128/rossregolith")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> ROSS128_STONE = REGISTRATE
+            .block("ross128_stone", Block::new)
+            .lang("Ross128 Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128/rossstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> ROSS128B_CORE = REGISTRATE
+            .block("ross128b_core", Block::new)
+            .lang("Ross128B Core")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128b/rossbcore")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> ROSS128B_REGOLITH = REGISTRATE
+            .block("ross128b_bregolith", Block::new)
+            .lang("Ross128B Regolith")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128b/rossbregolith")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> ROSS128B_STONE = REGISTRATE
+            .block("ross128b_stone", Block::new)
+            .lang("Ross128B Stone")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/ross128b/rossbstone")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> SETH_ICE = REGISTRATE
+            .block("seth_ice", Block::new)
+            .lang("Seth Ice")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/seth/sethice")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> SETH_OBSIDIAN = REGISTRATE
+            .block("seth_obsidian", Block::new)
+            .lang("Seth Obsidian")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/seth/sethobsidian")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> SETH_SNOW = REGISTRATE
+            .block("seth_snow", Block::new)
+            .lang("Seth Snow")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/seth/sethsnow")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> TITAN_CLAY = REGISTRATE
+            .block("titan_clay", Block::new)
+            .lang("Titan Clay")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/titan/titanclay")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> TITAN_DUST = REGISTRATE
+            .block("titan_dust", Block::new)
+            .lang("Titan Dust")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/titan/titandust")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> TITAN_ICE = REGISTRATE
+            .block("titan_ice", Block::new)
+            .lang("Titan Ice")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/titan/titanice")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> TRITON_ICE = REGISTRATE
+            .block("triton_ice", Block::new)
+            .lang("Triton Ice")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/triton/tritonice")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> TRITON_ROCK = REGISTRATE
+            .block("triton_rock", Block::new)
+            .lang("Triton Rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/triton/tritonrock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> TRITON_SAND = REGISTRATE
+            .block("triton_sand", Block::new)
+            .lang("Triton Sand")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/triton/tritonsand")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> VEGAB_COMPACTED_SOIL = REGISTRATE
+            .block("vegab_compacted_soil", Block::new)
+            .lang("VegaB Compacted Soil")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/vegab/vega_compactedsoil")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> VEGAB_CRUST = REGISTRATE
+            .block("vegab_crust", Block::new)
+            .lang("VegaB Crust")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/vegab/vega_crust")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> VEGAB_ROCK = REGISTRATE
+            .block("vegab_rock", Block::new)
+            .lang("VegaB Rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/vegab/vega_rock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> VENUS_ASH = REGISTRATE
+            .block("venus_ash", Block::new)
+            .lang("Venus Ash")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/venus/venus_ash")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> VENUS_METAL = REGISTRATE
+            .block("venus_metal", Block::new)
+            .lang("Venus Metal")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/venus/venus_metal")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> VENUS_ROCK = REGISTRATE
+            .block("venus_rock", Block::new)
+            .lang("Venus Rock")
+            .properties(properties -> properties.mapColor(MapColor.COLOR_GRAY))
+            .blockstate(GTModels.randomRotatedModel(GTOvervolt.id("block/planet_blocks/venus/venus_rock")))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .simpleItem()
+            .register();
 
     static {
         REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);
+    }
+
+    static {
+        REGISTRATE.creativeModeTab(() -> GTOvervoltCreativeModeTabs.GTOVERVOLT);
+    }
+
+    public static void init() {
+
+    }
+
+    public static NonNullBiConsumer<DataGenContext<Block, SteamMachineCasing>, RegistrateBlockstateProvider> createSteamCasingModel(String name) {
+        return (ctx, prov) -> {
+            prov.simpleBlock(ctx.getEntry(), prov.models().cubeBottomTop(name,
+                    GTOvervolt.id("block/casings/steam/%s/side".formatted(name)),
+                    GTOvervolt.id("block/casings/steam/%s/bottom".formatted(name)),
+                    GTOvervolt.id("block/casings/steam/%s/top".formatted(name))));
+        };
+    }
+
+    private static BlockEntry<SteamMachineCasing> createSteamMachineCasing(ISteamMachineCasingType casingType) {
+        var steamCasing = REGISTRATE
+                .block("%s_casing".formatted(casingType.getName()), p -> new SteamMachineCasing(p, casingType))
+                .initialProperties(() -> Blocks.IRON_BLOCK)
+                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+                .item(BlockItem::new)
+                .build()
+                .register();
+        GTOVAPI.STEAM_CASING.put(casingType, steamCasing);
+        return steamCasing;
+    }
+
+    private static BlockEntry<PipeCasing> createMachinePipeCasing(IPipeCasingType casingType) {
+        var pipeCasing = REGISTRATE
+                .block("%s_pipe_casing".formatted(casingType.getName()), p -> new PipeCasing(p, casingType))
+                .initialProperties(() -> Blocks.IRON_BLOCK)
+                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+                .item(BlockItem::new)
+                .build()
+                .register();
+        GTOVAPI.PIPE_CASING.put(casingType, pipeCasing);
+        return pipeCasing;
     }
 
 
